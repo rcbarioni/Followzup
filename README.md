@@ -15,11 +15,20 @@ Tanto em canais públicos como privados, o conceito de comunicação por meio do
 #Estrutura básica
 O projeto compõe-se de duas partes: Cliente e Servidor.
 
-No lado Servidor, contruído no ambiente PHP/MySql, encontram-se os módulos de gestão de canais de informações, os quais são utilizados pelos gestores de sistemas para criação e manutenção desses canais. A primeira implementação desse servidor encontra-se disponível no endereço "www.followzup.com".
+No lado Servidor, contruído no ambiente PHP/MySql, encontram-se principalmente os módulos web para gestão de canais de informações, os quais são utilizados pelos gestores de sistemas para criação e manutenção desses canais. Além dos módulos web, os desenvolvedores dispõe também, por meio de download, das APIs de apoio para comunicação entre as aplicações e o servidor. Essas APIs estão disponíveis em PHP e Java. A primeira implementação desse serviço encontra-se disponível no endereço "www.followzup.com". 
 
-No lado Cliente, encontra-se o APP para dispositivos Android (Java). Com esse aplicativo, o usuário dispõe das funções de gestão de assinaturas de canais e recebimento de mensagens provenientes das aplicações.
+No lado Cliente, encontra-se o APP para dispositivos Android (Java). Com esse aplicativo, o usuário dispõe das funções de gestão de assinaturas de canais e recebimento de mensagens provenientes das aplicações. O lado Cliente também dispõe de uma API (Classe Fzup) para apoio ao desenvolvimento de APPs com diferentes "skins" ou quaisquer outros dispositivos que disponham dos protocolos de criptografia compatíveis com o serviço.
 
-Os códigos fontes de ambas as partes estão publicadas nesse Git.
+A comunicação entre as aplicações e o Servidor Followzup, bem como entre os Servidor Followzup e os dispositivos móveis, são realizados de forma assíncrona, o que demanda consumo reduzido dos recursos de rede.
 
+Os códigos fontes de ambas as partes, inclusive das APIs, estão publicadas nesse Git e disponíveis sob licença a GPL.
 
-#
+#Roteiro de uso do serviço
+A seguir, as etapas necessárias para envio de mensagens por meio do Followzup a partir de um site Internet ou uma aplicação corporativa qualquer:
+
+O desenvolvedor cria um canal de informações no Followzup, faz o download da API (PHP ou Java), contendo chave pública RSA criada exclusivamente para o canal e inclui em seu sistema os comandos necessários para enviar as mensagens.
+
+Os usuários do sistema instalam em seus dispositivos móveis o aplicativo Followzup (disponível no Google-Play) e fazem a assinatura do canal criado pelo desenvolvedor, permitindo assim receber mensagens provenientes do site Internet ou aplicação associada ao canal.
+
+Os sites Internet e as aplicações enviam mensagens a seus usuários por meio do webservice Followzup, que são transmitidas aos assinantes do canal por meio do APP instalado em seus dispositivos.
+
