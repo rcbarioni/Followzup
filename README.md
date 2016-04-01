@@ -49,8 +49,8 @@ O mesmo conceito estabelece a comunicação entre os dispositivos móveis e o Se
 Embora os processos de comunicação sejam implementados por meio de protocolos abertos, o modelo preserva a integridade e a confidencialidade dos dados por meio dos processos de criptografia AES e RSA, seguindo os passos a seguir:
 
 1. A aplicação (ou o dispositivo móvel), cria um string XML contendo a solicitação a ser enviada ao webservice;
-2. A API cria uma chave AES aleatória e criptografa o string XML com essa chave por meio do protocolo de criptografia AES;
-3. A API criptografa a chave AES com a chave pública do canal (ou do dispositivo), por meio do protocolo de criptografia RSA;
+2. A API cria uma chave AES aleatória e criptografa o string XML por meio do protocolo de criptografia AES;
+3. A API criptografa a chave AES com a chave pública do canal (ou do dispositivo), com protocolo de criptografia RSA;
 4. A API envia o XML e a chave AES (ambos criptografados), para o webservice;
 5. O webservice decriptografa a chave AES com a chave privada correspondente, por meio do protocolo RSA;
 6. Com a chave AES decriptografada, o webservice decriptografa o string XML por meio do protocolo AES;
