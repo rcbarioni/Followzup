@@ -14,4 +14,12 @@ Tanto em canais públicos como privados, o conceito de comunicação por meio do
 
 #Estrutura básica
 O projeto compõe-se de duas partes: Cliente e Servidor.
-No lado do Servidor, contruído no ambiente PHP/MySql, encontram-se os módulos de gestão de canais de informações, os quais são utilizados pelos gestores de sistemas para criação e manutenção desses canais. A primeira implementação desse servidor encontra-se disponível no endereço "www.followzup.com".
+
+No lado Servidor, contruído no ambiente PHP/MySql, encontram-se os módulos de gestão de canais de informações, os quais são utilizados pelos gestores de sistemas para criação e manutenção desses canais. A primeira implementação desse servidor encontra-se disponível no endereço "www.followzup.com".
+
+No lado Cliente, encontra-se o APP para dispositivos Android (Java). Com esse aplicativo, o usuário dispõe das funções de gestão de assinaturas de canais e recebimento de mensagens provenientes das aplicações.
+
+Os códigos fontes de ambas as partes estão publicadas nesse Git.
+
+
+#
