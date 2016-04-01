@@ -46,7 +46,15 @@ A comunicação entre as aplicações e o Servidor é estabelecida por meio do m
 O mesmo conceito estabelece a comunicação entre os dispositivos móveis e o Servidor, desta vez por meio do módulo webservice denominado "wsdevice.php". Essas solicitações também são submetidas no formato XML, as quais são criptografadas com uma chave pública criada exclusivamente para cada dispositivo móvel. O string XML contém basicamente o comando a ser executado e os parâmetros necessários para sua execução. A descrição completa do string XML está descrito adiante.
 
 #Comunicação criptografada
-Embora os processos de comunicação sejam implementados por meio de protocolos abertos, o modelo preserva a integridade e a confidencialidade dos dados por meio dos processos de criptografia AES e RSA, seguindo os passos a seguir:
+Embora os processos de comunicação sejam implementados por meio de protocolos abertos, o modelo preserva a integridade e a confidencialidade dos dados por meio dos processos de criptografia AES e RSA.
+
+Cada vez que um canal ou um dispositivo móvel é criado, o sistema cria um par de chaves assimétricas (RSA), composta por uma chave pública e uma chave privada. A chave privada é mantida na base de dados e utilizada para decriptografar os string de solicitações (XML) e criptografar os string as respostas (XML).
+
+As chaves públicas dos canais são inseridas na API no momento em que o desenvolvedor faz o downlaod da API (PHP ou Java). No caso dos dispositivos, a chave pública é enviada por meio do APP dentro de um string de resposta XML, quando da solicitação de registro do dispositivo. 
+
+Com esse modelo, o desenvolvedor tem certeza de que ninguém poderá enviar solicitações ao webservice em nome da aplicação que mantém, a menos que ocorra alguma falha de segurança no armazenamento da API. Da mesma forma, o usuário do dispositivo móvel por ter certeza de que ninguém poderá enviar solicitações em seu nome, a menos que ocorra alguma falha de segurança no uso de sua chave pública armazenada em seu dispositivo móvel.
+
+A seguir, as etapas que estabelecem a comunicação entre um canal de informações (aplicação do desenvolvedor) ou um dispositivo móvel, com o webservice:
 
 1. A aplicação (ou o dispositivo móvel), cria um string XML contendo a solicitação a ser enviada ao webservice;
 2. A API cria uma chave AES aleatória e criptografa o string XML por meio do protocolo de criptografia AES;
