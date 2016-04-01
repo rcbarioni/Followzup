@@ -15,11 +15,11 @@ Tanto em canais públicos como privados, o conceito de comunicação por meio do
 #Estrutura básica
 O projeto compõe-se de duas partes: Cliente e Servidor.
 
-No lado Servidor, contruído no ambiente PHP/MySql, encontram-se principalmente os módulos web para gestão de canais de informações, os quais são utilizados pelos gestores de sistemas para criação e manutenção desses canais. Além dos módulos web, os desenvolvedores dispõe também, por meio de download, das APIs de apoio para comunicação entre as aplicações e o servidor. Essas APIs estão disponíveis em PHP e Java. A primeira implementação desse serviço encontra-se disponível no endereço "www.followzup.com". 
+No lado Servidor, contruído no ambiente PHP/MySql, encontram-se principalmente os módulos web para gestão de canais de informações, os quais são utilizados pelos gestores de sistemas para criação e manutenção desses canais. Além dos módulos web, os desenvolvedores dispõe também, por meio de download, das APIs de apoio para comunicação entre o servidor e suas aplicações. Essas APIs estão disponíveis em PHP e Java. A primeira implementação desse serviço encontra-se disponível no endereço "www.followzup.com". 
 
-No lado Cliente, encontra-se o APP para dispositivos Android (Java). Com esse aplicativo, o usuário dispõe das funções de gestão de assinaturas de canais e recebimento de mensagens provenientes das aplicações. O lado Cliente também dispõe de uma API (Classe Fzup) para apoio ao desenvolvimento de APPs com diferentes "skins" ou quaisquer outros dispositivos que disponham dos protocolos de criptografia compatíveis com o serviço.
+No lado Cliente, encontra-se o APP para dispositivos Android (Java). Com esse aplicativo, o usuário dispõe das funções de gestão de assinaturas de canais e recebimento de mensagens provenientes das aplicações. O lado Cliente também dispõe de uma API (Classe Fzup) para apoio ao desenvolvimento de novos APPs com diferentes "skins" ou outros dispositivos que disponham dos protocolos de criptografia compatíveis com o serviço (quem sabe um dia estaremos recebendo mensagens na tela de um forno de micro-ondas?).
 
-A comunicação entre as aplicações e o Servidor Followzup, bem como entre os Servidor Followzup e os dispositivos móveis, são realizados de forma assíncrona, o que demanda consumo reduzido dos recursos de rede.
+As comunicações entre as aplicações e o Servidor, bem como entre os Servidor e os dispositivos móveis, são realizadas de forma assíncrona, o que demanda consumo reduzido dos recursos de rede.
 
 Os códigos fontes de ambas as partes, inclusive das APIs, estão publicadas nesse Git e disponíveis sob licença a GPL.
 
