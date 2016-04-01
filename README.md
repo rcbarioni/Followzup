@@ -39,3 +39,12 @@ Pela praticidade do modelo, relacionamos várias de suas utilidades. No aspecto 
 Pela segurança do processo, podemos também relacionar outras utilidades, tais como o envio de códigos de barras para pagamento de contas, confirmação de pedidos, agendamento de audiências e compromissos, alertas de compras realizadas com cartões de crédito, confirmações de trocas de senhas, avisos de ligações não atendidas, resultados de exames clínicos, movimentações financeiras, avisos de vencimento de apólices de seguros, alertas de alterações de cadastros, avisos de interrupção de serviços, rastreamento de encomendas, recalls de veículos, enfim, tudo que precisamos ser informados.
 
 Por sua conveniência, outras utilidades podem ser exemplificadas, tais como: previsões astrológicas, salmos, tábuas de marés, avisos de estréias em cinemas e teatros, avisos de promoções de passagens aéreas, notícias sobre temas específicos (clipping), avisos de liquidações, avisos de ofertas de produtos em sites de compras, resultados de loterias, confirmações de vôos, notas de provas, calendários de eventos, enfim, tudo que possa nos auxiliar em nosso dia a dia. 
+
+#Protocolo aberto
+A comunicação entre as aplicações e o Servidor é estabelecida por meio do módulo webservice denominado "wschannel.php". Essas solicitações são submetidas no formato XML, as quais são criptografadas com a chave pública (contida na API), criada exclusivamente para o cada canal. O string XML contém basicamente o comando a ser executado e os parâmetros necessários para sua execução. A descrição completa do string XML está descrito adiante.
+
+O mesmo conceito estabelece a comunicação entre os dispositivos móveis e o Servidor, desta vez por meio do módulo webservice denominado "wsdevice.php". Essas solicitações também são submetidas no formato XML, as quais são criptografadas com uma chave pública criada exclusivamente para cada dispositivo móvel. O string XML contém basicamente o comando a ser executado e os parâmetros necessários para sua execução. A descrição completa do string XML está descrito adiante.
+
+
+
+O 
