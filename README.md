@@ -40,11 +40,22 @@ Pela segurança do processo, podemos também relacionar outras utilidades, tais 
 
 Por sua conveniência, outras utilidades podem ser exemplificadas, tais como: previsões astrológicas, salmos, tábuas de marés, avisos de estréias em cinemas e teatros, avisos de promoções de passagens aéreas, notícias sobre temas específicos (clipping), avisos de liquidações, avisos de ofertas de produtos em sites de compras, resultados de loterias, confirmações de vôos, notas de provas, calendários de eventos, enfim, tudo que possa nos auxiliar em nosso dia a dia. 
 
-#Protocolo aberto
+#Protocolos abertos
 A comunicação entre as aplicações e o Servidor é estabelecida por meio do módulo webservice denominado "wschannel.php". Essas solicitações são submetidas no formato XML, as quais são criptografadas com a chave pública (contida na API), criada exclusivamente para o cada canal. O string XML contém basicamente o comando a ser executado e os parâmetros necessários para sua execução. A descrição completa do string XML está descrito adiante.
 
 O mesmo conceito estabelece a comunicação entre os dispositivos móveis e o Servidor, desta vez por meio do módulo webservice denominado "wsdevice.php". Essas solicitações também são submetidas no formato XML, as quais são criptografadas com uma chave pública criada exclusivamente para cada dispositivo móvel. O string XML contém basicamente o comando a ser executado e os parâmetros necessários para sua execução. A descrição completa do string XML está descrito adiante.
 
+#Comunicação criptografada
+Embora os processos de comunicação sejam implementados por meio de protocolos abertos, o modelo preserva a integridade e a confidencialidade dos dados por meio dos processos de criptografia AES e RSA, seguindo os passos a seguir:
 
+1. A aplicação (ou o dispositivo móvel), cria um string XML contendo a solicitação a ser enviada ao webservice;
+2. A API cria uma chave AES aleatória e criptografa o string XML com essa chave por meio do protocolo de criptografia AES;
+3. A API criptografa a chave AES com a chave pública do canal (ou do dispositivo), por meio do protocolo de criptografia RSA;
+4. A API envia o XML e a chave AES (ambos criptografados), para o webservice;
+5. O webservice decriptografa a chave AES com a chave privada correspondente, por meio do protocolo RSA;
+6. Com a chave AES decriptografada, o webservice decriptografa o string XML por meio do protocolo AES;
+7. O webservice processa a solicitação contida no string XML e cria outra string XML contendo a resposta da solicitação;
+8. O webservice criptografa o string XML de resposta com a mesma chave AES recebida, por meio do protocolo AES;
+9. O webservice retorna para a aplicação (ou dispositivo móvel), apenas o string XML de resposta criptografado;
+10. A aplicação (ou o dispositivo móvel), decriptografa o string XML de resposta por meio do protocolo AES.
 
-O 
