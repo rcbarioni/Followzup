@@ -12,7 +12,7 @@ A privacidade, outro ponto forte do modelo, também é garantida aos usuários, 
 
 Tanto em canais públicos como privados, o conceito de comunicação por meio do Followzup pode ainda agregar novas funcionalidades aos processos de comunicação corporativa interna e externa em instituições financeiras, comércio, serviços, governos, associações, escolas, universidades, hospitais, aeroportos, indústrias, meios de comunicação e entretenimento, sites internet, enfim, onde houver aplicações interagindo com seus usuários.
 
-#Estrutura básica do projeto
+#Estrutura do projeto
 O projeto compõe-se de duas partes: Cliente e Servidor.
 
 No lado Servidor, contruído no ambiente PHP/MySql, encontram-se principalmente os módulos web para gestão de canais de informações, os quais são utilizados pelos gestores de sistemas para criação e manutenção desses canais. Além dos módulos web, os desenvolvedores dispõe também, por meio de download, das APIs de apoio para comunicação entre o servidor e suas aplicações. Essas APIs estão disponíveis em PHP e Java. A primeira implementação desse serviço encontra-se disponível no endereço "www.followzup.com". 
