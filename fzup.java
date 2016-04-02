@@ -133,30 +133,34 @@ public class Fzup {
 		wPuxInst64   = wPUX;
 		
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-	    StrictMode.setThreadPolicy(policy);
+	    	StrictMode.setThreadPolicy(policy);
 	    
-	    wHelper = new FzupHelper(wContext);
+	    	wHelper = new FzupHelper(wContext);
 	    
-	    wDB = wHelper.getReadableDatabase();
+	    	wDB = wHelper.getReadableDatabase();
 		 				
 		wLocalPrefs = wContext.getSharedPreferences("Followzup_Prefs", Context.MODE_PRIVATE);
 
-	    if ( wLocalPrefs.contains("PUBKEY") ) {
-	    	
-	    	wStringPubKey = wLocalPrefs.getString  ("PUBKEY","");
-	    	wStringTabChn = wLocalPrefs.getString  ("TABCHN","");
-	    	wLastMsg      = wLocalPrefs.getInt     ("LASTMSG",0);
-	    	wLastSeq      = wLocalPrefs.getInt     ("LASTSEQ",0);
-	    	wChannelCount = wLocalPrefs.getInt     ("CHANNELCOUNT", 0);
-	    	wMD5List      = wLocalPrefs.getString  ("MD5LIST","");		    
-	    	wDeviceTag    = wLocalPrefs.getString  ("DEVICETAG","");		    
-	    	wIdDevice     = wLocalPrefs.getString  ("IDDEVICE","");		    
-	    	wIdUser       = wLocalPrefs.getString  ("IDUSER","");		    
-	    	wRegistered   = wLocalPrefs.getBoolean ("REGISTERED",false);
+		if ( wLocalPrefs.contains("PUBKEY") ) {
+			
+	    		wStringPubKey = wLocalPrefs.getString  ("PUBKEY","");
+	    		wStringTabChn = wLocalPrefs.getString  ("TABCHN","");
+	    		wLastMsg      = wLocalPrefs.getInt     ("LASTMSG",0);
+	    		wLastSeq      = wLocalPrefs.getInt     ("LASTSEQ",0);
+	    		wChannelCount = wLocalPrefs.getInt     ("CHANNELCOUNT", 0);
+	    		wMD5List      = wLocalPrefs.getString  ("MD5LIST","");		    
+	    		wDeviceTag    = wLocalPrefs.getString  ("DEVICETAG","");		    
+	    		wIdDevice     = wLocalPrefs.getString  ("IDDEVICE","");		    
+	    		wIdUser       = wLocalPrefs.getString  ("IDUSER","");		    
+	    		wRegistered   = wLocalPrefs.getBoolean ("REGISTERED",false);
 
-	    	wPubKey = (RSAPublicKey) stringToObject(wStringPubKey);
-	    	wTabChn = (String[][]) stringToObject(wStringTabChn);
+	    		wPubKey = (RSAPublicKey) stringToObject(wStringPubKey);
+	    		wTabChn = (String[][]) stringToObject(wStringTabChn);
 	    		    	
+	    		if ( wTabChn.length > 0 ) {
+	    			if ( wTabChn[0].length < 5 ) { wMD5List = ""; check(true); }
+	    	}
+	    	
 	    }  
 	    
 	    else unregisterDevice();
@@ -182,6 +186,18 @@ public class Fzup {
 	public String getSelectFlag () { return wSelectFlag; }
 	
 //  ==============================================================
+//  GETTERS (DEPRECATED)
+//  ==============================================================
+	
+	public int selectPoll(String wParam) { return 0; }
+    	public int getPollQuestion() { return 0; }
+    	public int getPollNumChoices() { return 0; }
+    	public int getPollMinChoices() { return 0; }
+    	public int getPollMaxChoices() { return 0; }
+    	public int getChoices() { return 0; }
+    	public int responsePoll(String wParam1, String wParam2) { return 0; }
+	
+//  ==============================================================
 //  GETTERS (ARRAYS)
 //  ==============================================================
 	
@@ -191,7 +207,7 @@ public class Fzup {
 		// tag, subscode, count-unread, icon, md5icon, flag-responseurl
 		
 		int wIndex = -1;
-	    if ( !wDB.isOpen() ) wDB = wHelper.getReadableDatabase();
+	    	if ( !wDB.isOpen() ) wDB = wHelper.getReadableDatabase();
 		
 		for ( int i = 0; i < wChannelCount; i++ ) {
 		
@@ -261,8 +277,6 @@ public class Fzup {
 			
 		}
 		
-//		wDB.close();			
-		
 		return wReturn;
 		
 	}
@@ -303,8 +317,6 @@ public class Fzup {
 
 		}
 
-//		wDB.close();
-		
 		return wReturn;
 		
 	}
@@ -316,10 +328,10 @@ public class Fzup {
 		if ( !wDB.isOpen() ) wDB = wHelper.getReadableDatabase();
 	    
 		String wQuery = "SELECT * FROM " +
-				            "(SELECT idmessage, dateincl, msgtext, msgurl " + 
-		                       "FROM messages " + 
-				              "WHERE channeltag = '" + wSelectTag + "' and subscode = '" + wSelectCode + "' and regstatus = 'a' " + 
-		                      "ORDER BY idmessage DESC LIMIT 200) " +
+				"(SELECT idmessage, dateincl, msgtext, msgurl " + 
+		                "FROM messages " + 
+				"WHERE channeltag = '" + wSelectTag + "' and subscode = '" + wSelectCode + "' and regstatus = 'a' " + 
+		                "ORDER BY idmessage DESC LIMIT 200) " +
 		                "ORDER BY 1;";
 		
 		Cursor wCursor = wDB.rawQuery(wQuery, null);
@@ -333,24 +345,20 @@ public class Fzup {
 
 		for ( int i = 0; i < wCount; i++ ) {
 			
-			
-    		String wMsg = wCursor.getString(2);
-    		String wUrl = wCursor.getString(3);
+    			String wMsg = wCursor.getString(2);
+    			String wUrl = wCursor.getString(3);
 
-    		byte[] bMsg = Base64.decode(wMsg, Base64.DEFAULT);
-    		wMsg = new String(bMsg);  		
+    			byte[] bMsg = Base64.decode(wMsg, Base64.DEFAULT);
+    			wMsg = new String(bMsg);  		
 			    		
-    		byte[] bUrl = Base64.decode(wUrl, Base64.DEFAULT);
-    		wUrl = new String(bUrl);  		
+    			byte[] bUrl = Base64.decode(wUrl, Base64.DEFAULT);
+    			wUrl = new String(bUrl);  		
 
-    		wMsg = wMsg.replace("USERID",   wIdUser);
-    		wMsg = wMsg.replace("SUBSCODE", wSelectCode);
-    		wUrl = wUrl.replace("USERID",   wIdUser);
-    		wUrl = wUrl.replace("SUBSCODE", wSelectCode);
+    			wMsg = wMsg.replace("USERID",   wIdUser);
+    			wMsg = wMsg.replace("SUBSCODE", wSelectCode);
+    			wUrl = wUrl.replace("USERID",   wIdUser);
+    			wUrl = wUrl.replace("SUBSCODE", wSelectCode);
     		
-//    		bMsg = wMsg.getBytes();
-//          wMsg = Base64.encodeToString(bMsg, Base64.DEFAULT);
-			
 			wReturn[i][0] = wCursor.getString(0);
 			wReturn[i][1] = convertDate(wCursor.getString(1));
 			wReturn[i][2] = "";
@@ -362,8 +370,6 @@ public class Fzup {
 		}
 		
 		wCursor.close();
-
-//		wDB.close();
 
 		return wReturn;
 		
@@ -381,28 +387,28 @@ public class Fzup {
 		
 		if ( !deviceIsOnline() ) return 8001;
 		
-        String wSubmit = "<stp>" + wStamp + "</stp>" +
+        	String wSubmit = "<stp>" + wStamp + "</stp>" +
         		         "<eml>" + wEmail + "</eml>" + 
-                         "<pwd>" + wPass  + "</pwd>";
+                         	 "<pwd>" + wPass  + "</pwd>";
 
 		wRet = submit(wIdInterface, wSubmit);
 		if ( wRet != 0 ) return wRet;
 		
-        DocumentBuilderFactory wDocFactory = DocumentBuilderFactory.newInstance();
+        	DocumentBuilderFactory wDocFactory = DocumentBuilderFactory.newInstance();
 
-        DocumentBuilder wDocBuilder = null;
+        	DocumentBuilder wDocBuilder = null;
 		try { wDocBuilder = wDocFactory.newDocumentBuilder(); } 
 		catch (ParserConfigurationException e) { return 8101; }
 
-        org.w3c.dom.Document wDoc = null;
+        	org.w3c.dom.Document wDoc = null;
 		try { wDoc = wDocBuilder.parse(new ByteArrayInputStream(wSubmitRetFrame.trim().getBytes())); } 
 		catch (SAXException e) { return 8102; } 
 		catch (IOException e) {	return 8102; }
 
-        NodeList wNodeUid = wDoc.getElementsByTagName("uid");
-        NodeList wNodeDid = wDoc.getElementsByTagName("did");
-        NodeList wNodeMod = wDoc.getElementsByTagName("mod");
-        NodeList wNodePux = wDoc.getElementsByTagName("pux");
+        	NodeList wNodeUid = wDoc.getElementsByTagName("uid");
+        	NodeList wNodeDid = wDoc.getElementsByTagName("did");
+        	NodeList wNodeMod = wDoc.getElementsByTagName("mod");
+        	NodeList wNodePux = wDoc.getElementsByTagName("pux");
 
 		if ( wNodeUid.getLength() == 0 ) return 8103;
 		if ( wNodeDid.getLength() == 0 ) return 8103;
@@ -420,18 +426,18 @@ public class Fzup {
 		if ( wPuxDevice64.equals("") ) return 8103;
 
 		wPubKey = pubFactory (wModDevice64, wPuxDevice64);
-	    wStringPubKey = objectToString(wPubKey);
+	    	wStringPubKey = objectToString(wPubKey);
 
 		wRegistered = true;
 	    
-	    SharedPreferences.Editor wLocalEditor;
-	    wLocalEditor = wLocalPrefs.edit();
+	    	SharedPreferences.Editor wLocalEditor;
+	    	wLocalEditor = wLocalPrefs.edit();
 	    
-    	wLocalEditor.putString  ("PUBKEY",wStringPubKey);
-    	wLocalEditor.putString  ("IDDEVICE",wIdDevice);
-    	wLocalEditor.putString  ("IDUSER",wIdUser);
-    	wLocalEditor.putBoolean ("REGISTERED",wRegistered);
-    	wLocalEditor.commit();
+    		wLocalEditor.putString  ("PUBKEY",wStringPubKey);
+    		wLocalEditor.putString  ("IDDEVICE",wIdDevice);
+    		wLocalEditor.putString  ("IDUSER",wIdUser);
+    		wLocalEditor.putBoolean ("REGISTERED",wRegistered);
+    		wLocalEditor.commit();
 		
 		return check(true);
 		
@@ -441,42 +447,42 @@ public class Fzup {
 		
 		if ( wRegistered ) {
 			
-	        String wSubmit = "<stp>" + wStamp + "</stp><com>ureg</com>";
+	        	String wSubmit = "<stp>" + wStamp + "</stp><com>ureg</com>";
 
-	        submit(wIdDevice, wSubmit);
+	        	submit(wIdDevice, wSubmit);
 			
 		}
 		
-    	SharedPreferences.Editor wLocalEditor;
-	    wLocalEditor = wLocalPrefs.edit();
+    		SharedPreferences.Editor wLocalEditor;
+	    	wLocalEditor = wLocalPrefs.edit();
 
 		wPubKey = pubFactory (wModInst64, wPuxInst64);
-	    wStringPubKey = objectToString(wPubKey);
+	    	wStringPubKey = objectToString(wPubKey);
 	    
 		wTabChn = new String[0][0];
-	    wStringTabChn = objectToString(wTabChn);
+	    	wStringTabChn = objectToString(wTabChn);
 	    
-	    wLastMsg = 0;
-	    wLastSeq = 0;
-	    wChannelCount = 0;
-	    wMD5List = "";
-	    wDeviceTag = "";
-	    wIdDevice = "";
-	    wIdUser = "";
-	    wRegistered = false;
+	    	wLastMsg = 0;
+		 wLastSeq = 0;
+	    	wChannelCount = 0;
+	    	wMD5List = "";
+	    	wDeviceTag = "";
+	    	wIdDevice = "";
+	    	wIdUser = "";
+	    	wRegistered = false;
 	    
-    	wLocalEditor.putString  ("PUBKEY",wStringPubKey);
-    	wLocalEditor.putString  ("TABCHN",wStringTabChn);
-    	wLocalEditor.putInt     ("LASTMSG",wLastMsg);
-    	wLocalEditor.putInt     ("LASTSEQ",wLastSeq);
-    	wLocalEditor.putInt     ("CHANNELCOUNT",wChannelCount);
-    	wLocalEditor.putString  ("MD5LIST",wMD5List);
-    	wLocalEditor.putString  ("DEVICETAG",wDeviceTag);
-    	wLocalEditor.putString  ("IDDEVICE",wIdDevice);
-    	wLocalEditor.putString  ("IDUSER",wIdUser);
-    	wLocalEditor.putBoolean ("REGISTERED",wRegistered);
+    		wLocalEditor.putString  ("PUBKEY",wStringPubKey);
+    		wLocalEditor.putString  ("TABCHN",wStringTabChn);
+    		wLocalEditor.putInt     ("LASTMSG",wLastMsg);
+    		wLocalEditor.putInt     ("LASTSEQ",wLastSeq);
+    		wLocalEditor.putInt     ("CHANNELCOUNT",wChannelCount);
+    		wLocalEditor.putString  ("MD5LIST",wMD5List);
+    		wLocalEditor.putString  ("DEVICETAG",wDeviceTag);
+    		wLocalEditor.putString  ("IDDEVICE",wIdDevice);
+    		wLocalEditor.putString  ("IDUSER",wIdUser);
+    		wLocalEditor.putBoolean ("REGISTERED",wRegistered);
 
-    	wLocalEditor.commit();
+    		wLocalEditor.commit();
     	
 		return 0;
 		
@@ -490,25 +496,25 @@ public class Fzup {
 		if ( !wRegistered ) return 8171;
 		if ( !deviceIsOnline() ) return 8001;
 		
-        String wSubmit = "<stp>" + wStamp + "</stp><com>chck</com><msg>" + wLastMsg + "</msg>";
+        	String wSubmit = "<stp>" + wStamp + "</stp><com>chck</com><msg>" + wLastMsg + "</msg>";
 
 		wRet = submit(wIdDevice, wSubmit);
 		if ( wRet != 0 ) return wRet;
 
 		String wStringCheck = wSubmitRetFrame;
 		
-        DocumentBuilderFactory wDocFactory = DocumentBuilderFactory.newInstance();
+        	DocumentBuilderFactory wDocFactory = DocumentBuilderFactory.newInstance();
 
-        DocumentBuilder wDocBuilder = null;
+        	DocumentBuilder wDocBuilder = null;
 		try { wDocBuilder = wDocFactory.newDocumentBuilder(); } 
 		catch (ParserConfigurationException e) { return 8181; }
 
-        org.w3c.dom.Document wDoc = null;
+        	org.w3c.dom.Document wDoc = null;
 		try { wDoc = wDocBuilder.parse(new ByteArrayInputStream(wStringCheck.trim().getBytes())); } 
 		catch (SAXException e) { return 8182; } 
 		catch (IOException e) {	return 8182; }
 
-        NodeList wNodeMD5 = wDoc.getElementsByTagName("md5");
+        	NodeList wNodeMD5 = wDoc.getElementsByTagName("md5");
 
 		if ( wNodeMD5.getLength() == 0 ) return 8183;
 		
@@ -526,24 +532,24 @@ public class Fzup {
 				
 			}
 			
-	        String wSubmit2 = "<stp>" + wStamp + "</stp><com>lsub</com>";
+	        	String wSubmit2 = "<stp>" + wStamp + "</stp><com>lsub</com>";
 
 			wRet = submit(wIdDevice, wSubmit2);
 			if ( wRet != 0 ) return wRet;
 			
-	        DocumentBuilderFactory wDocFactory2 = DocumentBuilderFactory.newInstance();
+	        	DocumentBuilderFactory wDocFactory2 = DocumentBuilderFactory.newInstance();
 
-	        DocumentBuilder wDocBuilder2 = null;
+	        	DocumentBuilder wDocBuilder2 = null;
 			try { wDocBuilder2 = wDocFactory2.newDocumentBuilder(); } 
 			catch (ParserConfigurationException e) { return 8184; }
 
-	        org.w3c.dom.Document wDoc2 = null;
+	        	org.w3c.dom.Document wDoc2 = null;
 			try { wDoc2 = wDocBuilder2.parse(new ByteArrayInputStream(wSubmitRetFrame.trim().getBytes())); } 
 			catch (SAXException e) { return 8185; } 
 			catch (IOException e) {	return 8185; }
 
-	        NodeList wNodeTag = wDoc2.getElementsByTagName("tag");
-	        NodeList wNodeCnt = wDoc2.getElementsByTagName("cnt");
+	        	NodeList wNodeTag = wDoc2.getElementsByTagName("tag");
+	        	NodeList wNodeCnt = wDoc2.getElementsByTagName("cnt");
 
 			if ( wNodeTag.getLength() == 0 ) return 8185;
 			if ( wNodeCnt.getLength() == 0 ) return 8185;
@@ -555,11 +561,11 @@ public class Fzup {
 						
 			wTabChn = new String[wChannelCount][5];
 	    	
-	    	NodeList wNodeTab = wDoc2.getElementsByTagName("chn");
+	    		NodeList wNodeTab = wDoc2.getElementsByTagName("chn");
 	    	
-	    	if ( !wDB.isOpen() ) wDB = wHelper.getReadableDatabase();
+	    		if ( !wDB.isOpen() ) wDB = wHelper.getReadableDatabase();
 			
-	    	String wIconList = "";
+	    		String wIconList = "";
 			
 			for ( int i = 0; i < wChannelCount; i++ ) {
 
@@ -585,38 +591,36 @@ public class Fzup {
 				
 			}
 			
-//			wDB.close();
-			
-		    wStringTabChn = objectToString(wTabChn);
+		    	wStringTabChn = objectToString(wTabChn);
 
 			wMD5List = wMD5;
 			
-		    SharedPreferences.Editor wLocalEditor;
-		    wLocalEditor = wLocalPrefs.edit();
+		    	SharedPreferences.Editor wLocalEditor;
+		    	wLocalEditor = wLocalPrefs.edit();
 		    
-	    	wLocalEditor.putString  ("DEVICETAG",wDeviceTag);
-	    	wLocalEditor.putString  ("TABCHN",wStringTabChn);
-	    	wLocalEditor.putString  ("MD5LIST",wMD5List);
-	    	wLocalEditor.putInt     ("CHANNELCOUNT",wChannelCount);
-	    	wLocalEditor.commit();
+	    		wLocalEditor.putString  ("DEVICETAG",wDeviceTag);
+	    		wLocalEditor.putString  ("TABCHN",wStringTabChn);
+	    		wLocalEditor.putString  ("MD5LIST",wMD5List);
+	    		wLocalEditor.putInt     ("CHANNELCOUNT",wChannelCount);
+	    		wLocalEditor.commit();
 	    	
-	    	if ( !wIconList.equals("") ) { getIcons(wIconList.substring(1)); }
+	    		if ( !wIconList.equals("") ) { getIcons(wIconList.substring(1)); }
 	    		
 		}
 		
-        NodeList wNodeMsg = wDoc.getElementsByTagName("msg");
+		NodeList wNodeMsg = wDoc.getElementsByTagName("msg");
         
-        wNewMsgs = wNodeMsg.getLength();
+        	wNewMsgs = wNodeMsg.getLength();
         
-        if ( wNewMsgs > 0 ) {
+        	if ( wNewMsgs > 0 ) {
         	
-        	String xTag = "";
-        	String wSub = "";
-        	int wIndex  = 0;
+        		String xTag = "";
+        		String wSub = "";
+        		int wIndex  = 0;
         	
-        	wDBw = wHelper.getWritableDatabase();
+        		wDBw = wHelper.getWritableDatabase();
         
-    		for ( int i = 0; i < wNewMsgs; i++ ) {
+    			for ( int i = 0; i < wNewMsgs; i++ ) {
 
 				Node wNode = wNodeMsg.item(i);
 				Element eElement = (Element) wNode;
@@ -650,35 +654,35 @@ public class Fzup {
 					wTabChn[wIndex][3] = String.valueOf(wTotal);
 				}
 				
-    			ContentValues newValues = new ContentValues();
-    		    newValues.put("idmessage", wMsg);
-    		    newValues.put("channeltag", wTag);
-    		    newValues.put("subscode", wSub);
-    		    newValues.put("dateincl", wDat);
-    		    newValues.put("msgtext", wTxt);
-    		    newValues.put("msgurl", wUrl);
-    		    newValues.put("regstatus", "a");
+    				ContentValues newValues = new ContentValues();
+    		    		newValues.put("idmessage", wMsg);
+    		    		newValues.put("channeltag", wTag);
+    		    		newValues.put("subscode", wSub);
+    		    		newValues.put("dateincl", wDat);
+    		    		newValues.put("msgtext", wTxt);
+    		    		newValues.put("msgurl", wUrl);
+    		    		newValues.put("regstatus", "a");
     		       
-    		    wDBw.insert("messages", null, newValues);
+    		    		wDBw.insert("messages", null, newValues);
     		    
-    		    int wID = Integer.parseInt(wMsg);
+    		    		int wID = Integer.parseInt(wMsg);
     		    
-    		    if ( wID > wLastMsg ) { wLastMsg = wID; };
+    		    		if ( wID > wLastMsg ) { wLastMsg = wID; };
     		    
-    		}
+    			}
     		
-    	    wDBw.close();
+    	    		wDBw.close();
     	    
-    	    wStringTabChn = objectToString(wTabChn);
+    			wStringTabChn = objectToString(wTabChn);
     	    
-		    SharedPreferences.Editor wLocalEditor;
-		    wLocalEditor = wLocalPrefs.edit();
+		    	SharedPreferences.Editor wLocalEditor;
+		    	wLocalEditor = wLocalPrefs.edit();
 		    
-	    	wLocalEditor.putInt    ("LASTMSG",wLastMsg);
-	    	wLocalEditor.putString ("TABCHN",wStringTabChn);
-	    	wLocalEditor.commit();
+	    		wLocalEditor.putInt    ("LASTMSG",wLastMsg);
+	    		wLocalEditor.putString ("TABCHN",wStringTabChn);
+	    		wLocalEditor.commit();
         	
-        }
+        	}
 		
 		return 0;
 		
@@ -729,15 +733,13 @@ public class Fzup {
 			
 		}
 		
-//	    wDB.close();
-    	
-   	    wStringTabChn = objectToString(wTabChn);
+   	    	wStringTabChn = objectToString(wTabChn);
 	    
 		SharedPreferences.Editor wLocalEditor;
 		wLocalEditor = wLocalPrefs.edit();
 		    
-	    wLocalEditor.putString ("TABCHN",wStringTabChn);
-	    wLocalEditor.commit();
+		 wLocalEditor.putString ("TABCHN",wStringTabChn);
+		 wLocalEditor.commit();
 
 		if ( wSelectTag.equals("") ) return 8153;
 	    
@@ -756,38 +758,38 @@ public class Fzup {
 		if ( !wRegistered ) return 8121;
 		if ( !deviceIsOnline() ) return 8001;
 	
-        String wSubmit = "<stp>" + wStamp + "</stp><com>lkup</com><chn>" + wArg + "</chn><mor>" + wMore + "</mor>";
+        	String wSubmit = "<stp>" + wStamp + "</stp><com>lkup</com><chn>" + wArg + "</chn><mor>" + wMore + "</mor>";
 
 		wRet = submit(wIdDevice, wSubmit);
 		if ( wRet != 0 ) return wRet;
 		
-        DocumentBuilderFactory wDocFactory = DocumentBuilderFactory.newInstance();
+        	DocumentBuilderFactory wDocFactory = DocumentBuilderFactory.newInstance();
 
-        DocumentBuilder wDocBuilder = null;
+        	DocumentBuilder wDocBuilder = null;
 		try { wDocBuilder = wDocFactory.newDocumentBuilder(); } 
 		catch (ParserConfigurationException e) { return 8122; }
 
-        org.w3c.dom.Document wDoc = null;
+        	org.w3c.dom.Document wDoc = null;
 		try { wDoc = wDocBuilder.parse(new ByteArrayInputStream(wSubmitRetFrame.trim().getBytes())); } 
 		catch (SAXException e) { return 8123; } 
 		catch (IOException e) {	return 8123; }
 
-        NodeList wNodeMore = wDoc.getElementsByTagName("mor");
+		NodeList wNodeMore = wDoc.getElementsByTagName("mor");
 
 		if ( wNodeMore.getLength() == 0 ) return 8123;
 
 		wLookupArg = wArg;
 		wLookupMore = wNodeMore.item(0).getTextContent();
 		    	
-    	NodeList wNodeTab = wDoc.getElementsByTagName("chn");
+    		NodeList wNodeTab = wDoc.getElementsByTagName("chn");
     	
-    	wLookupCount = wNodeTab.getLength();
+    		wLookupCount = wNodeTab.getLength();
     	
 		wLookupTab = new String[wLookupCount][5];
     	
 		if ( !wDB.isOpen() ) wDB = wHelper.getReadableDatabase();
 		
-    	String wIconList = "";
+    		String wIconList = "";
 		
 		for ( int i = 0; i < wLookupCount; i++ ) {
 
@@ -808,15 +810,13 @@ public class Fzup {
 			
 			int wCount = wCursor.getCount();
 
-            if ( wCount == 0 ) { wIconList += "," + wTokens[0]; }
+            		if ( wCount == 0 ) { wIconList += "," + wTokens[0]; }
             
-            wCursor.close();
+            		wCursor.close();
             
 		}
     	
-//    	wDB.close();
-    	
-    	if ( !wIconList.equals("") ) { return getIcons(wIconList.substring(1)); }	
+    		if ( !wIconList.equals("") ) { return getIcons(wIconList.substring(1)); }	
 		
 		return 0;
 		
@@ -829,7 +829,7 @@ public class Fzup {
 		if ( !wRegistered ) return 8131;
 		if ( !deviceIsOnline() ) return 8001;
 		
-        String wSubmit = "<stp>" + wStamp + "</stp><com>schn</com><chn>" + wTag + "</chn><pvc>" + wPrivCode + "</pvc>";
+        	String wSubmit = "<stp>" + wStamp + "</stp><com>schn</com><chn>" + wTag + "</chn><pvc>" + wPrivCode + "</pvc>";
 
 		wRet = submit(wIdDevice, wSubmit);
 		if ( wRet != 0 ) return wRet;
@@ -845,7 +845,7 @@ public class Fzup {
 		if ( !wRegistered ) return 8141;
 		if ( !deviceIsOnline() ) return 8001;
 		
-        String wSubmit = "<stp>" + wStamp + "</stp><com>uchn</com><chn>" + wTag + "</chn>";
+        	String wSubmit = "<stp>" + wStamp + "</stp><com>uchn</com><chn>" + wTag + "</chn>";
 
 		wRet = submit(wIdDevice, wSubmit);
 		if ( wRet != 0 ) return wRet;
@@ -862,20 +862,20 @@ public class Fzup {
 		if ( !wRegistered ) return 8162;
 		if ( !deviceIsOnline() ) return 8001;
 		
-        String wSubmit = "<stp>" + wStamp + "</stp><com>dmsg</com><msg>" + wIdMessage + "</msg>";
+        	String wSubmit = "<stp>" + wStamp + "</stp><com>dmsg</com><msg>" + wIdMessage + "</msg>";
 
 		wRet = submit(wIdDevice, wSubmit);
 		if ( wRet != 0 ) return wRet;
 		
 		wDBw = wHelper.getWritableDatabase();
 	    
-	    String wQuery = "UPDATE messages SET regstatus = 'd' WHERE idmessage = '" + wIdMessage + "';";
+		String wQuery = "UPDATE messages SET regstatus = 'd' WHERE idmessage = '" + wIdMessage + "';";
 	    
 		wDBw.execSQL(wQuery);
 
-	    wDBw.close();
+	    	wDBw.close();
 	    
-	    return 0;
+		return 0;
 		
 	}
 
@@ -888,12 +888,12 @@ public class Fzup {
 		if ( !wRegistered ) return 8162;
 		if ( !deviceIsOnline() ) return 8001;
 		
-        String wSubmit = "<stp>" + wStamp + "</stp><com>resp</com><chn>" + wSelectTag + "</chn><res>" + wResponse + "</res>";
+        	String wSubmit = "<stp>" + wStamp + "</stp><com>resp</com><chn>" + wSelectTag + "</chn><res>" + wResponse + "</res>";
 
 		wRet = submit(wIdDevice, wSubmit);
 		if ( wRet != 0 ) return wRet;
 		
-	    return 0;
+		return 0;
 		
 	}
 	
@@ -906,8 +906,8 @@ public class Fzup {
 		
 		Date wDate = null;
 		
-	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-	    dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+	    	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+	    	dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
 	    
 		try { wDate = dateFormat.parse(wDateIn); } 
 		catch (ParseException e) { e.printStackTrace();	}
@@ -923,7 +923,7 @@ public class Fzup {
 		
 		int wRet = 0;
 		
-	    String wSubmit = "<stp>" + wStamp + "</stp><com>icon</com><chn>" + wList + "</chn>";
+	    	String wSubmit = "<stp>" + wStamp + "</stp><com>icon</com><chn>" + wList + "</chn>";
 
 		wRet = submit(wIdDevice, wSubmit);
 		if ( wRet != 0 ) return wRet;
@@ -942,16 +942,16 @@ public class Fzup {
 				String wMD5 = md5(wTabIcon[i]);
 				
 				ContentValues newValues = new ContentValues();
-		        newValues.put("keyicon", wMD5 + "-" + wTabList[i]);
-		        newValues.put("icon", wTabIcon[i]);
+		        	newValues.put("keyicon", wMD5 + "-" + wTabList[i]);
+		        	newValues.put("icon", wTabIcon[i]);
 		       
-		        wDBw.insert("icons", null, newValues);
+				wDBw.insert("icons", null, newValues);
 						
 			}
 			
 		}
 		
-	    wDBw.close();
+	    	wDBw.close();
 
  		return 0;
 		
@@ -960,7 +960,7 @@ public class Fzup {
 	private boolean deviceIsOnline () {
 		
 		ConnectivityManager cm = (ConnectivityManager) wContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-	    return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnectedOrConnecting();
+	    	return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnectedOrConnecting();
 
 	}
 	
@@ -1045,9 +1045,9 @@ public class Fzup {
 		
 		for ( int i = 0; i < bDigest.length; i++ ) {
 			String h = Integer.toHexString(0xFF & bDigest[i]);
-	        while (h.length() < 2) h = "0" + h;
-	        hexString.append(h);
-	    }
+	        	while (h.length() < 2) h = "0" + h;
+	        	hexString.append(h);
+	    	}
 		
 	    return hexString.toString();
  	
@@ -1061,213 +1061,214 @@ public class Fzup {
 		wSubmitRetFrame = "";
 		wSubmitRetIcons = "";
 		
-        do {
+        	do {
         	
-    		if ( !deviceIsOnline() ) return 8001;
+    			if ( !deviceIsOnline() ) return 8001;
       
-        	String wXML = wSubmit;
+        		String wXML = wSubmit;
         	
-        	if ( wID.equals(wIdDevice) ) {
+        		if ( wID.equals(wIdDevice) ) {
         	
         		wLastSeq++;
         		wXML = wXML + "<seq>" + Integer.toString(wLastSeq) + "</seq>";
         		
-        	    SharedPreferences.Editor wLocalEditor;
-    		    wLocalEditor = wLocalPrefs.edit();
-    	    	wLocalEditor.putInt("LASTSEQ", wLastSeq);
-    	    	wLocalEditor.commit();
+        	    	SharedPreferences.Editor wLocalEditor;
+    		    	wLocalEditor = wLocalPrefs.edit();
+    	    		wLocalEditor.putInt("LASTSEQ", wLastSeq);
+    	    		wLocalEditor.commit();
         	
         	}
         	
-            wXML = "<?xml version=\"1.0\" encoding=\"utf-8\"?><followzup>" + wXML + "</followzup>";
+            	wXML = "<?xml version=\"1.0\" encoding=\"utf-8\"?><followzup>" + wXML + "</followzup>";
         	
-            byte[] nPlain = wXML.getBytes();        
+            	byte[] nPlain = wXML.getBytes();        
 
-            // padding xml text with spaces to 16 bytes block
-            int nLength = nPlain.length;
-            int pLength = nLength + ( 15 - ( (nLength - 1) % 16) );
-            byte[] bPlain = new byte[pLength];
-            Arrays.fill(bPlain,(byte)32);
-            System.arraycopy(nPlain, 0, bPlain, 0, nLength);
+            	// padding xml text with spaces to 16 bytes block
+            	int nLength = nPlain.length;
+            	int pLength = nLength + ( 15 - ( (nLength - 1) % 16) );
+            	byte[] bPlain = new byte[pLength];
+            	Arrays.fill(bPlain,(byte)32);
+            	System.arraycopy(nPlain, 0, bPlain, 0, nLength);
 
-            // generate random AES key
-            byte[] bKey = new byte[24];
-            new Random().nextBytes(bKey);
-            SecretKeySpec sKey = new SecretKeySpec(bKey,"AES");
+            	// generate random AES key
+            	byte[] bKey = new byte[24];
+            	new Random().nextBytes(bKey);
+            	SecretKeySpec sKey = new SecretKeySpec(bKey,"AES");
 
-            // Encrypt xml text with AES key
-            AlgorithmParameterSpec sVector = new IvParameterSpec(new byte[16]);
+            	// Encrypt xml text with AES key
+            	AlgorithmParameterSpec sVector = new IvParameterSpec(new byte[16]);
 
-            Cipher aesCipher = null;
-			try { aesCipher = Cipher.getInstance("AES/CBC/NoPadding"); } 
-			catch (NoSuchAlgorithmException e) { e.printStackTrace(); } 
-			catch (NoSuchPaddingException e) { e.printStackTrace();	}
+            	Cipher aesCipher = null;
+		try { aesCipher = Cipher.getInstance("AES/CBC/NoPadding"); } 
+		catch (NoSuchAlgorithmException e) { e.printStackTrace(); } 
+		catch (NoSuchPaddingException e) { e.printStackTrace();	}
 
-            try { aesCipher.init(Cipher.ENCRYPT_MODE, sKey, sVector); } 
-            catch (InvalidKeyException e) {	e.printStackTrace(); } 
-            catch (InvalidAlgorithmParameterException e) { e.printStackTrace();	}
+            	try { aesCipher.init(Cipher.ENCRYPT_MODE, sKey, sVector); } 
+            	catch (InvalidKeyException e) {	e.printStackTrace(); } 
+            	catch (InvalidAlgorithmParameterException e) { e.printStackTrace();	}
             
-            byte[] bPlainEncrypted = null;
-			try { bPlainEncrypted = aesCipher.doFinal(bPlain); } 
-			catch (IllegalBlockSizeException e) { e.printStackTrace();	} 
-			catch (BadPaddingException e) {	e.printStackTrace(); }
+            	byte[] bPlainEncrypted = null;
+		try { bPlainEncrypted = aesCipher.doFinal(bPlain); } 
+		catch (IllegalBlockSizeException e) { e.printStackTrace();	} 
+		catch (BadPaddingException e) {	e.printStackTrace(); }
 
-            // encrypt AES key with RSA PublicKey
-            Cipher rsaCipher = null;
-			try { rsaCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding"); } 
-			catch (NoSuchAlgorithmException e) { e.printStackTrace(); } 
-			catch (NoSuchPaddingException e) { e.printStackTrace();	}
+            	// encrypt AES key with RSA PublicKey
+            	Cipher rsaCipher = null;
+		try { rsaCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding"); } 
+		catch (NoSuchAlgorithmException e) { e.printStackTrace(); } 
+		catch (NoSuchPaddingException e) { e.printStackTrace();	}
             
-            try { rsaCipher.init(Cipher.ENCRYPT_MODE, wPubKey);	} 
-            catch (InvalidKeyException e) {	e.printStackTrace(); }
+            	try { rsaCipher.init(Cipher.ENCRYPT_MODE, wPubKey);	} 
+            	catch (InvalidKeyException e) {	e.printStackTrace(); }
             
-            byte[] bKeyEncrypted = null;
-			try { bKeyEncrypted = rsaCipher.doFinal(bKey); } 
-			catch (IllegalBlockSizeException e) { e.printStackTrace(); } 
-			catch (BadPaddingException e) {	e.printStackTrace(); }
+            	byte[] bKeyEncrypted = null;
+		try { bKeyEncrypted = rsaCipher.doFinal(bKey); } 
+		catch (IllegalBlockSizeException e) { e.printStackTrace(); } 
+		catch (BadPaddingException e) {	e.printStackTrace(); }
 
-            // encode encrypted AES key and encrypted xml text        
-            String wKey64 = Base64.encodeToString(bKeyEncrypted, Base64.DEFAULT);
+            	// encode encrypted AES key and encrypted xml text        
+            	String wKey64 = Base64.encodeToString(bKeyEncrypted, Base64.DEFAULT);
             
-            String wKeyURL = null;
-			try { wKeyURL = URLEncoder.encode(wKey64,"UTF-8"); } 
-			catch (UnsupportedEncodingException e) { e.printStackTrace();	} 
+            	String wKeyURL = null;
+		try { wKeyURL = URLEncoder.encode(wKey64,"UTF-8"); } 
+		catch (UnsupportedEncodingException e) { e.printStackTrace();	} 
             
-            String wPlainEncrypted64 = Base64.encodeToString(bPlainEncrypted, Base64.DEFAULT);
+            	String wPlainEncrypted64 = Base64.encodeToString(bPlainEncrypted, Base64.DEFAULT);
             
-            String wPlainEncryptedURL = null;
-			try { wPlainEncryptedURL = URLEncoder.encode(wPlainEncrypted64,"UTF-8"); } 
-			catch (UnsupportedEncodingException e) { e.printStackTrace(); } 
+        	String wPlainEncryptedURL = null;
+		try { wPlainEncryptedURL = URLEncoder.encode(wPlainEncrypted64,"UTF-8"); } 
+		catch (UnsupportedEncodingException e) { e.printStackTrace(); } 
            
-            // build post request
-            String url = "http://" + wServer + "/wsdevice";
+            	// build post request
+            	String url = "http://" + wServer + "/wsdevice";
 
-            URL obj = null;
-			try { obj = new URL(url); } 
-			catch (MalformedURLException e) { return 8241; }
+            	URL obj = null;
+		try { obj = new URL(url); } 
+		catch (MalformedURLException e) { return 8241; }
             
-            HttpURLConnection wConnect = null;
-			try { wConnect = (HttpURLConnection) obj.openConnection(); 
-			      wConnect.setConnectTimeout(5000);
-			      wConnect.setReadTimeout(5000); } 
-			catch (IOException e) { return 8241; }
+            	HttpURLConnection wConnect = null;
+		try { wConnect = (HttpURLConnection) obj.openConnection(); 
+		      wConnect.setConnectTimeout(5000);
+		      wConnect.setReadTimeout(5000); } 
+		catch (IOException e) { return 8241; }
 
-            // add request header 
-            try { wConnect.setRequestMethod("POST"); } 
-            catch (ProtocolException e) { return 8241; }
+            	// add request header 
+        	 try { wConnect.setRequestMethod("POST"); } 
+            	catch (ProtocolException e) { return 8241; }
             
-            wConnect.setRequestProperty("User-Agent", "interface: " + wIdInterface );
+            	wConnect.setRequestProperty("User-Agent", "interface: " + wIdInterface );
 
-            String urlParameters = "id=" + wID + "&key=" + wKeyURL + "&frame=" + wPlainEncryptedURL;
+            	String urlParameters = "id=" + wID + "&key=" + wKeyURL + "&frame=" + wPlainEncryptedURL;
     
-            // send post request 
-            wConnect.setDoOutput(true);
+            	// send post request 
+            	wConnect.setDoOutput(true);
             
-            DataOutputStream wr = null;
-			try { wr = new DataOutputStream(wConnect.getOutputStream()); } 
-			catch (IOException e) {	return 8241; }
+            	DataOutputStream wr = null;
+		try { wr = new DataOutputStream(wConnect.getOutputStream()); } 
+		catch (IOException e) {	return 8241; }
             
-            try { wr.writeBytes(urlParameters);	} 
-            catch (IOException e) {	return 8241; }
+            	try { wr.writeBytes(urlParameters);	} 
+            	catch (IOException e) {	return 8241; }
             
-            try { wr.flush(); } 
-            catch (IOException e) {	return 8241; }
+            	try { wr.flush(); } 
+            	catch (IOException e) {	return 8241; }
             
-            try { wr.close(); } 
-            catch (IOException e) {	return 8241; }
+            	try { wr.close(); } 
+            	catch (IOException e) {	return 8241; }
 
-            // get post response 
-            BufferedReader in = null;
-			try { in = new BufferedReader(new InputStreamReader(wConnect.getInputStream()));	} 
-			catch (IOException e) {	return 8241; }
+            	// get post response 
+            	BufferedReader in = null;
+		try { in = new BufferedReader(new InputStreamReader(wConnect.getInputStream()));	} 
+		catch (IOException e) {	return 8241; }
 
-            String inputLine;
-            StringBuffer getPost = new StringBuffer();
+            	String inputLine;
+            	StringBuffer getPost = new StringBuffer();
 
-            try { while ( (inputLine = in.readLine()) != null ) { getPost.append(inputLine); } } 
-            catch (IOException e) {	return 8241; }
+            	try { while ( (inputLine = in.readLine()) != null ) { getPost.append(inputLine); } } 
+            	catch (IOException e) {	return 8241; }
             
-            try { in.close(); } 
-            catch (IOException e) {	return 8241; }
+            	try { in.close(); } 
+            	catch (IOException e) {	return 8241; }
     
-            // extract response tag        
-            DocumentBuilderFactory wDocFactory = DocumentBuilderFactory.newInstance();
+            	// extract response tag        
+            	DocumentBuilderFactory wDocFactory = DocumentBuilderFactory.newInstance();
             
-            DocumentBuilder wDocBuilder = null;
-			try { wDocBuilder = wDocFactory.newDocumentBuilder(); } 
-			catch (ParserConfigurationException e) { return 8242; }
+            	DocumentBuilder wDocBuilder = null;
+		try { wDocBuilder = wDocFactory.newDocumentBuilder(); } 
+		catch (ParserConfigurationException e) { return 8242; }
             
-            org.w3c.dom.Document wDoc = null;
-			try { wDoc = wDocBuilder.parse(new ByteArrayInputStream(getPost.toString().getBytes())); } 
-			catch (SAXException e) { return 8242; } 
-			catch (IOException e) {	return 8242; }
+            	org.w3c.dom.Document wDoc = null;
+		try { wDoc = wDocBuilder.parse(new ByteArrayInputStream(getPost.toString().getBytes())); } 
+		catch (SAXException e) { return 8242; } 
+		catch (IOException e) {	return 8242; }
 
-            // extract RETCODE 
-            NodeList nRetcode = wDoc.getElementsByTagName("retcode");
-            wRetCode = nRetcode.item(0).getTextContent();
+            	// extract RETCODE 
+            	NodeList nRetcode = wDoc.getElementsByTagName("retcode");
+            	wRetCode = nRetcode.item(0).getTextContent();
 
-            // extract RETMD5 
-            NodeList nRetMD5 = wDoc.getElementsByTagName("retmd5");
-            wRetMD5 = nRetMD5.item(0).getTextContent();
+            	// extract RETMD5 
+            	NodeList nRetMD5 = wDoc.getElementsByTagName("retmd5");
+            	wRetMD5 = nRetMD5.item(0).getTextContent();
 
-            // extract RETICONS
-            NodeList nRetIcons = wDoc.getElementsByTagName("reticons");
-            wSubmitRetIcons = nRetIcons.item(0).getTextContent();
+            	// extract RETICONS
+            	NodeList nRetIcons = wDoc.getElementsByTagName("reticons");
+            	wSubmitRetIcons = nRetIcons.item(0).getTextContent();
 
-            // extract RETFRAME
-            NodeList nRetframe = wDoc.getElementsByTagName("retframe");
-            String wRetframeEncrypted64 = nRetframe.item(0).getTextContent();
-            String wMD5 = md5(wRetframeEncrypted64);
+            	// extract RETFRAME
+            	NodeList nRetframe = wDoc.getElementsByTagName("retframe");
+            	String wRetframeEncrypted64 = nRetframe.item(0).getTextContent();
+            	String wMD5 = md5(wRetframeEncrypted64);
             
-            if ( !wRetMD5.equals(wMD5)) wRetMD5 = "error";
+            	if ( !wRetMD5.equals(wMD5)) wRetMD5 = "error";
             
-            else {
+            	else {
             
-            	if ( !wRetframeEncrypted64.equals("") ) {
+            		if ( !wRetframeEncrypted64.equals("") ) {
             	
-            		// decrypt RETFRAME with AES key 
-            		byte[] bRetframeEncrypted = Base64.decode(wRetframeEncrypted64, Base64.DEFAULT);
+            			// decrypt RETFRAME with AES key 
+            			byte[] bRetframeEncrypted = Base64.decode(wRetframeEncrypted64, Base64.DEFAULT);
             
-            		Cipher resCipher = null;
-            		try { resCipher = Cipher.getInstance("AES/CBC/NoPadding"); } 
-            		catch (NoSuchAlgorithmException e) { return 8243; } 
-            		catch (NoSuchPaddingException e) { return 8243;	}
+            			Cipher resCipher = null;
+            			try { resCipher = Cipher.getInstance("AES/CBC/NoPadding"); } 
+            			catch (NoSuchAlgorithmException e) { return 8243; } 
+            			catch (NoSuchPaddingException e) { return 8243;	}
             
-            		try { resCipher.init(Cipher.DECRYPT_MODE, sKey, sVector); } 
-            		catch (InvalidKeyException e) {	return 8243; } 
-            		catch (InvalidAlgorithmParameterException e) { return 8243;	}
+            			try { resCipher.init(Cipher.DECRYPT_MODE, sKey, sVector); } 
+            			catch (InvalidKeyException e) {	return 8243; } 
+            			catch (InvalidAlgorithmParameterException e) { return 8243;	}
             
-            		byte[] bResponse = null;
-            		try { bResponse = resCipher.doFinal(bRetframeEncrypted); } 
-            		catch (IllegalBlockSizeException e) { return 8243; } 
-            		catch (BadPaddingException e) {	return 8243; }
+            			byte[] bResponse = null;
+            			try { bResponse = resCipher.doFinal(bRetframeEncrypted); } 
+            			catch (IllegalBlockSizeException e) { return 8243; } 
+            			catch (BadPaddingException e) {	return 8243; }
             
-            		wSubmitRetFrame = new String(bResponse);    
+            			wSubmitRetFrame = new String(bResponse);    
             	
-            		// if out of sequence, extract last used sequence
-            		if ( wRetCode.equals("7101") ) {
+            			// if out of sequence, extract last used sequence
+            			if ( wRetCode.equals("7101") ) {
 
-                		// extract SEQ tag        
-                		DocumentBuilderFactory wDocFactory2 = DocumentBuilderFactory.newInstance();
+                			// extract SEQ tag        
+                			DocumentBuilderFactory wDocFactory2 = DocumentBuilderFactory.newInstance();
 
-                		DocumentBuilder wDocBuilder2 = null;
-						try { wDocBuilder2 = wDocFactory2.newDocumentBuilder();	} 
-						catch (ParserConfigurationException e) { return 8244; }
+                			DocumentBuilder wDocBuilder2 = null;
+					try { wDocBuilder2 = wDocFactory2.newDocumentBuilder();	} 
+					catch (ParserConfigurationException e) { return 8244; }
                 
-                		org.w3c.dom.Document wDoc2 = null;
-						try { wDoc2 = wDocBuilder2.parse(new ByteArrayInputStream(wSubmitRetFrame.trim().getBytes())); } 
-						catch (SAXException e) { return 8244; } 
-						catch (IOException e) {	return 8244; }
+                			org.w3c.dom.Document wDoc2 = null;
+					try { wDoc2 = wDocBuilder2.parse(new ByteArrayInputStream(wSubmitRetFrame.trim().getBytes())); } 
+					catch (SAXException e) { return 8244; } 
+					catch (IOException e) {	return 8244; }
 
-                		// extract lastseq
-                		NodeList nLastseq = wDoc2.getElementsByTagName("seq");
-                		String wStringLastseq = nLastseq.item(0).getTextContent();
-                		wLastSeq = Integer.parseInt(wStringLastseq);
-            		} 
+                			// extract lastseq
+                			NodeList nLastseq = wDoc2.getElementsByTagName("seq");
+                			String wStringLastseq = nLastseq.item(0).getTextContent();
+                			wLastSeq = Integer.parseInt(wStringLastseq);
+                		
+            			} 
                     	
-            	}
+            		}
             
-            }
+        	}
 
         // repeat request while out of sequence or MD5 error
         } while ( wRetCode.equals("7101") || wRetMD5.equals("error") );
@@ -1289,17 +1290,17 @@ public class Fzup {
 		public void onCreate(SQLiteDatabase wDB) {
 			
 			wDB.execSQL ( "CREATE TABLE messages " +
-					      " (idmessage  BIGINT PRIMARY KEY," +
-					      "  channeltag VARCHAR," +
-					      "  subscode   CHAR(8)," +
-					      "  dateincl   DATETIME," +
-					      "  msgtext    VARCHAR(255)," +
-					      "  msgurl     VARCHAR(255)," +
-					      "  regstatus  char(1) );" );
+				      " (idmessage  BIGINT PRIMARY KEY," +
+				      "  channeltag VARCHAR," +
+				      "  subscode   CHAR(8)," +
+				      "  dateincl   DATETIME," +
+				      "  msgtext    VARCHAR(255)," +
+				      "  msgurl     VARCHAR(255)," +
+				      "  regstatus  char(1) );" );
 			
 			wDB.execSQL ( "CREATE TABLE icons " +
-				          " (keyicon    VARCHAR PRIMARY KEY," +
-				          "  icon       TEXT);" );
+				      " (keyicon    VARCHAR PRIMARY KEY," +
+				      "  icon       TEXT);" );
 			
 		}
 
