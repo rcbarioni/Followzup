@@ -182,18 +182,6 @@ public class Fzup {
 	public String getSelectFlag () { return wSelectFlag; }
 	
 //  ==============================================================
-//  GETTERS (DEPRECATED)
-//  ==============================================================
-	
-	public int selectPoll(String wParam) { return 0; }
-    public int getPollQuestion() { return 0; }
-    public int getPollNumChoices() { return 0; }
-    public int getPollMinChoices() { return 0; }
-    public int getPollMaxChoices() { return 0; }
-    public int getChoices() { return 0; }
-    public int responsePoll(String wParam1, String wParam2) { return 0; }
-	
-//  ==============================================================
 //  GETTERS (ARRAYS)
 //  ==============================================================
 	
