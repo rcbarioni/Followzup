@@ -1,0 +1,60 @@
+#
+#   FOLLOWZUP PROJECT
+#   RICARDO BARIONI - MARÇO 2016
+#   (rename this file to .htaccess)
+#
+# ========================================================================================
+#
+#   Copyright (C) 2016 Ricardo Camargo Barioni
+#
+#   This program is free software: you can redistribute it and/or modify it under
+#   the terms of the GNU General Public License as published by the Free Software
+#   Foundation, either version 3 of the License, or any later version.
+#
+#   This program is distributed in the hope that it will be useful, but WITHOUT 
+#   ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS 
+#   FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>
+#
+# ========================================================================================
+
+    RewriteEngine on
+
+    DirectoryIndex index.php
+    Options -Indexes +FollowSymLinks
+
+    RewriteRule ^home$                               ?oper=home
+    RewriteRule ^home_([a-z]+)$                      ?oper=home&lg=$1
+    RewriteRule ^help_([a-z]+)$                      ?oper=help&ch=$1
+    RewriteRule ^contact$                            ?oper=contact
+    RewriteRule ^signup$                             ?oper=signup
+    RewriteRule ^profile$                            ?oper=profile
+    RewriteRule ^login$                              ?oper=login
+    RewriteRule ^recover$                            ?oper=rescue
+    RewriteRule ^logout$                             ?oper=logout
+    RewriteRule ^admin$                              ?oper=admin
+
+    RewriteRule ^devs$                               ?oper=devs
+    RewriteRule ^devedit_([A-Za-z0-9\-]+)$           ?oper=devedit&tag=$1
+    RewriteRule ^devexcl_([A-Za-z0-9\-]+)$           ?oper=devexcl&tag=$1
+    RewriteRule ^devureg$                            ?oper=devureg
+
+    RewriteRule ^ints$                               ?oper=ints
+    RewriteRule ^intstamp_([a-z0-9]+)$               ?oper=intstamp&int=$1
+    RewriteRule ^intexcl_([a-z0-9]+)$                ?oper=intexcl&int=$1
+    RewriteRule ^intnew$                             ?oper=intnew
+
+    RewriteRule ^chns$                               ?oper=chns
+    RewriteRule ^chnedit_([a-z0-9]+)$                ?oper=chnedit&chn=$1
+    RewriteRule ^chnsend_([a-z0-9]+)$                ?oper=chnsend&chn=$1
+    RewriteRule ^chnupld_([a-z0-9]+)$                ?oper=chnupld&chn=$1
+    RewriteRule ^chnnewk_([a-z0-9]+)$                ?oper=chnnewk&chn=$1
+    RewriteRule ^chntown_([a-z0-9]+)$                ?oper=chntown&chn=$1
+    RewriteRule ^chnexcl_([a-z0-9]+)$                ?oper=chnexcl&chn=$1
+    RewriteRule ^chndowk_([a-z0-9]+)_([a-z]+)$       ?oper=chndowk&chn=$1&code=$2
+    RewriteRule ^chnswap_([a-z0-9]+)$                ?oper=chnswap&chn=$1
+
+    RewriteRule ^wschannel$                          ?wschannel
+    RewriteRule ^wsdevice$                           ?wsdevice
