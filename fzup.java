@@ -157,10 +157,6 @@ public class Fzup {
 	    	wPubKey = (RSAPublicKey) stringToObject(wStringPubKey);
 	    	wTabChn = (String[][]) stringToObject(wStringTabChn);
 	    		    	
-	    	if ( wTabChn.length > 0 ) {
-	    		if ( wTabChn[0].length < 5 ) { wMD5List = ""; check(true); }
-	    	}
-	    	
 	    }  
 	    
 	    else unregisterDevice();
