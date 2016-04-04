@@ -102,9 +102,9 @@ Várias são as frentes que podem receber apoio dos interessados, entre elas:
 
 #Contato
 Tem alguma dúvida ou sugestão?
-Estamos esperando seu contato no endereço: 
-www.followzup.com/contact
 
-Followzup é software livre. Fique tranquilo.
+Estamos esperando seu contato no endereço: www.followzup.com/contact
+
+#Followzup é software livre. Fique tranquilo ;)
 
 
