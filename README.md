@@ -15,22 +15,22 @@ Tanto em canais públicos como privados, o conceito de comunicação por meio do
 #Estrutura do projeto
 O projeto compõe-se de duas partes: Servidor e Cliente.
 
-No lado Servidor, em ambiente PHP/MySql, encontram-se os módulos web para "gestão de canais" de informações, utilizados pelos desenvolvedores de sistemas para criação e manutenção desses canais, assim como, os módulos que compõem o webservice para atendimento às demandas dos canais de aplicações e dos dispositivos móveis. Além dos módulos web, os desenvolvedores dispõe também, por meio de download, das APIs para apoio ao processo de comunicação entre suas aplicações e o webservice. Essas APIs estão disponíveis em PHP e Java. A primeira implementação desse serviço encontra-se disponível no endereço "www.followzup.com".
+No lado Servidor, em ambiente PHP/MySql, encontram-se os módulos web para "gestão de canais" de informações, utilizados pelos desenvolvedores de sistemas para criação e manutenção desses canais, assim como, os módulos que compõem o webservice para atendimento às demandas dos canais de aplicações e dos dispositivos móveis. Além dos módulos web, os desenvolvedores dispõe também, por meio de download, das APIs para apoio ao processo de comunicação entre suas aplicações e o webservice. Essas APIs estão disponíveis inicialmente em PHP e Java. A primeira implementação desse serviço encontra-se disponível no endereço "www.followzup.com".
 
-No lado Cliente, encontra-se o APP para dispositivos Android (Java). Com esse aplicativo, o usuário dispõe das funções de "gestão de assinaturas" de canais e recebimento de mensagens provenientes das aplicações. O lado Cliente também dispõe de uma API (Classe Fzup) para apoio ao desenvolvimento de novos APPs com diferentes "skins" ou outros dispositivos que disponham dos protocolos de criptografia compatíveis com o serviço (quem sabe um dia estaremos recebendo mensagens na tela de um forno de micro-ondas?).
+No lado Cliente, encontra-se o APP para dispositivos Android (Java). Com esse aplicativo, o usuário dispõe das funções de "gestão de assinaturas" de canais e recebimento de mensagens provenientes das aplicações. O lado Cliente também dispõe de API (Classe Fzup) para apoio ao desenvolvimento de novos APPs com diferentes "skins" ou outros dispositivos que disponham dos protocolos de criptografia compatíveis com o serviço (quem sabe um dia estaremos recebendo mensagens na tela de um forno de micro-ondas?).
 
-A comunicação entre as aplicações e o serviço Followzup, bem como entre o serviço Followzup e os dispositivos móveis, são realizadas de forma assíncrona, o que demanda consumo reduzido dos recursos de rede.
+A comunicação entre as aplicações e o serviço Followzup, bem como entre o serviço Followzup e os dispositivos móveis, são realizadas na modalidade assíncrona, o que demanda consumo reduzido dos recursos de rede.
 
 Os códigos fontes de ambas as partes do projeto (Cliente e Servidor), inclusive das APIs, estão publicadas nesse Git e disponíveis sob licença GPL.
 
 #Participantes
-Existem 3 maneiras de utilizar o projeto Followzup.
+Existem 3 maneiras de fazer uso ou participar do projeto Followzup.
 
-1. Usuário final - É aquele que instala o APP em seu dispositivo móvel para receber mensagens dos canais de aplicações dos quais é assinante. A instalação do APP deve ser realizada em dispositivos compatíveis.
+1. Usuários finais - São aqueles que instalam o APP em seus dispositivos móveis para receber mensagens dos canais de aplicações dos quais são assinantes. A instalação deve ser realizada em dispositivos compatíveis com os APPs disponíveis.
 
-2. Gestor de Canais de Informações - É o desenvolvedor que adapta suas aplicações para fazer uso do serviço disponível no endereço "www.followzup.com", para que essas aplicações possam enviar de mensagens a seus usuários.
+2. Gestor de Canais de Informações - São os desenvolvedores que adaptam suas aplicações para fazerem uso dos serviços disponíveis no endereço "www.followzup.com", para que suas aplicações possam enviar de mensagens a seus usuários.
 
-3. Participante do Projeto - É aquele que se envolve no desenvolvimento do projeto em si, seja no lado servidor ou no lado cliente. Essa participação pode ser realizada pela melhoria do código, criação de APIs para outras linguagens, criação de novos APPs para outros tipos de dispositivos, assim como no aprimoramento dos protocolos de comunicação para expansão dos serviços.
+3. Participantes do Projeto - São aqueles que envolvem-se no desenvolvimento do projeto em si, seja nos módulos servidor ou cliente. Essa participação pode ser realizada com melhoria do código, criação de APIs para outras linguagens, criação de novos APPs para outros tipos de dispositivos, ou até no aprimoramento dos protocolos de comunicação para expansão dos serviços.
 
 #Roteiro de uso do serviço
 A seguir, as etapas necessárias para envio de mensagens por meio do Followzup a partir de um site Internet ou uma aplicação corporativa qualquer:
@@ -83,6 +83,9 @@ A documentação do projeto está assim distribuída:
 
 1. No próprio website do serviço (www.followzup.com) - Dirigida aos gestores de canais de informações e usuários de dispositivos móveis. Nessa documentação, não são aprofundados os detalhes do projeto, mas tão somente os exemplos de uso das APIs e as adaptações necessárias nos sistemas para viabilizar a comunicação com o webservice.
 
-2. Wiki do GitHub - Dirigida aos participantes de seu desenvolvimento, gestores interessados na viabilização de novas implementações do serviço ou simplesmente interessados em conhecer as soluções técnicas nele contidas.
+2. Wiki do GitHub - Dirigida aos participantes de seu desenvolvimento, gestores interessados na viabilização de novas implementações do serviço ou simplesmente interessados em conhecer as soluções técnicas adotadas.
+
+
+#Arquivos e diretórios
 
 
