@@ -101,7 +101,9 @@ Várias são as frentes que podem receber apoio dos interessados, entre elas:
 5. Desenvolvimento de APPs para outras plataformas e dispositivos.
 
 #Contato
-Tem alguma dúvida ou sugestão? 
+Tem alguma dúvida ou sugestão?
+
 Estamos esperando seu contato no endereço: 
+
 www.followzup.com/contact
 
