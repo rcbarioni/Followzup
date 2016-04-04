@@ -105,6 +105,6 @@ Tem alguma dúvida ou sugestão?
 
 Estamos esperando seu contato no endereço: www.followzup.com/contact
 
-#Followzup é software livre. Fique tranquilo ;)
+Followzup é software livre. Fique tranquilo ;)
 
 
