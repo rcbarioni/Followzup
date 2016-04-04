@@ -85,7 +85,12 @@ A documentação do projeto está assim distribuída:
 
 2. Wiki do GitHub - Dirigida aos participantes de seu desenvolvimento, gestores interessados na viabilização de novas implementações do serviço ou simplesmente interessados em conhecer as soluções técnicas adotadas.
 
-
 #Arquivos e diretórios
 
+1. Arquivo "fzup.java" - Classe Java utilizada na implememtação da interface Android (API). O detalhamento da classe está contido no wiki do projeto.
 
+2. Arquivo "tbfollowzup.sql" - Contém diretivas para criação das tabelas e índices necessários ao serviço (MySql). O detalhamento do arquivo está contido no wiki do projeto.
+
+3. Diretório "www" - Contém os scripts PHP do servidor, scripts PHP do webservice, arquivos CSS, imagens e outros recursos necessários à implementação do website. O detalhamento dos arquivos encontra-se no wiki do projeto.
+
+#To do
