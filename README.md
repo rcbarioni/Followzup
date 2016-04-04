@@ -23,7 +23,7 @@ A comunicação entre as aplicações e o serviço Followzup, bem como entre o s
 
 Os códigos fontes de ambas as partes do projeto (Cliente e Servidor), inclusive das APIs, estão publicadas nesse Git e disponíveis sob licença GPL.
 
-#Participantes
+#Formas de uso e participação
 Existem 3 maneiras de fazer uso ou participar do projeto Followzup.
 
 1. Usuários finais - São aqueles que instalam o APP em seus dispositivos móveis para receber mensagens dos canais de aplicações dos quais são assinantes. A instalação deve ser realizada em dispositivos compatíveis com os APPs disponíveis.
@@ -42,7 +42,6 @@ A seguir, as etapas necessárias para envio de mensagens por meio do Followzup a
 3. Os sites Internet e as aplicações enviam mensagens a seus usuários por meio do webservice Followzup, que são transmitidas aos assinantes do canal por meio do APP instalado em seus dispositivos.
 
 #Exemplos de uso
-
 Pela praticidade do modelo, relacionamos várias de suas utilidades. No aspecto gerencial, em relação ao monitoramento de recursos, podemos configurar nossos sistemas para enviar mensagens ao administrador de um website quando alguém utiliza a página "Fale Conosco", ou ao gerente de produção quando o processo crítico de determinado sistema sofre algum tipo de interrupção, ou à equipe de suporte quando um circuito de dados sai fora do ar, ou a um funcionário de vendas quando recebe o e-mail urgente de um cliente, ou a um gerente de compras quando o estoque de determinado produto alcança seu ponto crítico, enfim, tudo que precisamos gerenciar.
 
 Pela segurança do processo, podemos também relacionar outras utilidades, tais como o envio de códigos de barras para pagamento de contas, confirmação de pedidos, agendamento de audiências e compromissos, alertas de compras realizadas com cartões de crédito, confirmações de trocas de senhas, avisos de ligações não atendidas, resultados de exames clínicos, movimentações financeiras, avisos de vencimento de apólices de seguros, alertas de alterações de cadastros, avisos de interrupção de serviços, rastreamento de encomendas, recalls de veículos, enfim, tudo que precisamos ser informados.
@@ -86,7 +85,6 @@ A documentação do projeto está assim distribuída:
 2. Wiki do GitHub - Dirigida aos participantes de seu desenvolvimento, gestores interessados na viabilização de novas implementações do serviço ou simplesmente interessados em conhecer as soluções técnicas adotadas.
 
 #Repositório de Arquivos
-
 1. Arquivo "fzup.java" - Classe Java utilizada na implememtação da interface Android (API). O detalhamento da classe está contido no wiki do projeto.
 
 2. Arquivo "tbfollowzup.sql" - Contém diretivas para criação das tabelas e índices necessários ao serviço (MySql). O detalhamento do arquivo está contido no wiki do projeto.
@@ -103,4 +101,7 @@ Várias são as frentes que podem receber apoio dos interessados, entre elas:
 5. Desenvolvimento de APPs para outras plataformas e dispositivos.
 
 #Contato
+Tem alguma dúvida ou sugestão? 
+Estamos esperando seu contato no endereço: 
 www.followzup.com/contact
+
