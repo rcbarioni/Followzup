@@ -85,7 +85,7 @@ A documentação do projeto está assim distribuída:
 
 2. Wiki do GitHub - Dirigida aos participantes de seu desenvolvimento, gestores interessados na viabilização de novas implementações do serviço ou simplesmente interessados em conhecer as soluções técnicas adotadas.
 
-#Arquivos e diretórios
+#Repositório de Arquivos
 
 1. Arquivo "fzup.java" - Classe Java utilizada na implememtação da interface Android (API). O detalhamento da classe está contido no wiki do projeto.
 
@@ -94,3 +94,13 @@ A documentação do projeto está assim distribuída:
 3. Diretório "www" - Contém os scripts PHP do servidor, scripts PHP do webservice, arquivos CSS, imagens e outros recursos necessários à implementação do website. O detalhamento dos arquivos encontra-se no wiki do projeto.
 
 #To do
+Várias são as frentes que podem receber apoio dos interessados, entre elas:
+
+1. Melhoria na interface WEB e scripts do webservice.;
+2. Desenvimento de APIs para outras linguagens (Python, Ruby, Unity, etc);
+3. Complementação e internacionalização da documentação;
+4. Melhoria e internacionalização do APP Android;
+5. Desenvolvimento de APPs para outras plataformas e dispositivos.
+
+#Contato
+www.followzup.com/contact
