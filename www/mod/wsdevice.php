@@ -679,7 +679,7 @@
                                 else
                                 {
 
-                                    $wdecrypt    = "$widuser;$wsend";
+                                    $wdecrypt    = "$wagora;$widuser;$wsend";
                                     $werrorssl   = openssl_private_encrypt($wdecrypt, $wencrypt, $wpri);
                                     $wencrypt64  = base64_encode($wencrypt);
                                     $wencrypturl = urlencode($wencrypt64);
