@@ -52,7 +52,7 @@ Em um segundo caso, onde a aplicação necessita saber quem é o usuário, a URL
 <ul><li>Mensagem: "Seu pedido 12345 já foi despachado. Clique nessa mensagem e acompanhe o rastreamento de sua encomenda."</li>
 <li>URL: "http://www.website.com?order=12345&user=USERID&subs=SUBSCODE"</li></ul>
 
-<p>No exemplo acima, a aplicação receberá os parâmetros "order", "user" e "subs", contendo respectinamente "12345", o User-ID do usuário e o Código da Assinatura do canal. Uma vez que essa URL pode ser aberta por qualquer usuário na Internet (acidentalmente ou não), o que permitiria acesso às informações de rastreamento do pedido 12345, é importante que a aplicação faça a verificação do usuário informado (USERID e SUBSCODE). Essa verificação deve ser realizada com o comando <b>"chck"</b>. Veja como verificar um usuário no tópico de ajuda "Verificar Usuários (chck)".
+<p>No exemplo acima, a aplicação receberá os parâmetros "order", "user" e "subs", contendo respectivamente "12345", o User-ID do usuário e o Código da Assinatura do canal. Uma vez que essa URL pode ser aberta por qualquer usuário na Internet (acidentalmente ou não), o que permitiria acesso às informações de rastreamento do pedido 12345, é importante que a aplicação faça a verificação do usuário informado (USERID e SUBSCODE). Essa verificação deve ser realizada com o comando <b>"chck"</b>. Veja como verificar um usuário no tópico de ajuda "Verificar Usuários (chck)".
 
 <p>Caso a aplicação confirme a verificação do usuário, esta poderá apresentar as informações de rastreamento do pedido 12345, sem que seja necessário o "login" do usuário. Caso contrário, a aplicação poderá desviar para uma página alternativa.
 
