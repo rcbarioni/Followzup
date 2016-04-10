@@ -325,12 +325,12 @@
     echo            '</div>';
 
     echo            '<div style="text-align: left; padding-left: 24px;">';
-    echo                '<span class="label1">URL de destino da mensagens de boas vindas</span>';
+    echo                '<span class="label1">URL de destino da mensagem de boas vindas (http)</span>';
     echo                '<input class="input1" name="chnedit_welcomeurl" type="text" maxlength="200" aria-required="true" placeholder="" spellcheck="false" value="' . $wform_welcomeurl . '">';
     echo            '</div>';
 
     echo            '<div style="text-align: left; padding-left: 24px;">';
-    echo                '<span class="label1">URL para mensagens de retorno</span>';
+    echo                '<span class="label1">URL para mensagens de retorno (http)</span>';
     echo                '<input class="input1" name="chnedit_responseurl" type="text" maxlength="200" aria-required="true" placeholder="" spellcheck="false" value="' . $wform_responseurl . '">';
     echo            '</div>';
 
