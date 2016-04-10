@@ -30,6 +30,8 @@
         idcontrol       int           unsigned not null default 0,
         chnstatus       int           unsigned not null default 0,
         intstatus       int           unsigned not null default 0,
+        seqzup          int           unsigned not null default 0,
+        seqzop          int           unsigned not null default 0,
 
         PRIMARY KEY (idcontrol) )
         ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
