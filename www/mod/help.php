@@ -1,6 +1,5 @@
 <?php
 
-
 # ========================================================================================
 #
 #   FOLLOWZUP PROJECT
@@ -30,7 +29,8 @@
                         "cs" => "3. Canais e Assinaturas",
                         "sm" => "4. Enviar Mensagens (smsg)",
                         "us" => "5. Verificar Usuários (chck)",
-                        "tu" => "6. Termos de Uso e Privacidade" );
+                        "rs" => "6. Interações do Assinante",
+                        "tu" => "7. Termos de Uso e Privacidade" );
 
     if ( isset($_GET["ch"]) ) $wnewch = preg_replace('/[^a-z]/',"",$_GET["ch"]);
 

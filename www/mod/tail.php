@@ -71,6 +71,7 @@
 
     echo                                    '<td style="white-space: nowrap; padding: 20px;">';
     echo                                        '<a class="refoot" href="help_us">Verificar usuários (chck)</a><br>';
+    echo                                        '<a class="refoot" href="help_rs">Interações do assinante</a><br>';
     echo                                        '<a class="refoot" href="help_tu">Termos de uso</a><br>';
     echo                                    '</td>';
  

@@ -55,7 +55,7 @@
 
 <h2>Gerenciando canais</h2>
 
-<p>Independente da finalidade, a criação de um canal deverá ser realizada na página do Followzup, por um usuário identificado por sua conta de e-mail, o qual será o proprietário do canal. Não existe a possibilidade de dois ou mais e-mails compartilharem a posse de um mesmo canal. Por segurança, caso exista a necessidade de compartilhar a posse de um determinado canal, pode-se fazer uso de contas de e-mail institucionais, com acesso compartilhado.
+<p>Independente da finalidade, a criação de um canal deverá ser realizada na página do Followzup, por um usuário identificado por sua conta de e-mail, o qual será o proprietário do canal. Não existe a possibilidade de dois ou mais desenvolvedores compartilharem a posse de um mesmo canal. Por segurança, caso exista a necessidade de compartilhar a posse de um determinado canal, pode-se fazer uso de contas de e-mail institucionais, com acesso compartilhado.
 
 <p>Para criar um canal, o desenvolvedor deve acessar a página do Followzup e registrar as seguintes informações:
 
@@ -70,17 +70,21 @@
 </td></tr></table>
 <br><br></li>
 
-<li><b>Briefing</b> (opcional) - Mensagem de apresentação do canal com até 200 caracteres, a qual é exibida junto com a tag nos resultados de pesquisa, para auxiliar os usuários na identificação do canal a ser assinado.<br><br></li>
+<li><b>Texto de apresentação</b> (opcional) - Texto com até 200 caracteres, o qual é exibido junto com a Tag nos resultados de pesquisa, para auxiliar os usuários na identificação do canal a ser assinado.<br><br></li>
 
-<li><b>Welcome</b> (opcional) - Mensagem com até 200 caracteres enviada automaticamente ao usuário quando o canal é assinado, podendo ser uma mensagem de boas vindas, um aviso ou uma orientação ao novo assinante.<br><br></li>
+<li><b>Mensagem de boas vindas</b> (opcional) - Mensagem com até 200 caracteres enviada automaticamente ao usuário quando o canal é assinado, e que pode ser também um aviso ou uma orientação ao novo assinante.<br><br></li>
+
+<li><b>URL de destino da mensagem de boas vindas (http)</b> (opcional) - Endereço HTTP enviado juntamente com a mensagem de boas vindas, a qual permite ao usuário "clicar" na mensagem e abrir a URL informada por meio do navegador instalado em seu dispositivo móvel.<br><br></li>
+
+<li><b>URL para mensagens de retorno (http)</b> (opcional) - Endereço HTTP para envio de mensagens do usuário a partir de seu dispositivo móvel, por meio da caixa de texto apresentada na parte inferior da lista de mensagens do canal. Essa caixa de texto só é apresentada quando a URL é informada.<br><br></li>
 
 <li><b>Private Channel</b> (flag) - Indicador de canal privado, fazendo com que o canal só apareça nos resultados de pesquisa quando o argumento pesquisado for idêntico à tag do canal, incluindo letras maiúsculas e minúsculas. Uma vez assinado, o canal Private tem a mesma forma de utilização como qualquer outro canal. Um canal pode ser alternado entre “público” e “privado” a qualquer momento pelo seu administrador.<br><br></li>
 
 <li><b>Private Code</b> (opcional) - Código secreto exigido para a assinatura de canais privados, devendo ser informado pelo usuário no ato de sua assinatura.<br><br></li>
 
-<li><b>Channel Icon</b> (opcional) - Imagem representativa do canal, apresentado junto com a tag na lista de canais e nos resultados de pesquisa. Depois do upload, a imagem é convertida na forma quadrada.<br></li></ul>
+<li><b>Channel Icon</b> (opcional) - Imagem representativa do canal, apresentado junto com a Tag na lista de canais e nos resultados de pesquisa. Depois do upload, a imagem é convertida na forma quadrada.<br></li></ul>
 
-<p>Após a criação, o Followzup gera um par de chaves assimétricas para uso exclusivo do canal, devendo o desenvolvedor fazer o download da API (PHP ou Java), onde está incluída a chave pública. O par de chaves assimétricas são usadas no processo de criptografia dos dados transmitidos.
+<p>Após a criação, o Followzup gera um par de chaves assimétricas (RSA) para uso exclusivo do canal, devendo o desenvolvedor fazer o download da API (PHP ou Java), onde está incluída a chave pública. As chaves assimétricas são usadas no processo de criptografia dos dados transmitidos.
 
 <p>A API que contém a chave pública deve ser armazenada em lugar seguro no servidor da aplicação, pois com essa API podemos interagir com o webservice e enviar mensagens para os assinantes do canal. Em caso de eventual quebra de sigilo no armazenamento da API, o desenvolvedor pode gerar um novo par de chaves assimétricas e proceder um novo download.
 
@@ -91,9 +95,9 @@
 <ul><li><b>SMSG</b> - Send Message (Enviar mensagens).<br></li>
 <li><b>CHCK</b> - Check User (Verificar usuários).<br></li></ul>
 
-<p>Em caso de necessidade, o canal pode ser “suspenso” pelo desenvolvedor. Um canal suspenso permanece disponível para a aplicação como se fosse um canal ativo, inclusive para envio de mensagens. A diferença está na interrupção do processo de transmissão das mensagens aos dispositivos móveis dos assinantes, como se uma torneira fosse fechada. Uma vez reativado, o Followzup reinicia o processo de transmissão das mensagens represadas durante o período de suspensão.
+<p>Em caso de necessidade, o canal pode ser “suspenso” pelo desenvolvedor. Um canal suspenso permanece disponível para a aplicação como se fosse um canal ativo, inclusive para envio de mensagens. A diferença está na interrupção do processo de transmissão das mensagens aos dispositivos móveis dos assinantes, como se uma torneira fosse fechada. Uma vez reativado, o Followzup reinicia o processo de transmissão das mensagens represadas durante o período de suspensão, que ainda estejam dentro de seu tempo de vida útil.
 
-<p>Em relação às informações de data e hora relacionadas ao canal, estas obedecem o fuso horário do proprietário do canal, como definido em seu perfil. Isso também acontece com os dispositivos móveis dos destinatários, portanto, o webservice pode encaminhar uma mensagem proveniente da costa leste às 17h00, mas informará ao destinatário da costa oeste que a mensagem foi enviada às 13h00, conforme o fuso horário definido no perfil de cada um.
+<p>Em relação às informações de data e hora relacionadas ao canal, estas obedecem o fuso horário do proprietário do canal, como definido em seu perfil, portanto, o webservice pode encaminhar uma mensagem proveniente da costa leste às 17h00, mas informará ao destinatário da costa oeste que a mensagem foi enviada às 13h00, de acordo com o fuso horário obtido no dispositivo móvel do assinante.
 
 <p>A posse de um canal pode ser transferida entre usuários, devendo ser realizada na página do Followzup, onde é indicado o e-mail do novo proprietário, que por sua vez recebe uma mensagem em seu correio eletrônico solicitando a confirmação da transferência de posse do canal. Após confirmada a transferência de posse, esta não poderá ser desfeita pelo antigo proprietário.
 
@@ -109,21 +113,21 @@
 
 <p>A lista de canais assinados por um usuário é mantida na base de dados do Followzup e sincronizada em todos os dispositivos que estabeleçam comunicação com o webservice. Quanto às mensagens, essas só são enviadas aos dispositivos que estiverem em funcionamento durante o tempo de vida da mensagem, limitado a 960 horas. Por sua vez, as mensagens excluídas por um usuário em um de seus dispositivos são igualmente excluídas da base de dados do Followzup, mas permanecem na base local de outros dispositivos do mesmo usuário, ou seja, não há sincronização de mensagens entre dispositivos.
 
-<p>A assinatura de um canal inicia-se com a pesquisa da tag, que deve ser realizada no aplicativo instalado no dispositivo móvel. Uma vez localizado, o usuário seleciona o canal e confirma a assinatura. Caso o canal seja privado e possua o atributo “Private Code”, esse código deverá ser informado pelo usuário para que a assinatura seja efetivada.
+<p>A assinatura de um canal inicia-se com a pesquisa da Tag, que deve ser realizada no aplicativo instalado no dispositivo móvel. Uma vez localizado, o usuário seleciona o canal e confirma a assinatura. Caso seja um canal "privado" e possua o atributo “Private Code”, esse código deverá ser informado pelo usuário para que a assinatura seja efetivada.
 
-<p>Após a assinatura do canal, o usuário já estará habilitado a receber mensagens de broadcast, que são mensagens enviadas indistintamente a qualquer usuário, identificado ou não, sendo particularmente útil para mensagens institucionais e de natureza comercial, tais como ofertas, promoções e avisos em geral. Entretanto, quando a aplicação deseja enviar uma mensagem específica a um determinado usuário, é importante que o desenvolvedor confirme se o usuário é realmente um assinante do canal. Essa confirmação é realizada com a verificação do “Subscription Code”, como veremos a seguir.
+<p>Após a assinatura do canal, o usuário estará habilitado a receber mensagens de broadcast, que são mensagens enviadas indistintamente a qualquer assinante do canal, identificado ou não, sendo particularmente útil para mensagens institucionais e de natureza comercial, tais como ofertas, promoções e avisos em geral. Entretanto, quando a aplicação deseja enviar uma mensagem específica a um determinado usuário, é importante que o desenvolvedor confirme se o usuário é realmente um assinante do canal. Essa confirmação é realizada com a verificação do “Código da Assinatura”, como veremos a seguir.
 
-<p>Quando a assinatura de um canal é efetivada pelo usuário, o Followzup cria um código aleatório de 6 (seis) dígitos numéricos, conhecido como Subscription Code, que é associado a essa assinatura. Caso o usuário cancele a assinatura e em seguida efetive a assinatura do canal novamente, um novo Subscription Code é gerado, e pode ser visto na tela do aplicativo quando o usuário visualiza a lista de mensagens do canal.
+<p>Quando a assinatura de um canal é efetivada pelo usuário, o Followzup cria um código aleatório de 8 (oito) dígitos numéricos, conhecido como "Código da Assinatura" (Subscription Code), que é associado a essa assinatura. Caso o usuário cancele a assinatura e em seguida efetive a assinatura do canal novamente, um novo código é gerado, e pode ser visto na tela do aplicativo quando o usuário visualiza a lista de mensagens do canal.
 
-<p>O Subscription Code é particularmente útil para que o desenvolvedor da aplicação verifique a veracidade da assinatura, confirmando assim o e-mail (ou User-ID) informado pelo assinante. Vejamos um exemplo:
+<p>O Código da Assinatura é particularmente útil para que o desenvolvedor da aplicação verifique a veracidade da assinatura, confirmando assim o e-mail (ou User-ID) informado pelo assinante. Vejamos um exemplo:
 
 <p>Suponha que o sistema de uma empresa seguradora queira enviar, automaticamente, um aviso a seus clientes quando o contrato de seguro de seus veículos estiver próximo de expirar, para que estes entrem em contato com seus agentes de seguros para providenciar a renovação.
 
 <p>Nesse exemplo, fica evidente que as mensagens enviadas são específicas para casa assinante (unicast), devendo o desenvolvedor recorrer ao cadastro de usuários da seguradora para obter o e-mail do usuário e encaminhar a mensagem.
 
-<p>Certamente, o perfil do usuário no cadastro da seguradora contém o campo e-mail ou User-ID, que deve ser informado pelo cliente para que este receba as mensagens por meio do Followzup. No momento em que o usuário fornece seu e-mail, o sistema da seguradora não tem como verificar se o e-mail informado é realmente de um assinante do canal e se está relacionado com a pessoa do assinante, fazendo com que a instituição corra o risco de enviar mensagens ao cliente errado, ou simplesmente seja descartada.
+<p>Certamente, o perfil do usuário no cadastro da seguradora contém o campo e-mail (ou User-ID), que deve ser informado pelo cliente para que este receba as mensagens por meio do Followzup. No momento em que o usuário fornece seu e-mail, o sistema da seguradora não tem como verificar se o e-mail informado é realmente de um assinante do canal e se está relacionado com a pessoa do assinante, fazendo com que a instituição corra o risco de enviar mensagens ao cliente errado, ou simplesmente ser descartada.
 
-<p>Para verificar se o e-mail (ou User-ID) informado pelo assinante é válido, o desenvolvedor deve solicitar do usuário as duas informações: o e-mail (ou User-ID) e o Subscription Code. Após obtidas, a aplicação faz a verificação das informações por meio do comando "chck". Se a verificação for positiva, o usuário poderá receber mensagens com segurança.
+<p>Para verificar se o e-mail (ou User-ID) informado pelo assinante é válido, o desenvolvedor deve solicitar do usuário ambas as informações: o e-mail (ou User-ID) e o Código da Assinatura. Após obtidas, a aplicação faz a verificação das informações por meio do comando "chck". Se a verificação for positiva, o usuário poderá receber mensagens com segurança.
 
 <p>O uso do comando "chck" está detalhado no tópico de ajuda respectivo.
 

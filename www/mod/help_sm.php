@@ -45,19 +45,17 @@
 
 <p>A identificação de destinatários para envio de mensagens unicast e multicast pode ser realizada de 2 (duas) formas: pelo <b>e-mail</b> do usuário ou pelo seu <b>User-ID</b>. A lista de destinatários de mensagens multicast pode misturar ambas as formas de identificação.
 
-<p>O User-ID é um código de 12 caracteres alfanuméricos iniciado com a letra "z", e corresponde à identificação interna de cada usuário registrado no Followzup (exemplo: z01w7cr23kmk). Todas as letras contidas em um User-ID são minúsculas.
+<p>O User-ID é um código de 12 caracteres alfanuméricos iniciado com a letra "z", e corresponde à identificação interna de cada usuário registrado no Followzup (exemplo: z4aw7cr23kmk). Todas as letras contidas em um User-ID são minúsculas.
 
 <p>Para a aplicação, não faz diferença enviar mensagens utilizando o e-mail ou o User-ID, mas para o destinatário, a diferença é a privacidade, como veremos no exemplo a seguir. 
 
 <p>Digamos que em nossa loja virtual, o registro de cadastro de um determinado assinante, na base de dados da loja, contém seu e-mail. Com esse e-mail, o sistema poderá enviar mensagens pelo Followzup e também poderá enviar mensagens de e-mails para o cliente, a qualquer momento. Numa outra situação, se um assinante quer apenas receber mensagens pelo Followzup, poderá fazê-lo registrando seu User-ID no cadastro da loja, mas não informar seu e-mail. Nesse caso, o sistema só poderá enviar mensagens por meio do Followzup.
 
-<p>Um outro recurso que promove a privacidade do usuário, é a possibilidade de excluir e recriar seu perfil no Followzup, gerando assim um novo User-ID para o usuário.
-
 <br><br><h4>Temporizar a mensagem</h4>
 
 <p>Além do destinatário e do texto da mensagem, existe um outro atributo fornecido pela aplicação quando a mensagem está sendo enviada: é o tempo de vida útil da mensagem, limitado a 960 horas, equivalente a 40 dias.
 
-<p>Imagine que estamos numa sexta feira e nossa loja virtual resolve fazer uma liquidação de calçados no fim de semana, e para tanto, envia de uma mensagem de broadcast para seus clientes. Em uma situação como essa, não faz sentido que um cliente que tenha deixado seu celular desligado durante o fim de semana, receba a mensagem na segunda feira, pois a liquidação já terá terminado. Para evitar que isso aconteça, a aplicação poderá limitar o tempo de vida da mensagem a uma quantidade de horas, suficiente para que os clientes recebam a mensagem a tempo de realizar suas compras. Os clientes que ligarem o celular após o tempo determinado, simplesmente não recebem a mensagem.
+<p>Imagine que estamos numa sexta feira, e nossa loja virtual resolve fazer uma liquidação de calçados no fim de semana, e para tanto, envia de uma mensagem de broadcast para seus clientes. Em uma situação como essa, não faz sentido que um cliente que tenha deixado seu celular desligado durante o fim de semana, receba a mensagem na segunda feira, pois a liquidação já terá terminado. Para evitar que isso aconteça, a aplicação poderá limitar o tempo de vida da mensagem a uma quantidade de horas, suficiente para que os clientes recebam a mensagem a tempo de realizar suas compras. Os clientes que ligarem o celular após o tempo determinado, simplesmente não recebem a mensagem.
 
 <br><br><h4>Sequenciar as solicitações</h4>
 
@@ -65,7 +63,19 @@
 
 <p>Depois de encaminhada uma solicitação com um determinado número de sequência N, a próxima solicitação deverá obrigatoriamente possuir a sequência N + 1, exceto nas situações onde o webservice não consegue identificar o comando solicitado, a sequência informada ou o canal solicitante (Channel-ID), pois essas informações são necessárias para registrar a última sequência utilizada.
 
-<p>Caso a aplicação encaminhe uma solicitação com uma sequência diferente de N + 1, o webservice simplesmente descarta a solicitação e retorna o código de erro correspondente, junto com o número da última sequência utilizada, a qual é inserida no frame de resposta criptografado.
+<p>Caso a aplicação encaminhe uma solicitação com uma sequência diferente de N + 1, o webservice simplesmente descarta a solicitação e retorna o código de erro correspondente, junto com o número da última sequência utilizada, a qual é inserida no frame de resposta criptografado, conforme abaixo:
+
+<table><tr><td style="background-color: #eee; text-align: center; padding: 30px; padding-right: 50px; font-size: 9px;">
+<textarea readonly style="width: 100%; height: 150px; padding: 10px; font-size: 12px; font-family: monospace; color: #777;">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+<followzup>
+  <seq>Last-sequence</seq>
+</followzup>
+
+Onde:
+ - Last-sequence: Último número de sequência utilizado.
+</textarea>
+</td></tr></table>
 
 <p>Na medida do possível, é importante que a aplicação guarde sempre o valor da última sequência utilizada em seu banco de dados, para que não seja necessário reenviar comandos descartados pelo webservice, retardando a execução das solicitações.
 
@@ -73,7 +83,7 @@
 
 <br><br><h4>Parametrizar o envio de mensagens</h4>
 
-<p>São 5 (cinco) os parâmetros válidos para enviar uma mensagem: FZUP_COMMAND, FZUP_LASTSEQ, FZUP_USER, FZUP_HOURS e FZUP_MSGTEXT. Esses parâmetros são submetidos por meio de um "array" (string) para a API, que tem a função de encriptar os parâmetros e encaminhá-los para o webservice.
+<p>São 6 (seis) os parâmetros válidos para enviar uma mensagem: FZUP_COMMAND, FZUP_LASTSEQ, FZUP_USER, FZUP_HOURS, FZUP_MSGTEXT e FZUP_MSGURL. Esses parâmetros são submetidos por meio de um "array" (string) para a API, que tem a função de encriptar os parâmetros e encaminhá-los para o webservice.
 
 <ul><li><b>FZUP_COMMAND</b> (obrigatório): Deve conter a literal "smsg" (send message).</li><br>
 
@@ -87,7 +97,9 @@
 
 <li><b>FZUP_HOURS</b> (opcional): Deve conter um valor numérico entre 1 e 960, representando o tempo de vida da mensagem. Para os valores inválidos ou não informados, o tempo de vida será definido em 24 horas.</li><br>
 
-<li><b>FZUP_MSGTEXT</b> (obrigatório): Deve conter a mensagem a ser enviada, com até 200 caracteres.</li></ul>
+<li><b>FZUP_MSGTEXT</b> (obrigatório): Deve conter a mensagem a ser enviada, com até 200 caracteres.</li>
+
+<li><b>FZUP_MSGURL</b> (opcional): Contém o endereço HTTP que será utilizado como "link" associado à mensagem, permitindo que os usuário abra a URL informada ao "clicar" no texto da mensagem. Opcionalmente, a URL pode incluir os parâmetros USERID e SUBSCODE, para que a aplicação possa identificar o usuário que "clicou" na mensagem.</li></ul>
 
 <br><h4>Exemplo 1 - Chamada da API com PHP</h4>
 
@@ -102,22 +114,24 @@ $result = $object -> submit ( array ( "FZUP_COMMAND = smsg",
                                       "FZUP_LASTSEQ = 9999",
                                       "FZUP_USER    = all",
                                       "FZUP_HOURS   = 48",
-                                      "FZUP_MSGTEXT = This is a broadcast message." ) );
+                                      "FZUP_MSGTEXT = This is a broadcast message.",
+                                      "FZUP_MSGURL  = http://www.website.com?user=USERID&subs=SUBSCODE" ) );
 
 /* submit Unicast message to e-mail */
 $result = $object -> submit ( array ( "FZUP_COMMAND = smsg",
                                       "FZUP_USER    = user.email@anymail.com",
-                                      "FZUP_MSGTEXT = This is a unicast message" ) );
+                                      "FZUP_MSGTEXT = This is a unicast message.",
+                                      "FZUP_MSGURL  = http://www.website.com/contact" ) );
 
 /* submit Unicast message to User-ID */
 $result = $object -> submit ( array ( "FZUP_COMMAND = smsg",
                                       "FZUP_USER    = ze87fh397a23",
-                                      "FZUP_MSGTEXT = This is a unicast message" ) );
+                                      "FZUP_MSGTEXT = This is a unicast message." ) );
 
 /* submit Multicast message */
 $result = $object -> submit ( array ( "FZUP_COMMAND = smsg",
                                       "FZUP_USER    = user.email@anymail.com,z85ghs574kfj",
-                                      "FZUP_MSGTEXT = This is a multicast message" ) );
+                                      "FZUP_MSGTEXT = This is a multicast message." ) );
 </textarea>
 </td></tr></table>
 
@@ -134,12 +148,14 @@ String[] result = object.submit ( new String[] { "FZUP_COMMAND = smsg",
                                                  "FZUP_LASTSEQ = 9999",
                                                  "FZUP_USER    = all",
                                                  "FZUP_HOURS   = 48",
-                                                 "FZUP_MSGTEXT = This is a broadcast message" } );
+                                                 "FZUP_MSGTEXT = This is a broadcast message",
+                                                 "FZUP_MSGURL  = http://www.website.com?user=USERID&subs=SUBSCODE" } );
 
 /* submit Unicast message to e-mail */
 String[] result = object.submit ( new String[] { "FZUP_COMMAND = smsg",
                                                  "FZUP_USER    = user.email@anymail.com",
-                                                 "FZUP_MSGTEXT = This is a unicast message" } );
+                                                 "FZUP_MSGTEXT = This is a unicast message",
+                                                 "FZUP_MSGURL  = http://www.website.com/contact" } );
 
 /* submit Unicast message to User-ID */
 String[] result = object.submit ( new String[] { "FZUP_COMMAND = smsg",

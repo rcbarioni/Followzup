@@ -31,21 +31,21 @@
 <img class="roundcorner2" alt="followzup" src="img/home2.png" width="80" height="80" style="border: 1px solid #aaa;">
 <img class="roundcorner2" alt="followzup" src="img/home4.png" width="80" height="80" style="border: 1px solid #aaa;">
 
-<br><br><p>Quando o usuário faz a assinatura de um canal, o Followzup cria um código aleatório de 6 (seis) dígitos numéricos, conhecido como Subscription Code, que é associado a essa assinatura. Se o usuário cancelar a assinatura e em seguida fazer a assinatura do canal novamente, um novo Subscription Code é gerado e pode ser visto na tela do aplicativo, quando o usuário visualiza a lista de mensagens do canal.
+<p>Quando a assinatura de um canal é efetivada pelo usuário, o Followzup cria um código aleatório de 8 (oito) dígitos numéricos, conhecido como "Código da Assinatura" (Subscription Code), que é associado a essa assinatura. Caso o usuário cancele a assinatura e em seguida efetive a assinatura do canal novamente, um novo código é gerado, e pode ser visto na tela do aplicativo quando o usuário visualiza a lista de mensagens do canal.
 
-<p>O Subscription Code é particularmente útil para que o desenvolvedor da aplicação verifique a veracidade da assinatura, confirmando assim o e-mail (ou User-ID) informado pelo assinante (veja o tópico de ajuda: "Canais e Assinaturas / Gerenciando assinaturas").
+<p>O Código da Assinatura é particularmente útil para que o desenvolvedor da aplicação verifique a veracidade da assinatura, confirmando assim o e-mail (ou User-ID) informado pelo assinante (veja o tópico de ajuda: "Canais e Assinaturas / Gerenciando assinaturas").
 
-<p>Para verificar se a assinatura do usuário corresponde ao Subscription Code informado, o desenvolvedor deve fazer uso do comando "<b>chck</b>". Por sua vez, o webservice retorna uma das seguintes respostas:
+<p>Para verificar se a assinatura do usuário corresponde ao Código da Assinatura informado pelo usuário, o desenvolvedor deve fazer uso do comando "<b>chck</b>". Após submetido o comando "<b>chck</b>", o webservice retorna uma das seguintes respostas:
 
 <ul><li><b>O e-mail (ou User-ID) informado não é de um assinante do canal</b>. Nesse caso, é provável que o usuário tenha fornecido alguma informação incorreta ou tenha cancelado sua assinatura.<br><br></li>
 
-<li><b>O e-mail (ou User-ID) informado é de um assinante do canal mas o Subscription Code não está correto</b>. Nesse caso, é provável que o usuário tenha informado o e-mail (ou User-ID) de um outro usuário que é assinante do canal, ou tenha informado o Subscription Code incorreto.<br><br></li>
+<li><b>O e-mail (ou User-ID) informado é de um assinante do canal mas o Código da Assinatura não está correto</b>. Nesse caso, é provável que o usuário tenha informado o e-mail (ou User-ID) de um outro usuário que é assinante do canal, ou tenha informado o Código da Assinatura incorreto.<br><br></li>
 
-<li><b>O e-mail (ou User-ID) informado é de um assinante do canal e o Subscription Code está correto</b>. Nesse caso, a informação está confirmada.<br></li></ul>
+<li><b>O e-mail (ou User-ID) informado é de um assinante do canal e o Código da Assinatura está correto</b>. Nesse caso, a informação está confirmada.<br></li></ul>
 
-<p>Após o retorno da solicitação, o desenvolvedor pode descartar o Subscription Code informado pelo usuário, pois este só tem utilidade no ato verificação, até porque, em uma próxima verificação esse código pode ter sido alterado.
+<p>Após o retorno da solicitação, o desenvolvedor pode descartar o Código da Assinatura informado pelo assinante, pois este só tem utilidade no ato verificação, até porque, em uma próxima verificação esse código pode ter sido alterado.
 
-<p>A identificação do usuário para a verificação do Subscription Code pode ser realizada de 2 (duas) formas: pelo <b>e-mail</b> do usuário ou pelo seu <b>User-ID</b>. O User-ID é um código de 12 caracteres alfanuméricos iniciado com a letra "z", e corresponde à identificação interna de cada usuário registrado no Followzup (exemplo: z01w7cr23kmk). Todas as letras contidas em um User-ID são minúsculas.
+<p>A identificação do usuário para a verificação do Código da Assinatura pode ser realizada de 2 (duas) formas: pelo <b>e-mail</b> do usuário ou pelo seu <b>User-ID</b>. O User-ID é um código de 12 caracteres alfanuméricos iniciado com a letra "z", e corresponde à identificação interna de cada usuário registrado no Followzup (exemplo: za4w7cr23kmk). Todas as letras contidas em um User-ID são minúsculas.
 
 <br><br><h4>Sequenciar as solicitações</h4>
 
@@ -53,7 +53,19 @@
 
 <p>Depois de encaminhada uma solicitação com um determinado número de sequência N, a próxima solicitação deverá obrigatoriamente possuir a sequência N + 1, exceto nas situações onde o webservice não consegue identificar o comando solicitado, a sequência informada ou o canal solicitante (Channel-ID), pois essas informações são necessárias para registrar a última sequência utilizada.
 
-<p>Caso a aplicação encaminhe uma solicitação com uma sequência diferente de N + 1, o webservice simplesmente descarta a solicitação e retorna o código de erro correspondente, junto com o número da última sequência utilizada, a qual é inserida no frame de resposta criptografado.
+<p>Caso a aplicação encaminhe uma solicitação com uma sequência diferente de N + 1, o webservice simplesmente descarta a solicitação e retorna o código de erro correspondente, junto com o número da última sequência utilizada, a qual é inserida no frame de resposta criptografado, conforme abaixo:
+
+<table><tr><td style="background-color: #eee; text-align: center; padding: 30px; padding-right: 50px; font-size: 9px;">
+<textarea readonly style="width: 100%; height: 150px; padding: 10px; font-size: 12px; font-family: monospace; color: #777;">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+<followzup>
+  <seq>Last-sequence</seq>
+</followzup>
+
+Onde:
+ - Last-sequence: Último número de sequência utilizado.
+</textarea>
+</td></tr></table>
 
 <p>Na medida do possível, é importante que a aplicação guarde sempre o valor da última sequência utilizada em seu banco de dados, para que não seja necessário reenviar comandos descartados pelo webservice, retardando a execução das solicitações.
 
@@ -69,7 +81,7 @@
 
 <li><b>FZUP_USER</b> (obrigatório): Contém o <b>e-mail</b> ou p <b>User-ID</b> do usuário a ser verificado</li><br>
 
-<li><b>FZUP_SUBSCODE</b> (obrigatório): Contém o Subscription Code a ser verificado.</li></ul>
+<li><b>FZUP_SUBSCODE</b> (obrigatório): Contém o Código da Assinatura a ser verificado.</li></ul>
 
 <br><h4>Exemplo 1 - Chamada da API com PHP</h4>
 
@@ -83,7 +95,7 @@ $object = new fzup_cXXXXXXXXXXX;
 $result = $object -> submit ( array ( "FZUP_COMMAND  = chck",
                                       "FZUP_LASTSEQ  = 9999",
                                       "FZUP_USER     = user.email@anymail.com",
-                                      "FZUP_SUBSCODE = 123456" ) );
+                                      "FZUP_SUBSCODE = 12345678" ) );
 </textarea>
 </td></tr></table>
 
@@ -98,8 +110,8 @@ fzup_cXXXXXXXXXXX object = new fzup_cXXXXXXXXXXX();
 /* submit user verification */
 String[] result = object.submit ( new String[] { "FZUP_COMMAND  = chck",
                                                  "FZUP_LASTSEQ  = 9999",
-                                                 "FZUP_USER     = z02hg451ghx9",
-                                                 "FZUP_SUBSCODE = 123456" } );
+                                                 "FZUP_USER     = zw2hg454ghx9",
+                                                 "FZUP_SUBSCODE = 12345678" } );
 </textarea>
 </td></tr></table>
 
@@ -120,14 +132,14 @@ String[] result = object.submit ( new String[] { "FZUP_COMMAND  = chck",
 <tr><td style="border: 1px solid #666;">6104</td><td style="border: 1px solid #666;">Channel-ID inválido</td><td style="border: 1px solid #666;">O Channel-ID transmitido pela API é inválido.</td></tr>
 <tr><td style="border: 1px solid #666;">6106</td><td style="border: 1px solid #666;">Usuário inválido</td><td style="border: 1px solid #666;">O usuário informado no parâmetro FZUP_USER é inválido.</td></tr>
 <tr><td style="border: 1px solid #666;">6203</td><td style="border: 1px solid #666;">Usuário não é assinante</td><td style="border: 1px solid #666;">O usuário informado no parâmetro FZUP_USER não é um assinante do canal.</td></tr>
-<tr><td style="border: 1px solid #666;">6204</td><td style="border: 1px solid #666;">Subscription Code não confere</td><td style="border: 1px solid #666;">O valor informado no parâmetro FZUP_SUBSCODE não confere com a assinatura do canal.</td></tr>
+<tr><td style="border: 1px solid #666;">6204</td><td style="border: 1px solid #666;">Código da Assinatura não confere</td><td style="border: 1px solid #666;">O valor informado no parâmetro FZUP_SUBSCODE não confere com a assinatura do canal.</td></tr>
 <tr><td style="border: 1px solid #666;">6999</td><td style="border: 1px solid #666;">Sistema em manutenção</td><td style="border: 1px solid #666;">Informa que o webservice encontra-se em manutenção.</td></tr>
 
 </table>
 </td></tr></table>
 </li><br><br>
 
-<li><b>result[1]</b>: String numérico contendo número de sequência utilizado na execução. É importante que esse valor seja armazenado pela aplicação para que o mesmo seja informado em uma próxima execução.</li><br><br>
+<li><b>result[1]</b>: String numérico contendo número de sequência utilizado na execução. É importante que esse valor seja armazenado pela aplicação para que o mesmo seja informado em uma próxima solicitação de comando.</li><br><br>
 
 <li><b>result[2]</b>: String XML contendo informações do usuário:<br><br>
 
