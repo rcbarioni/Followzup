@@ -47,14 +47,14 @@
 
 #   read control
 
-    $wquery1  = "select chnstatus, intstatus from control where idcontrol = 0";
+    $wquery1  = "select chnstatus, intstatus, seqzup, seqzop from control where idcontrol = 0";
     $wres1    = mysql_query($wquery1,$wsystem_dbid);
     $wnumreg1 = intval(mysql_num_rows($wres1));
 
     if ( $wnumreg1 == 0 )
     {
         include ("dbload.php");
-        $wquery1  = "select chnstatus, intstatus from control where idcontrol = 0";
+        $wquery1  = "select chnstatus, intstatus, seqzup, seqzop from control where idcontrol = 0";
         $wres1 = mysql_query($wquery1,$wsystem_dbid);
     }
 
@@ -62,5 +62,7 @@
 
     $wsystem_chnstatus = $wvetor1[0];
     $wsystem_intstatus = $wvetor1[1];
+    $wsystem_seqzup    = $wvetor1[2];
+    $wsystem_seqzop    = $wvetor1[3];
 
 ?>
