@@ -716,7 +716,7 @@
                                         $wres   = mysql_query($wquery,$wsystem_dbid);
 
                                         $wquery = "insert into responses (dateincl, idchannel, iduser, response)
-                                                                  values (utc_timestamp(), '$widchannel', '$widuser', '$wsend')";
+                                                                  values ('$wagora', '$widchannel', '$widuser', '$wsend')";
 
                                         $wres   = mysql_query($wquery,$wsystem_dbid);
 
