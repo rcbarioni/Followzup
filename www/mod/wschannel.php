@@ -39,7 +39,7 @@
 # OUT OF SERVICE
 # ==============================================================================================================================================================
 
-    if ( $wsystem_chnstatus != 0 )
+    if ( $wsystem_chnstatus != "a" )
     {
 
         header("Content-Type: application/xml; charset=utf-8;");
