@@ -28,10 +28,12 @@
     CREATE TABLE control (
 
         idcontrol       int           unsigned not null default 0,
-        chnstatus       int           unsigned not null default 0,
-        intstatus       int           unsigned not null default 0,
+        chnstatus       char(1)       collate utf8_general_ci not null default 'a',
+        intstatus       char(1)       collate utf8_general_ci not null default 'a',
         seqzup          int           unsigned not null default 0,
         seqzop          int           unsigned not null default 0,
+
+    /* chnstatus/intstatus: (a)active */
 
         PRIMARY KEY (idcontrol) )
         ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
