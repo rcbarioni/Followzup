@@ -84,7 +84,7 @@
 
         iduser          char(12)      collate utf8_general_ci not null default '',
         email           varchar(270)  collate utf8_general_ci not null default '',
-        pass            char(32)      collate utf8_general_ci not null default '',
+        pass            char(64)      collate utf8_general_ci not null default '',
         daterescue      timestamp     not null default 0,
         dateincl        timestamp     not null default 0,
         datetry         timestamp     not null default 0,
