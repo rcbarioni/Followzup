@@ -97,9 +97,9 @@ Onde:
 
 <li><b>FZUP_HOURS</b> (opcional): Deve conter um valor numérico entre 1 e 960, representando o tempo de vida da mensagem. Para os valores inválidos ou não informados, o tempo de vida será definido em 24 horas.</li><br>
 
-<li><b>FZUP_MSGTEXT</b> (obrigatório): Deve conter a mensagem a ser enviada, com até 200 caracteres.</li>
+<li><b>FZUP_MSGTEXT</b> (obrigatório): Deve conter a mensagem a ser enviada, com até 200 caracteres.</li><br>
 
-<li><b>FZUP_MSGURL</b> (opcional): Contém o endereço HTTP que será utilizado como "link" associado à mensagem, permitindo que os usuário abra a URL informada ao "clicar" no texto da mensagem. Opcionalmente, a URL pode incluir os parâmetros USERID e SUBSCODE, para que a aplicação possa identificar o usuário que "clicou" na mensagem.</li></ul>
+<li><b>FZUP_MSGURL</b> (opcional): Contém o endereço HTTP que será utilizado como "link" associado à mensagem, permitindo que os usuário abra a URL informada ao "clicar" no texto da mensagem. Opcionalmente, a URL pode incluir os parâmetros USERID e SUBSCODE, para que a aplicação possa identificar o usuário que acessou a URL (veja o tópico Interações do Assinante).</li></ul>
 
 <br><h4>Exemplo 1 - Chamada da API com PHP</h4>
 
