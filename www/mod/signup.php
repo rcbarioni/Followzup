@@ -108,7 +108,7 @@
                 else
                 {
 
-                    $wpassmd5  = md5($wform_pass1 . ";" . strrev($wform_pass1));
+                    $wpassmd5  = md5($wform_pass1) . md5(strrev($wform_pass1));
 
                     $wquery = "update users set name = '$wform_name', pass = '$wpassmd5', dateincl = '$wagora' where iduser = '$xiduser'";
 
@@ -208,7 +208,7 @@
 
                 $xiduser = idgenerator("usr");
 
-                $wpassmd5 = md5($wform_pass1 . ";" . strrev($wform_pass1));
+                $wpassmd5 = md5($wform_pass1) . md5(strrev($wform_pass1));
 
                 $wquery2  = "insert into users (iduser, email, pass, dateincl, name, regstatus)
                                         values ('$xiduser', '$wform_email', '$wpassmd5', '$wagora', '$wform_name', 'n')";

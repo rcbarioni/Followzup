@@ -31,7 +31,7 @@
 
     $wpass   = "123456";
 
-    $wmd5    = md5($wpass . ";" . strrev($wpass));
+    $wmd5    = md5($wpass) . md5(strrev($wpass));
 
     $wquery  = "insert into users (iduser, email, pass, dateincl, name, maxchannels, regstatus) 
                            values ('z00000000000', 'admin@followzup.com', '$wmd5', utc_timestamp(), 'Admin', 100, 'a')";

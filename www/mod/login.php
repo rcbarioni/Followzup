@@ -84,7 +84,7 @@
                 $wdatetry   = $wvetor1[5];
 
                 $xemail     = $wform_email;
-                $xpassmd5   = md5($wform_pass . ";" . strrev($wform_pass));
+                $xpassmd5   = md5($wform_pass) . md5(strrev($wform_pass));
 
                 if ( $wagora < $wdatetry )
                 {

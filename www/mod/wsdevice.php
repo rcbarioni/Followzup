@@ -159,7 +159,7 @@
 
                     $widuser  = idgenerator("usr");
 
-                    $wpassmd5 = md5(rand());
+                    $wpassmd5 = md5(rand()) . md5(rand());
 
                     $wquery2  = "insert into users (iduser, email, pass, dateincl, name, regstatus)
                                             values ('$widuser', '$widuser', '$wpassmd5', '$wagora', 'Anonymous User', 'a')";
@@ -264,7 +264,7 @@
 
                         }
                     
-                        elseif ( $wpass == "" or $wpass != md5($wtrypass . ';' . strrev($wtrypass)) )
+                        elseif ( $wpass == "" or $wpass != md5($wtrypass) . md5(strrev($wtrypass)) )
                         {
 
                             $wretcode = "7108";

@@ -66,7 +66,7 @@
         else
         {
 
-            $wpassmd5  = md5($wform_pass1 . ";" . strrev($wform_pass1));
+            $wpassmd5  = md5($wform_pass1) . md5(strrev($wform_pass1));
 
             $wquery = "update users set pass = '$wpassmd5', daterescue = '$wagora' where iduser = '$xiduser'";
             $wres   = mysql_query($wquery,$wsystem_dbid);
