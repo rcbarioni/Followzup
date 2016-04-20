@@ -67,11 +67,12 @@
     echo                                    '<td style="white-space: nowrap; padding: 20px;">';
     echo                                        '<a class="refoot" href="help_cs">Canais e assinaturas</a><br>';
     echo                                        '<a class="refoot" href="help_sm">Enviar mensagens (smsg)</a><br>';
+    echo                                        '<a class="refoot" href="help_us">Verificar usuários (chck)</a><br>';
     echo                                    '</td>';
 
     echo                                    '<td style="white-space: nowrap; padding: 20px;">';
-    echo                                        '<a class="refoot" href="help_us">Verificar usuários (chck)</a><br>';
     echo                                        '<a class="refoot" href="help_rs">Interações do assinante</a><br>';
+    echo                                        '<a class="refoot" href="help_ap">Funcionalidades do APP</a><br>';
     echo                                        '<a class="refoot" href="help_tu">Termos de uso</a><br>';
     echo                                    '</td>';
  

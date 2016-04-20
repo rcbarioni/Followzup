@@ -30,7 +30,8 @@
                         "sm" => "4. Enviar Mensagens (smsg)",
                         "us" => "5. Verificar Usuários (chck)",
                         "rs" => "6. Interações do Assinante",
-                        "tu" => "7. Termos de Uso e Privacidade" );
+                        "ap" => "7. Funcionalidades do APP",
+                        "tu" => "8. Termos de Uso e Privacidade" );
 
     if ( isset($_GET["ch"]) ) $wnewch = preg_replace('/[^a-z]/',"",$_GET["ch"]);
 
