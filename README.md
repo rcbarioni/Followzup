@@ -1,5 +1,5 @@
 # Followzup
-Comunicação criptografada entre aplicações e dispositivos móveis
+Comunicação criptografada para a Internet das coisas
 
 # Bem vindo ao projeto Followzup
 Followzup é um sistema que implementa o conceito Business-to-People (B2P) para encaminhamento de mensagens de texto, onde de um lado encontram-se os sites Internet e sistemas corporativos enviando mensagens, e do outro lado encontram-se seus usuários e gestores recebendo essas mensagens em seus dispositivos móveis.
@@ -32,15 +32,6 @@ Existem 3 maneiras de fazer uso ou participar do projeto Followzup.
 
 3. Participantes do Projeto - São aqueles que envolvem-se no desenvolvimento do projeto em si, seja nos módulos servidor ou cliente. Essa participação pode ser realizada com melhoria do código, criação de APIs para outras linguagens, criação de novos APPs para outros tipos de dispositivos, ou até no aprimoramento dos protocolos de comunicação para expansão dos serviços.
 
-#Roteiro de uso do serviço
-A seguir, as etapas necessárias para envio de mensagens por meio do Followzup a partir de um site Internet ou uma aplicação corporativa qualquer:
-
-1. O desenvolvedor cria um canal de informações no Followzup, faz o download da API (PHP ou Java), contendo chave pública RSA criada exclusivamente para o canal e inclui em seu sistema os comandos necessários para enviar as mensagens.
-
-2. Os usuários do sistema instalam em seus dispositivos móveis o aplicativo Followzup (disponível no Google-Play) e fazem a assinatura do canal criado pelo desenvolvedor, permitindo assim receber mensagens provenientes do site Internet ou aplicação associada ao canal.
-
-3. Os sites Internet e as aplicações enviam mensagens a seus usuários por meio do webservice Followzup, que são transmitidas aos assinantes do canal por meio do APP instalado em seus dispositivos.
-
 #Exemplos de uso
 Pela praticidade do modelo, relacionamos várias de suas utilidades. No aspecto gerencial, em relação ao monitoramento de recursos, podemos configurar nossos sistemas para enviar mensagens ao administrador de um website quando alguém utiliza a página "Fale Conosco", ou ao gerente de produção quando o processo crítico de determinado sistema sofre algum tipo de interrupção, ou à equipe de suporte quando um circuito de dados sai fora do ar, ou a um funcionário de vendas quando recebe o e-mail urgente de um cliente, ou a um gerente de compras quando o estoque de determinado produto alcança seu ponto crítico, enfim, tudo que precisamos gerenciar.
 
@@ -63,19 +54,6 @@ As chaves públicas dos canais são inseridas na API no momento em que o desenvo
 Com esse modelo, o desenvolvedor tem certeza de que ninguém poderá enviar solicitações ao webservice em nome de sua aplicação, a menos que tenha ocorrido alguma falha de segurança no armazenamento da API. Da mesma forma, o usuário do dispositivo móvel pode ter certeza de que ninguém poderá enviar solicitações em seu nome, a menos que tenha ocorrido alguma falha de segurança no armazenamento da chave pública de seu dispositivo móvel.
 
 No caso de vazamento da chave pública, o desenvolvedor pode solicitar a criação de um novo par de chaves e refazer o download da API. No caso do dispositivo móvel, o usuário pode refazer o registro de seu dispositivo, ocasião em que recebe uma nova chave pública para seu dispositivo.
-
-A seguir, as etapas que estabelecem a comunicação entre um canal de informações (aplicação do desenvolvedor) ou um dispositivo móvel, com o respectivo webservice:
-
-1. A aplicação (ou o dispositivo móvel), cria um string XML contendo a solicitação a ser enviada ao webservice;
-2. A API cria uma chave AES aleatória e criptografa o string XML por meio do protocolo de criptografia AES;
-3. A API criptografa a chave AES com a chave pública do canal (ou do dispositivo), com protocolo de criptografia RSA;
-4. A API envia o XML e a chave AES (ambos criptografados), para o webservice;
-5. O webservice decriptografa a chave AES com a chave privada correspondente, por meio do protocolo RSA;
-6. Com a chave AES decriptografada, o webservice decriptografa o string XML por meio do protocolo AES;
-7. O webservice processa a solicitação contida no string XML e cria outra string XML contendo a resposta da solicitação;
-8. O webservice criptografa o string XML de resposta com a mesma chave AES recebida, por meio do protocolo AES;
-9. O webservice retorna para a aplicação (ou dispositivo móvel), apenas o string XML de resposta criptografado;
-10. A aplicação (ou o dispositivo móvel), decriptografa o string XML de resposta por meio do protocolo AES.
 
 #Documentação
 A documentação do projeto está assim distribuída:
@@ -105,6 +83,4 @@ Tem alguma dúvida ou sugestão?
 
 Estamos esperando seu contato no endereço: www.followzup.com/contact
 
-Followzup é software livre. Fique tranquilo ;)
-
-
+Fique tranquilo. Followzup é software livre.
