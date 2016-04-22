@@ -73,7 +73,7 @@ A documentação do projeto está assim distribuída:
 Várias são as frentes que podem receber apoio dos interessados, entre elas:
 
 1. Melhoria na interface WEB e scripts que implementam o webservice.;
-2. Desenvimento de APIs para outras linguagens (Python, Ruby, Unity, Perl, Lua, etc);
+2. Desenvimento de APIs para outras linguagens (C, Python, Ruby, Unity, Perl, Lua, etc);
 3. Complementação e internacionalização da documentação;
 4. Melhoria e internacionalização do APP Android;
 5. Desenvolvimento de APPs para outras plataformas e dispositivos.
