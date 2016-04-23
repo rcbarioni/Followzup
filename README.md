@@ -60,7 +60,7 @@ A documentação do projeto está assim distribuída:
 
 1. No próprio website do serviço (www.followzup.com) - Dirigida aos gestores de canais de informações e usuários de dispositivos móveis. Nessa documentação, não são aprofundados os detalhes do projeto, mas tão somente os exemplos de uso das APIs e as adaptações necessárias nos sistemas para viabilizar a comunicação com o webservice.
 
-2. Wiki do GitHub - Dirigida aos participantes de seu desenvolvimento, gestores interessados na viabilização de novas implementações do serviço ou simplesmente interessados em conhecer as soluções técnicas adotadas.
+2. Wiki do GitHub (http://github.com/rcbarioni/Followzup/wiki) - Dirigida aos participantes de seu desenvolvimento, gestores interessados na viabilização de novas implementações do serviço ou simplesmente interessados em conhecer as soluções técnicas adotadas.
 
 #Conteúdo do Git
 1. Arquivo "fzup.java" - Classe Java utilizada na implememtação da interface Android (API). O detalhamento da classe está contido no wiki do projeto.
