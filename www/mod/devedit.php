@@ -149,7 +149,7 @@
 
     echo    '<div class="box">';
 
-    if ( $wmsg == "" ) echo '<span class="msg1">ALterar nome do dispositivo</span>';
+    if ( $wmsg == "" ) echo '<span class="msg1">Alterar nome do dispositivo</span>';
     else               echo '<span class="msg1" style="color: red;">' . $wmsg . '</span>';
 
     echo        '<form method="post" action="." name="devedit_form" id="devedit_form" onsubmit="savePosition(this)">';
@@ -164,7 +164,7 @@
     echo            '</div>';
 
     echo            '<div>';
-    echo                '<button class="button1" type="submit" name="devedit_go">Enviar</button><br>';
+    echo                '<button class="button1" type="submit" name="devedit_go">Salvar</button><br>';
     echo            '</div>';
 
     echo        '</form>';

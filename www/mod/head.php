@@ -28,14 +28,14 @@
 
     echo        '<head>';
 
-    echo            '<title>Followzup</title>';
+    echo            '<title>Followzup - IOT messenger</title>';
     echo            '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">';
-    echo            '<meta name="description" content="Followzup Project">';
-    echo            '<meta name="author" content="Ricardo Barioni">';
-    echo            '<meta name="keywords" content="b2p, message, messaging, communication">';
+    echo            '<meta name="description" content="Followzup - IOT messenger">';
+    echo            '<meta name="author" content="Followzup Team">';
+    echo            '<meta name="keywords" content="b2p, p2p, message, messaging, communication, batch, bulk, IOT, open source, sms">';
     echo            '<link rel="shortcut icon" href="img/favicon.gif">';
     echo            '<link rel="stylesheet" href="css/normalize.css">';
-    echo            '<link rel="stylesheet" href="css/followzup.css">';
+    echo            '<link rel="stylesheet" href="css/followzup.css?version=1">';
     echo            '<script src="css/prefixfree.min.js"></script>';
     echo            '<script src="css/savepos.js"></script>';
     echo            '<script type="text/javascript" src="followzup.js"></script>';

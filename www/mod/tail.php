@@ -45,7 +45,7 @@
     echo                                    '</td>';
 
     echo                                    '<td style="text-align: center; vertical-align: middle; padding: 30px;">';
-    echo                                        '<span style="color: #999; font-size: 10px;">&copy; Copyright&nbsp;2016&nbsp;-&nbsp;followzup.com</span><br>';
+    echo                                        '<span style="color: #999; font-size: 10px;">&copy;&nbsp;2016&nbsp;-&nbsp;followzup.com</span><br>';
 
     if ( $widuser != "" ) echo                  '<span style="color: #bbb; font-size: 13px; font-family: monospace;">User-ID: ' . $widuser . '<br>' . $wemail . '</span>';
 
@@ -61,21 +61,21 @@
     
     echo                                    '<td style="white-space: nowrap; padding: 20px;">';
     echo                                        '<a class="refoot" href="help_in">Bem-vindo ao Followzup</a><br>';
-    echo                                        '<a class="refoot" href="help_aa">Adaptar aplicações</a><br>';
-    echo                                    '</td>';
- 
-    echo                                    '<td style="white-space: nowrap; padding: 20px;">';
-    echo                                        '<a class="refoot" href="help_cs">Canais e assinaturas</a><br>';
-    echo                                        '<a class="refoot" href="help_sm">Enviar mensagens (smsg)</a><br>';
-    echo                                        '<a class="refoot" href="help_us">Verificar usuários (chck)</a><br>';
-    echo                                    '</td>';
-
-    echo                                    '<td style="white-space: nowrap; padding: 20px;">';
-    echo                                        '<a class="refoot" href="help_rs">Interações do assinante</a><br>';
-    echo                                        '<a class="refoot" href="help_ap">Funcionalidades do APP</a><br>';
     echo                                        '<a class="refoot" href="help_tu">Termos de uso</a><br>';
     echo                                    '</td>';
  
+    echo                                    '<td style="white-space: nowrap; padding: 20px;">';
+    echo                                        '<a class="refoot" href="help_aa">Adaptar aplicações</a><br>';
+    echo                                        '<a class="refoot" href="help_cs">Canais e assinaturas</a><br>';
+    echo                                        '<a class="refoot" href="help_rs">Interações do assinante</a><br>';
+    echo                                    '</td>';
+
+    echo                                    '<td style="white-space: nowrap; padding: 20px;">';
+    echo                                        '<a class="refoot" href="help_sm">Enviar mensagens (smsg)</a><br>';
+    echo                                        '<a class="refoot" href="help_us">Verificar usuários (chck)</a><br>';
+    echo                                        '<a class="refoot" href="help_ap">Funcionalidades do APP</a><br>';
+    echo                                    '</td>';
+  
     echo                                '</tr>';
     echo                            '</table>';
     echo                        '</td>';

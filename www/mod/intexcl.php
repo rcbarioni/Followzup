@@ -113,7 +113,7 @@
     echo            '</div>';
 
     echo            '<div>';
-    echo                '<button class="button1" type="submit" name="intexcl_go">Enviar</button>';
+    echo                '<button class="button1" type="submit" name="intexcl_go">Confirmar</button>';
     echo            '</div>';
 
     echo            '<div>';

@@ -354,7 +354,7 @@
     echo            '</div>';
 
     echo            '<div style="margin-top: 20px;">';
-    echo                '<button class="button1" type="submit" name="chnedit_go">Enviar</button>';
+    echo                '<button class="button1" type="submit" name="chnedit_go">Salvar</button>';
     echo            '</div>';
 
     echo            '<div>';

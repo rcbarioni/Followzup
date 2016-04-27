@@ -169,7 +169,7 @@
     echo            '</div>';
 
     echo            '<div>';
-    echo                '<button class="button1" type="submit" name="login_go">Enviar</button><br><br>';
+    echo                '<button class="button1" type="submit" name="login_go">Confirmar</button><br><br>';
     echo            '</div>';
 
     echo            '<div>';

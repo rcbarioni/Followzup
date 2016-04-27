@@ -141,7 +141,7 @@
     echo            '</div>';
 
     echo            '<div>';
-    echo                '<button class="button1" type="submit" name="profile_go">Enviar</button><br>';
+    echo                '<button class="button1" type="submit" name="profile_go">Salvar</button><br>';
     echo            '</div>';
 
     echo        '</form>';

@@ -181,7 +181,7 @@
     echo            '</div>';
 
     echo            '<div style="margin-top: 0;">';
-    echo                '<button class="button1" type="submit" name="rescue_conf_go">Enviar</button>';
+    echo                '<button class="button1" type="submit" name="rescue_conf_go">Confirmar</button>';
     echo            '</div>';
 
     echo        '</form>';
