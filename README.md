@@ -15,7 +15,7 @@ Tanto em canais públicos como privados, o conceito de comunicação por meio do
 #Estrutura do projeto
 O projeto compõe-se de duas partes: Servidor e Cliente.
 
-No lado Servidor, em ambiente PHP/MySql, encontram-se os módulos web para gestão de **canais de informações**, utilizados pelos desenvolvedores de sistemas para criação e manutenção desses canais, assim como, os módulos que compõem o webservice para atendimento às demandas dos canais de aplicações e dos dispositivos móveis. Além dos módulos web, os desenvolvedores dispõe também, por meio de download, das APIs para apoio ao processo de comunicação entre suas aplicações e o webservice. Essas APIs estão disponíveis inicialmente em PHP e Java. A primeira implementação desse serviço encontra-se disponível no endereço "www.followzup.com".
+No lado Servidor, em ambiente PHP/MySql, encontram-se os módulos web para gestão de **canais de informações**, utilizados pelos desenvolvedores de sistemas para criação e manutenção desses canais, assim como, os módulos que compõem o webservice para atendimento às demandas dos canais de informações e dos dispositivos móveis. Além dos módulos web, os desenvolvedores dispõe também, por meio de download, das APIs para apoio ao processo de comunicação entre suas aplicações e o webservice. Essas APIs estão disponíveis inicialmente em PHP e Java. A primeira implementação desse serviço encontra-se disponível no endereço "www.followzup.com".
 
 No lado Cliente, encontra-se o APP para dispositivos Android (Java). Com esse aplicativo, o usuário dispõe das funções de "gestão de assinaturas" de canais e recebimento de mensagens provenientes das aplicações. O lado Cliente também dispõe de API (Classe Fzup) para apoio ao desenvolvimento de novos APPs com diferentes "skins" ou outros dispositivos que disponham dos protocolos de criptografia compatíveis com o serviço (quem sabe um dia estaremos recebendo mensagens na tela de um forno de micro-ondas?).
 
@@ -26,7 +26,7 @@ Os códigos fontes de ambas as partes do projeto (Cliente e Servidor), inclusive
 #Formas de uso e participação
 Existem 3 maneiras de fazer uso ou participar do projeto Followzup.
 
-1. Usuários finais - São aqueles que instalam o APP em seus dispositivos móveis para receber mensagens dos canais de aplicações dos quais são assinantes. A instalação deve ser realizada em dispositivos compatíveis com os APPs disponíveis.
+1. Usuários finais - São aqueles que instalam o APP em seus dispositivos móveis para receber mensagens dos canais de informações dos quais são assinantes. A instalação deve ser realizada em dispositivos compatíveis com os APPs disponíveis.
 
 2. Gestor de Canais de Informações - São os desenvolvedores que adaptam suas aplicações para fazerem uso dos serviços disponíveis no endereço "www.followzup.com", para que suas aplicações possam enviar de mensagens a seus usuários.
 
@@ -40,7 +40,7 @@ Pela segurança do processo, podemos também relacionar outras utilidades, tais 
 Por sua conveniência, outras utilidades podem ser exemplificadas, tais como: previsões astrológicas, salmos, tábuas de marés, avisos de estréias em cinemas e teatros, avisos de promoções de passagens aéreas, notícias sobre temas específicos (clipping), avisos de liquidações, avisos de ofertas de produtos em sites de compras, resultados de loterias, confirmações de vôos, notas de provas, calendários de eventos, enfim, tudo que possa nos auxiliar em nosso dia a dia. 
 
 #Protocolos abertos
-A comunicação entre os canais de aplicações e o serviço Followzup é estabelecida por meio do módulo webservice denominado "wschannel.php". Essas solicitações são submetidas no formato XML, as quais são criptografadas com a chave pública (contida na API), criada exclusivamente para o cada canal. O string XML contém basicamente o comando a ser executado e os parâmetros necessários para sua execução. A descrição completa do conteúdo do string XML no wiki deste projeto.
+A comunicação entre os canais de informações e o serviço Followzup é estabelecida por meio do módulo webservice denominado "wschannel.php". Essas solicitações são submetidas no formato XML, as quais são criptografadas com a chave pública (contida na API), criada exclusivamente para o cada canal. O string XML contém basicamente o comando a ser executado e os parâmetros necessários para sua execução. A descrição completa do conteúdo do string XML no wiki deste projeto.
 
 O mesmo conceito estabelece a comunicação entre os dispositivos móveis e o serviço Followzup, desta vez por meio do módulo webservice denominado "wsdevice.php". Essas solicitações também são submetidas no formato XML, as quais são criptografadas com uma chave pública criada exclusivamente para cada dispositivo móvel. O string XML contém basicamente o comando a ser executado e os parâmetros necessários para sua execução. A descrição completa do conteúdo do string XML também está descrito no wiki deste projeto.
 
