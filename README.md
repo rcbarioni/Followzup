@@ -25,6 +25,7 @@ A comunicação entre as aplicações e o serviço Followzup, bem como entre o s
 
 Os códigos fontes de ambas as partes do projeto (Cliente e Servidor), inclusive das APIs, estão publicadas nesse Git e disponíveis sob licença GPL.
 
+<br>
 ##Formas de uso e participação
 Existem 3 maneiras de fazer uso ou participar do projeto Followzup.
 
@@ -34,6 +35,7 @@ Existem 3 maneiras de fazer uso ou participar do projeto Followzup.
 
 3. Participantes do Projeto - São aqueles que envolvem-se no desenvolvimento do projeto em si, seja nos módulos servidor ou cliente. Essa participação pode ser realizada com melhoria do código, criação de APIs para outras linguagens, criação de novos APPs para outros tipos de dispositivos, ou até no aprimoramento dos protocolos de comunicação para expansão dos serviços.
 
+<br>
 ##Exemplos de uso
 Pela praticidade do modelo, relacionamos várias de suas utilidades. No aspecto gerencial, em relação ao monitoramento de recursos, podemos configurar nossos sistemas para enviar mensagens ao administrador de um website quando alguém utiliza a página "Fale Conosco", ou ao gerente de produção quando o processo crítico de determinado sistema sofre algum tipo de interrupção, ou à equipe de suporte quando um circuito de dados sai fora do ar, ou a um funcionário de vendas quando recebe o e-mail urgente de um cliente, ou a um gerente de compras quando o estoque de determinado produto alcança seu ponto crítico, enfim, tudo que precisamos gerenciar.
 
@@ -41,11 +43,13 @@ Pela segurança do processo, podemos também relacionar outras utilidades, tais 
 
 Por sua conveniência, outras utilidades podem ser exemplificadas, tais como: previsões astrológicas, salmos, tábuas de marés, avisos de estréias em cinemas e teatros, avisos de promoções de passagens aéreas, notícias sobre temas específicos (clipping), avisos de liquidações, avisos de ofertas de produtos em sites de compras, resultados de loterias, confirmações de vôos, notas de provas, calendários de eventos, enfim, tudo que possa nos auxiliar em nosso dia a dia. 
 
+<br>
 ##Protocolos abertos
 A comunicação entre os canais de informações e o serviço Followzup é estabelecida por meio do módulo webservice denominado "wschannel.php". Essas solicitações são submetidas no formato XML, as quais são criptografadas com a chave pública (contida na API), criada exclusivamente para o cada canal. O string XML contém basicamente o comando a ser executado e os parâmetros necessários para sua execução. A descrição completa do conteúdo do string XML no wiki deste projeto.
 
 O mesmo conceito estabelece a comunicação entre os dispositivos móveis e o serviço Followzup, desta vez por meio do módulo webservice denominado "wsdevice.php". Essas solicitações também são submetidas no formato XML, as quais são criptografadas com uma chave pública criada exclusivamente para cada dispositivo móvel. O string XML contém basicamente o comando a ser executado e os parâmetros necessários para sua execução. A descrição completa do conteúdo do string XML também está descrito no wiki deste projeto.
 
+<br>
 ##Comunicação criptografada
 Embora os processos de comunicação sejam implementados por meio de protocolos abertos, o modelo preserva a integridade e a confidencialidade dos dados por meio dos processos de criptografia AES e RSA.
 
@@ -53,6 +57,7 @@ Cada vez que um canal ou um dispositivo móvel é criado, o sistema cria um par 
 
 Com esse modelo, o desenvolvedor tem certeza de que ninguém poderá enviar solicitações ao webservice em nome de sua aplicação, a menos que tenha ocorrido alguma falha de segurança no armazenamento da API. Da mesma forma, o usuário do dispositivo móvel pode ter certeza de que ninguém poderá enviar solicitações em seu nome, a menos que tenha ocorrido alguma falha de segurança no armazenamento da chave pública de seu dispositivo móvel.
 
+<br>
 ##Documentação
 A documentação do projeto está assim distribuída:
 
@@ -60,6 +65,7 @@ A documentação do projeto está assim distribuída:
 
 2. Wiki do GitHub (http://github.com/rcbarioni/Followzup/wiki) - Dirigida aos participantes de seu desenvolvimento, gestores interessados na viabilização de novas implementações do serviço ou simplesmente interessados em conhecer as soluções técnicas adotadas.
 
+<br>
 ##Conteúdo do Git
 1. Arquivo "fzup.java" - Classe Java utilizada na implememtação da interface Android (API). O detalhamento da classe está contido no wiki do projeto.
 
@@ -67,6 +73,7 @@ A documentação do projeto está assim distribuída:
 
 3. Diretório "www" - Contém os scripts PHP do servidor, scripts PHP do webservice, arquivos CSS, imagens e outros recursos necessários à implementação do website. O detalhamento dos arquivos encontra-se no wiki do projeto.
 
+<br>
 ##To do
 Várias são as frentes que podem receber apoio dos interessados, entre elas:
 
@@ -74,6 +81,7 @@ Várias são as frentes que podem receber apoio dos interessados, entre elas:
 2. Internacionalização (site, wiki, APP);
 3. Desenvolvimento de APPs para outras plataformas e dispositivos.
 
+<br>
 ##Contato
 Tem alguma dúvida ou sugestão?
 
