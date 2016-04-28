@@ -1,6 +1,7 @@
 # Followzup
 Comunicação criptografada para a Internet das coisas
 
+<br>
 ## Bem vindo ao projeto Followzup
 Followzup é um sistema que implementa o conceito Business-to-People (B2P) para encaminhamento de mensagens de texto, onde de um lado encontram-se os sites Internet e sistemas corporativos enviando mensagens, e do outro lado encontram-se seus usuários e gestores recebendo essas mensagens em seus dispositivos móveis.
 
@@ -12,6 +13,7 @@ A privacidade, outro ponto forte do modelo, também é garantida aos usuários, 
 
 Tanto em canais públicos como privados, o conceito de comunicação por meio do Followzup pode ainda agregar novas funcionalidades aos processos de comunicação corporativa interna e externa em instituições financeiras, comércio, serviços, governos, associações, escolas, universidades, hospitais, aeroportos, indústrias, meios de comunicação e entretenimento, sites internet, enfim, onde houver aplicações interagindo com seus usuários.
 
+<br>
 ##Estrutura do projeto
 O projeto compõe-se de duas partes: Servidor e Cliente.
 
