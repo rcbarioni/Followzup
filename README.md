@@ -47,7 +47,7 @@ O mesmo conceito estabelece a comunicação entre os dispositivos móveis e o se
 #Comunicação criptografada
 Embora os processos de comunicação sejam implementados por meio de protocolos abertos, o modelo preserva a integridade e a confidencialidade dos dados por meio dos processos de criptografia AES e RSA.
 
-Cada vez que um canal ou um dispositivo móvel é criado, o sistema cria um par de chaves assimétricas (RSA), composta por uma chave pública e uma chave privada. A chave privada é mantida na base de dados do servidor Followzup e utilizada para decriptografar os string de solicitações (XML) e criptografar os string as respostas (XML).
+Cada vez que um canal ou um dispositivo móvel é criado, o sistema cria um par de chaves assimétricas (RSA), composta por uma chave pública e uma chave privada. A chave privada é mantida na base de dados do servidor Followzup e utilizada para ter acesso ao conteúdo das solicitações encaminhadas ao webservice (XML).
 
 As chaves públicas dos canais são inseridas na API no momento em que o desenvolvedor faz o downlaod dessa API (PHP ou Java). No caso dos dispositivos, a chave pública é enviada ao APP dentro de um string de resposta XML, quando o APP solicita o registro do dispositivo no sistema. 
 
