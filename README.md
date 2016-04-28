@@ -49,11 +49,7 @@ Embora os processos de comunicação sejam implementados por meio de protocolos 
 
 Cada vez que um canal ou um dispositivo móvel é criado, o sistema cria um par de chaves assimétricas (RSA), composta por uma chave pública e uma chave privada. A chave privada é mantida na base de dados do servidor Followzup e utilizada para ter acesso ao conteúdo das solicitações encaminhadas ao webservice (XML).
 
-As chaves públicas dos canais são inseridas na API no momento em que o desenvolvedor faz o downlaod dessa API (PHP ou Java). No caso dos dispositivos, a chave pública é enviada ao APP dentro de um string de resposta XML, quando o APP solicita o registro do dispositivo no sistema. 
-
 Com esse modelo, o desenvolvedor tem certeza de que ninguém poderá enviar solicitações ao webservice em nome de sua aplicação, a menos que tenha ocorrido alguma falha de segurança no armazenamento da API. Da mesma forma, o usuário do dispositivo móvel pode ter certeza de que ninguém poderá enviar solicitações em seu nome, a menos que tenha ocorrido alguma falha de segurança no armazenamento da chave pública de seu dispositivo móvel.
-
-No caso de vazamento da chave pública, o desenvolvedor pode solicitar a criação de um novo par de chaves e refazer o download da API. No caso do dispositivo móvel, o usuário pode refazer o registro de seu dispositivo, ocasião em que recebe uma nova chave pública para seu dispositivo.
 
 #Documentação
 A documentação do projeto está assim distribuída:
