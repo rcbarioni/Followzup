@@ -21,7 +21,7 @@ No lado Servidor, em ambiente PHP/MySql, encontram-se os módulos web para gest�
 
 No lado Cliente, encontra-se o APP para dispositivos Android (Java). Com esse aplicativo, o usuário dispõe das funções de "gestão de assinaturas" de canais e recebimento de mensagens provenientes das aplicações. O lado Cliente também dispõe de API (Classe Fzup) para apoio ao desenvolvimento de novos APPs com diferentes "skins" ou outros dispositivos que disponham dos protocolos de criptografia compatíveis com o serviço (quem sabe um dia estaremos recebendo mensagens na tela de um forno de micro-ondas?).
 
-A comunicação entre as aplicações e o serviço Followzup, bem como entre o serviço Followzup e os dispositivos móveis, são realizadas na modalidade assíncrona, o que demanda consumo reduzido dos recursos de rede.
+A comunicação entre os canais de informações (aplicações) e o webservice Followzup, bem como entre o webservice Followzup e os dispositivos móveis, são realizadas em modo assíncrono (**POST**), o que demanda consumo reduzido dos recursos de rede.
 
 Os códigos fontes de ambas as partes do projeto (Cliente e Servidor), inclusive das APIs, estão publicadas nesse Git e disponíveis sob licença GPL.
 
