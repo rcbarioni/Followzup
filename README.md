@@ -33,7 +33,7 @@ Existem 3 maneiras de fazer uso ou participar do projeto Followzup.
 
 2. Gestor de Canais de Informações - São os desenvolvedores que adaptam suas aplicações para fazerem uso dos serviços disponíveis no endereço "www.followzup.com", para que suas aplicações possam enviar de mensagens a seus usuários.
 
-3. Participantes do Projeto - São aqueles que envolvem-se no desenvolvimento do projeto em si, seja nos módulos servidor ou cliente. Essa participação pode ser realizada com melhoria do código, criação de APIs para outras linguagens, criação de novos APPs para outros tipos de dispositivos, ou até no aprimoramento dos protocolos de comunicação para expansão dos serviços.
+3. Participantes do Projeto - São aqueles que envolvem-se no desenvolvimento do projeto em si, seja nos módulos servidor ou cliente. Essa participação pode ser realizada com melhoria do código, documentação, internacionalização, criação de APIs para outras linguagens, criação de novos APPs para outros tipos de dispositivos, ou até no aprimoramento dos protocolos de comunicação para expansão dos serviços.
 
 <br>
 ##Exemplos de uso
