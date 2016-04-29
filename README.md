@@ -45,23 +45,23 @@ Por sua **conveniência**, outras utilidades podem ser exemplificadas, tais como
 
 <br>
 ##Protocolos abertos
-A comunicação entre os canais de informações e o serviço Followzup é estabelecida por meio do módulo webservice denominado "wschannel.php". Essas solicitações são submetidas no formato XML, as quais são criptografadas com a chave pública (contida na API), criada exclusivamente para o cada canal. O string XML contém basicamente o comando a ser executado e os parâmetros necessários para sua execução. A descrição completa do conteúdo do string XML no wiki deste projeto.
+A comunicação entre os canais de informações e o webservice Followzup é estabelecida por meio do módulo denominado "wschannel.php". Essas solicitações são submetidas no formato XML, e são criptografadas com a chave pública (contida na API), criada exclusivamente para o cada canal. O string XML contém basicamente o comando a ser executado e os parâmetros necessários para sua execução. A descrição completa do conteúdo do string XML está contida no wiki deste projeto.
 
-O mesmo conceito estabelece a comunicação entre os dispositivos móveis e o serviço Followzup, desta vez por meio do módulo webservice denominado "wsdevice.php". Essas solicitações também são submetidas no formato XML, as quais são criptografadas com uma chave pública criada exclusivamente para cada dispositivo móvel. O string XML contém basicamente o comando a ser executado e os parâmetros necessários para sua execução. A descrição completa do conteúdo do string XML também está descrito no wiki deste projeto.
+O mesmo conceito estabelece a comunicação entre os dispositivos móveis e o webservice Followzup, desta vez por meio do módulo denominado "wsdevice.php". Essas solicitações também são submetidas no formato XML, e são criptografadas com uma chave pública criada exclusivamente para cada dispositivo móvel. O string XML contém basicamente o comando a ser executado e os parâmetros necessários para sua execução. A descrição completa do conteúdo do string XML também está descrito no wiki deste projeto.
 
 <br>
 ##Comunicação criptografada
 Embora os processos de comunicação sejam implementados por meio de protocolos abertos, o modelo preserva a integridade e a confidencialidade dos dados por meio dos processos de criptografia AES e RSA.
 
-Cada vez que um canal ou um dispositivo móvel é criado, o sistema cria um par de chaves assimétricas (RSA), composta por uma chave pública e uma chave privada. A chave privada é mantida na base de dados do servidor Followzup e utilizada para ter acesso ao conteúdo das solicitações encaminhadas ao webservice (XML).
+Cada vez que um canal ou um dispositivo móvel é criado, o sistema cria um par de chaves assimétricas (RSA), composta por uma chave pública e uma chave privada. A chave privada é mantida na base de dados do servidor Followzup e utilizada para ter acesso ao conteúdo das solicitações encaminhadas ao webservice.
 
-Com esse modelo, o desenvolvedor tem certeza de que ninguém poderá enviar solicitações ao webservice em nome de sua aplicação, a menos que tenha ocorrido alguma falha de segurança no armazenamento da API. Da mesma forma, o usuário do dispositivo móvel pode ter certeza de que ninguém poderá enviar solicitações em seu nome, a menos que tenha ocorrido alguma falha de segurança no armazenamento da chave pública de seu dispositivo móvel.
+Com esse modelo, o desenvolvedor tem a segurança de que ninguém estará enviando solicitações ao webservice em nome de sua aplicação, a menos que ocorra alguma falha de segurança no armazenamento da API. Da mesma forma, o usuário do dispositivo móvel tem certeza de que ninguém estará enviando solicitações em seu nome, a menos que ocorra alguma falha de segurança no armazenamento da chave pública de seu dispositivo móvel.
 
 <br>
 ##Documentação
 A documentação do projeto está assim distribuída:
 
-1. No próprio website do serviço (www.followzup.com) - Dirigida aos gestores de canais de informações e usuários de dispositivos móveis. Nessa documentação, não são aprofundados os detalhes do projeto, mas tão somente os exemplos de uso das APIs e as adaptações necessárias nos sistemas para viabilizar a comunicação com o webservice.
+1. No próprio website do serviço (www.followzup.com) - Dirigida aos gestores de canais de informações e usuários de dispositivos móveis. Nessa documentação, não são aprofundados os detalhes do projeto, mas tão somente sobre os exemplos de uso das APIs e as adaptações necessárias nos sistemas para viabilizar a comunicação com o webservice.
 
 2. Wiki do GitHub (http://github.com/rcbarioni/Followzup/wiki) - Dirigida aos participantes de seu desenvolvimento, gestores interessados na viabilização de novas implementações do serviço ou simplesmente interessados em conhecer as soluções técnicas adotadas.
 
