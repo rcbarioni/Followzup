@@ -73,6 +73,8 @@ A documentação do projeto está assim distribuída:
 
 3. Diretório "www" - Contém os scripts PHP do servidor, scripts PHP do webservice, arquivos CSS, imagens e outros recursos necessários à implementação do website. O detalhamento dos arquivos encontra-se no wiki do projeto.
 
+4. Diretório "imagens" - Contém as imagens usadas no WIKI do projeto.
+
 <br>
 ##To do
 Várias são as frentes que podem receber apoio dos interessados, entre elas:
