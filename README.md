@@ -31,7 +31,7 @@ Existem 3 maneiras de fazer uso ou participar do projeto Followzup.
 
 1. Usuários finais - São aqueles que instalam o APP em seus dispositivos móveis para receber mensagens dos canais de informações dos quais são assinantes. A instalação deve ser realizada em dispositivos compatíveis com os APPs disponíveis.
 
-2. Gestor de Canais de Informações - São os desenvolvedores que adaptam suas aplicações para fazerem uso dos serviços disponíveis no endereço "www.followzup.com", para que suas aplicações possam enviar de mensagens a seus usuários.
+2. Gestores de Canais de Informações - São os desenvolvedores que adaptam suas aplicações para fazer uso dos serviços disponíveis no endereço "www.followzup.com", viabilizando o envio de mensagens a seus usuários.
 
 3. Participantes do Projeto - São aqueles que envolvem-se no desenvolvimento do projeto em si, seja nos módulos servidor ou cliente. Essa participação pode ser realizada com melhoria do código, documentação, internacionalização, criação de APIs para outras linguagens, criação de novos APPs para outros tipos de dispositivos, ou até no aprimoramento dos protocolos de comunicação para expansão dos serviços.
 
