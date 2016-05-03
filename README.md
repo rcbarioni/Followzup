@@ -61,7 +61,7 @@ Com esse modelo, o desenvolvedor tem a segurança de que ninguém estará envian
 ##Documentação
 A documentação do projeto está assim distribuída:
 
-1. No próprio website do serviço (www.followzup.com) - Dirigida aos gestores de canais de informações e usuários de dispositivos móveis. Nessa documentação, não são aprofundados os detalhes do projeto, mas tão somente sobre os exemplos de uso das APIs e as adaptações necessárias nos sistemas para viabilizar a comunicação com o webservice.
+1. No próprio website do serviço (www.followzup.com) - Dirigida aos gestores de canais de informações e usuários de dispositivos móveis. Nessa documentação, não são aprofundados os detalhes do projeto, mas apenas exemplos de uso das APIs e as adaptações necessárias nos sistemas para viabilizar a comunicação com o webservice.
 
 2. Wiki do GitHub (http://github.com/rcbarioni/Followzup/wiki) - Dirigida aos participantes de seu desenvolvimento, gestores interessados na viabilização de novas implementações do serviço ou simplesmente interessados em conhecer as soluções técnicas adotadas.
 
