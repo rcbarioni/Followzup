@@ -15,7 +15,7 @@ Tanto em canais públicos como privados, o conceito de comunicação por meio do
 
 <br>
 ##Estrutura do projeto
-O projeto compõe-se de duas partes: Servidor e Cliente.
+O projeto compõe-se de duas partes: Cliente e Servidor.
 
 No lado Servidor, em ambiente PHP/MySql, encontram-se os módulos web para gestão de **canais de informações**, utilizados pelos desenvolvedores de sistemas para criação e manutenção desses canais, assim como, os módulos que compõem o webservice para atendimento às demandas dos canais de informações e dos dispositivos móveis. Além dos módulos web, os desenvolvedores dispõe também, por meio de download, das APIs para apoio ao processo de comunicação entre suas aplicações e o webservice. Essas APIs estão disponíveis inicialmente em PHP e Java. A primeira implementação desse serviço encontra-se disponível no endereço "www.followzup.com".
 
