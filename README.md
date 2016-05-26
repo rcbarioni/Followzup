@@ -45,7 +45,7 @@ Por sua **conveniência**, outras utilidades podem ser exemplificadas, tais como
 
 <br>
 ##Protocolos abertos
-A comunicação entre os canais de informações e o webservice Followzup é estabelecida por meio do módulo denominado "wschannel.php". Essas solicitações são submetidas no formato XML, e são criptografadas com a chave pública (contida na API), criada exclusivamente para o cada canal. O string XML contém basicamente o comando a ser executado e os parâmetros necessários para sua execução. A descrição completa do conteúdo do string XML está contida no wiki deste projeto.
+A comunicação entre os canais de informações e o webservice Followzup é estabelecida por meio do módulo denominado "wschannel.php". Essas solicitações são submetidas no formato XML, e são criptografadas com a chave pública (contida na API), criada exclusivamente para cada canal. O string XML contém basicamente o comando a ser executado e os parâmetros necessários para sua execução. A descrição completa do conteúdo do string XML está contida no wiki deste projeto.
 
 O mesmo conceito estabelece a comunicação entre os dispositivos móveis e o webservice Followzup, desta vez por meio do módulo denominado "wsdevice.php". Essas solicitações também são submetidas no formato XML, e são criptografadas com uma chave pública criada exclusivamente para cada dispositivo móvel. O string XML contém basicamente o comando a ser executado e os parâmetros necessários para sua execução. A descrição completa do conteúdo do string XML também está descrito no wiki deste projeto.
 
