@@ -85,4 +85,4 @@ Tem alguma dúvida ou sugestão?
 
 Estamos esperando seu contato no endereço: www.followzup.com/contact
 
-Fique tranquilo. Followzup é software livre.
+Obrigado pela sua visita e fique tranquilo. Followzup é software livre.
