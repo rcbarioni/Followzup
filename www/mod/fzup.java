@@ -102,6 +102,10 @@
                 if ( i >= 0 ) {
                     String key = arg.substring(0,i).trim();
                     String param = arg.substring(i+1).trim();
+                    if ( key.equals("FZUP_MSGTEXT") || key.equals("FZUP_MSGURL") ) {
+                        byte[] bParam = param.getBytes();
+                        param = DatatypeConverter.printBase64Binary(bParam);
+                    }
                     mapArgs.put(key,param);
                 }
             }
