@@ -58,7 +58,7 @@
 
             for ( $i=0; $i<count($fzup_tab); $i++ ) {
 
-                $fzup_token = explode ("=",$fzup_tab[$i]);
+                $fzup_token = explode ("=",$fzup_tab[$i],2);
 
                 if     ( trim($fzup_token[0]) == "FZUP_COMMAND"   ) $fzup_param["FZUP_COMMAND"]  = trim($fzup_token[1]); 
                 elseif ( trim($fzup_token[0]) == "FZUP_LASTSEQ"   ) $fzup_param["FZUP_LASTSEQ"]  = trim($fzup_token[1]); 
@@ -69,6 +69,10 @@
                 elseif ( trim($fzup_token[0]) == "FZUP_MSGURL"    ) $fzup_param["FZUP_MSGURL"]   = trim($fzup_token[1]); 
 
             }
+
+            // convert message and URL to base64
+            $fzup_param["FZUP_MSGTEXT"] = base64_encode($fzup_param["FZUP_MSGTEXT"]);
+            $fzup_param["FZUP_MSGURL"]  = base64_encode($fzup_param["FZUP_MSGURL"]);
 
             // build request
             if     ( $fzup_param["FZUP_COMMAND"] == "chck" ) $fzup_xml = "<usr>" . $fzup_param["FZUP_USER"]     . "</usr>" . 

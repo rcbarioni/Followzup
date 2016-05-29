@@ -195,7 +195,7 @@
                         "6107" => "channel: invalid idmessage", 
                         "6108" => "channel: null message",                 
                         "6109" => "channel: big iduser list",                 
-                        "6110" => "channel: invalid idenquete",                 
+                        "6110" => "channel: invalid message URL",                 
                         "6111" => "channel: get response ok",
                         "6112" => "channel: get response error idchannel",
                         "6113" => "channel: get response empty",
@@ -204,7 +204,7 @@
                         "6202" => "channel: lsub subscode", 
                         "6203" => "channel: lsub nosubs", 
                         "6204" => "channel: lsub wrong", 
-                        "6221" => "channel: smsg pais/idioma",
+                        "6221" => "channel: smsg all",
                         "6222" => "channel: smsg list",
                         "6231" => "channel: lmsg idmessage",
                         "6232" => "channel: lmsg iduser",
@@ -296,7 +296,7 @@
 
     if ( isset($_POST["whois_go"]) or isset($_POST["mala_go"]) ) $wsql_query = "";
 
-    elseif ( $wsql_query == "" ) $wsql_query = "select * from log order by idlog desc limit 200";
+    elseif ( $wsql_query == "" ) $wsql_query = "select * from log order by idlog desc limit 100";
 
     echo    '<!DOCTYPE HTML>';
 

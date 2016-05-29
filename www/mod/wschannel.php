@@ -283,8 +283,10 @@
                     {
 
                         $whrs = (int)$wxml->hrs;
-                        $wmsg = substr(cleanText($wxml->msg),0,200);
-                        $wurl = substr(cleanText($wxml->url),0,200);
+                        $wmsg = substr(cleanText(base64_decode($wxml->msg)),0,200);
+                        $wurl = substr(cleanText(base64_decode($wxml->url)),0,200);
+
+                        $wurlx = cleanUrl($wurl);
 
                         if ( $whrs < 1 or $whrs > 960 ) $whrs = 24;
 
@@ -297,11 +299,18 @@
                             $wres   = mysql_query($wquery,$wsystem_dbid);
                         }
 
+                        elseif ( $wurlx == "error" )
+                        {
+                            $wretcode = "6110";
+                            $wquery = "insert into log (dateincl, ipuser, idagent, iduser, idchannel, channelseq, operation) values (utc_timestamp(), '$wipuser', '$widagent', '$widuserchn', '$wid', $wseq, 6110)";
+                            $wres   = mysql_query($wquery,$wsystem_dbid);
+                        }
+
                         else
                         {
 
                             $wmsg = base64_encode($wmsg);
-                            $wurl = base64_encode($wurl);
+                            $wurl = base64_encode($wurlx);
 
                             $wquery1 = "select subscriptions.iduser
                                           from subscriptions, users
@@ -366,10 +375,11 @@
 
                         $wusr = cleanText(strtolower($wxml->usr));
                         $whrs = (int)$wxml->hrs;
-                        $wmsg = substr(cleanText($wxml->msg),0,200);
-                        $wurl = substr(cleanText($wxml->url),0,200);
-
+                        $wmsg = substr(cleanText(base64_decode($wxml->msg)),0,200);
+                        $wurl = substr(cleanText(base64_decode($wxml->url)),0,200);
                         $wlista = explode(",",$wusr);
+
+                        $wurlx = cleanUrl($wurl);
 
                         if ( $whrs < 1 or $whrs > 960 ) $whrs = 960;
 
@@ -389,11 +399,18 @@
                             $wres   = mysql_query($wquery,$wsystem_dbid);
                         }
 
+                        elseif ( $wurlx == "error" )
+                        {
+                            $wretcode = "6110";
+                            $wquery = "insert into log (dateincl, ipuser, idagent, iduser, idchannel, channelseq, operation) values (utc_timestamp(), '$wipuser', '$widagent', '$widuserchn', '$wid', $wseq, 6110)";
+                            $wres   = mysql_query($wquery,$wsystem_dbid);
+                        }
+
                         else
                         {
 
                             $wmsg = base64_encode($wmsg);
-                            $wurl = base64_encode($wurl);
+                            $wurl = base64_encode($wurlx);
 
                             $wnewmsg  = 0;
                             $wnosubs  = 0;

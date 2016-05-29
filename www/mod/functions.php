@@ -226,4 +226,28 @@
 
     }
 
+    function cleanUrl ($wurl)
+    {
+
+        if ( $wurl == "" ) return "";
+
+        $wurl1 = parse_url("$wurl");
+
+        if ( !isset($wurl1["scheme"]) ) $wurl1 = parse_url("http://$wurl");
+
+        if ( isset($wurl1["path"]) ) "/" . trim($wurl1["path"],"/");
+        else $wurl1["path"] = "";
+
+        if ( isset($wurl1["query"]) ) $wurl1["query"] = "?" . $wurl1["query"];
+        else $wurl1["query"] = "";
+
+        if ( isset($wurl1["fragment"]) ) $wurl1["fragment"] = "#" . $wurl1["fragment"];
+        else $wurl1["fragment"] = "";
+
+        if ( $wurl1["scheme"] != "http" or isset($wurl1["port"]) or isset($wurl1["user"]) or isset($wurl1["pass"]) ) return "error";
+
+        return $wurl1["scheme"] . "://" . $wurl1["host"] . $wurl1["path"] . $wurl1["query"] . $wurl1["fragment"];
+
+    }
+
 ?>
