@@ -146,7 +146,7 @@
     if ( $widuser == "z00000000000" )
     {
         echo                    '<td style="width: 1px; padding-top: 0px;">';
-        echo                        '<div class="menu3"><a href="admin">admin</a></div>';
+        echo                        '<div class="menu3"><a href="admin">log</a></div>';
         echo                    '</td>';
     }
 

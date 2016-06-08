@@ -201,9 +201,9 @@
                         "6113" => "channel: get response empty",
 
                         "6201" => "channel: lsub since", 
-                        "6202" => "channel: lsub subscode", 
-                        "6203" => "channel: lsub nosubs", 
-                        "6204" => "channel: lsub wrong", 
+                        "6202" => "channel: chck ok", 
+                        "6203" => "channel: chck nosubs", 
+                        "6204" => "channel: chck wrong", 
                         "6221" => "channel: smsg all",
                         "6222" => "channel: smsg list",
                         "6231" => "channel: lmsg idmessage",
@@ -281,7 +281,8 @@
 
     if ( isset($_POST["return"]) )
     {
-        session_destroy();
+        $_SESSION["admin"] = "";
+        session_write_close();
         header("Location: .");
         exit;
     }
@@ -328,7 +329,7 @@
     echo                                    '<td><input type="text" style="width: 100%; font-size:10pt; font-family: Monospace;" ';
     echo                                        'name="sql_query" maxlength="2000" value="' . $wsql_query . '"></td>';
     echo                                    '<td style="width: 1px;"><input type="submit" style="font-size:8pt;" name="sql_query_go" value=">>"></td>';
-    echo                                    '<td style="width: 1px;"><input type="submit" style="font-size:8pt;" name="return" value="Logout"></td>';
+    echo                                    '<td style="width: 1px;"><input type="submit" style="font-size:8pt;" name="return" value="Return"></td>';
     echo                                '</tr>';
     echo                            '</table>';
     echo                        '</form>';

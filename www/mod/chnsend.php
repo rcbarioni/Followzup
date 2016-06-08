@@ -28,7 +28,7 @@
         global $wsystem_home;
 
         $fzup_pub = base64_decode($fzup_pub64);
-        $fzup_xml = "<usr>$fzup_user</usr><hrs>$fzup_hours</hrs><msg>$fzup_msgtext</msg>";
+        $fzup_xml = "<usr>$fzup_user</usr><hrs>$fzup_hours</hrs><msg>" . base64_encode($fzup_msgtext) . "</msg>";
 
         do {
 
