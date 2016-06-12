@@ -32,7 +32,7 @@
     echo            '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">';
     echo            '<meta name="description" content="Followzup - IOT messenger">';
     echo            '<meta name="author" content="Followzup Team">';
-    echo            '<meta name="keywords" content="b2p, p2p, message, messaging, communication, batch, bulk, IOT, open source, sms">';
+    echo            '<meta name="keywords" content="b2p, p2p, message, communication, IOT, open source">';
     echo            '<link rel="shortcut icon" href="img/favicon.gif">';
     echo            '<link rel="stylesheet" href="css/normalize.css">';
     echo            '<link rel="stylesheet" href="css/followzup.css?version=1">';

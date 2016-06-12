@@ -27,9 +27,9 @@
 
     include('mod/head.php');
 
-    echo    '<div style="background: linear-gradient(to bottom, black 70%, #333 100%); text-align: center; padding: 150px 250px 100px 200px; ">';
+    echo    '<div style="background: linear-gradient(to bottom, black 70%, #333 100%); text-align: center; padding: 200px; ">';
     echo        '<img alt="followzup" src="img/followzup_logo3.jpg" width="100%">';
-    echo        '<span style="font-family: verdana;font-size: 32px; color: white;">Comunicação criptografada para a Internet das coisas.<br><br><br><br></span>';
+    echo        '<span style="font-family: verdana;font-size: 32px; color: white;">Comunicação criptografada para a Internet das coisas.<br><br><br></span>';
     echo        '<a href="http://github.com/rcbarioni/Followzup" target="_blank" style="font-family: verdana; font-size: 14px; color: #aaa;">';
     echo            '<img class="roundcorner2" alt="github" src="img/GitHub_Logo.png" width="15%" style="background: white; padding: 5px 10px;">';
     echo            '<span><br>Fique tranquilo, Followzup é software livre.<br>Acesse e conheça o projeto.</span>';

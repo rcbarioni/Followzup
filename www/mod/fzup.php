@@ -111,6 +111,7 @@
                                      CURLOPT_USERAGENT      => "wschannel: " . $this->fzup_channel,
                                      CURLOPT_POSTFIELDS     => array ( "id" => $this->fzup_channel, "key" => "$fzup_key3", "frame" => "$fzup_frame3" ) );
                 curl_setopt_array($fzup_ch, $fzup_conf);
+                // curl_setopt($fzup_ch, CURLOPT_PROXY,"http_proxy=http://proxy_server:8080");
                 $fzup_resp = curl_exec($fzup_ch);
                 curl_close($fzup_ch);
 
