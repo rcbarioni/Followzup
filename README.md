@@ -3,7 +3,7 @@ Comunicação criptografada para a Internet das coisas
 
 <br>
 ## Bem vindo ao projeto Followzup
-O Followzup é um serviço que implementa o conceito Business-to-Peer (B2P) para encaminhamento bidirecional de mensagens de texto, onde de um lado encontram-se as aplicações e sites Internet, e do outro lado encontram-se os dispositivos fixos e móveis que interagem com os quais interagem.
+O Followzup é um serviço que implementa o conceito Business-to-Peer (B2P) para encaminhamento bidirecional de mensagens de texto, onde de um lado encontram-se as aplicações e sites Internet, e do outro lado encontram-se os dispositivos fixos e móveis com os interagem.
 
 Desde uma pequena aplicação de controle de processos implementada em uma rede doméstica, até um grande portal de informações corporativas, o envio de mensagens é realizado "em lote" por intermédio do webservice Followzup, que viabiliza a troca de mensagens entre sistemas e dispositivos.
 
