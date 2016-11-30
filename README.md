@@ -3,15 +3,17 @@ Comunicação criptografada para a Internet das coisas
 
 <br>
 ## Bem vindo ao projeto Followzup
-Followzup é um sistema que implementa o conceito Business-to-Peer (B2P) para encaminhamento de mensagens de texto, onde de um lado encontram-se os sites Internet e sistemas corporativos enviando mensagens, e do outro lado encontram-se seus usuários e gestores recebendo essas mensagens em seus dispositivos móveis.
+Followzup é um sistema que implementa o conceito Business-to-Peer (B2P) para encaminhamento bidirecional de mensagens de texto, onde de um lado encontram-se as aplicações e sites Internet, e do outro lado encontram-se os dispositivos dos usuários.
 
-Desde uma pequena aplicação de mala direta implementada em uma rede doméstica, até um grande portal de informações, o envio de mensagens é realizado "em lote" por intermédio do webservice Followzup, que redireciona as mensagens para os dispositivos móveis de seus usuários.
+Desde uma pequena aplicação de controle de processos implementada em uma rede doméstica, até um grande portal de informações, o envio de mensagens é realizado "em lote" por intermédio do webservice Followzup, que intermedia o tráfego de mensagens entre sistemas e dispositivos.
 
-Tanto do lado das aplicações e sites Internet quanto do lado dos dispositivos móveis, a comunicação é criptografada por meio dos protocolos AES e RSA (chaves assimétricas), promovendo confidencialidade em todo trajeto percorrido pela informação.
+Tanto do lado das aplicações e sites Internet quanto do lado dos dispositivos, a comunicação é criptografada por meio dos protocolos AES e RSA (chaves assimétricas), promovendo confidencialidade em todo trajeto percorrido pela informação. O recurso de criptografia permite ainda a abertura dos protocolos de comunicação com o serviço, o que torna possível estabelecer a interação com quaisquer sistemas ou dispositivos conectados à Internet, sem a necessidade de possuírem chaves SSL próprias ou compartilhadas.
 
-A privacidade, outro ponto forte do modelo, também é garantida aos usuários, pois esses podem escolher de quem desejam receber mensagens. Essa garantia é obtida pela adoção de **canais de informações**, criados e mantidos pelos desenvolvedores de sistemas e que são "assinados" pelos usuários conforme a conveniência.
+A privacidade, outro ponto forte do modelo, também é garantida aos usuários dos sistemas, pois esses podem escolher de quem desejam receber mensagens em seus dispositivos. Essa garantia é obtida pela adoção de **canais de informações**, criados e mantidos pelos desenvolvedores de sistemas e que são "assinados" pelos usuários conforme a necessidade.
 
-Tanto em canais públicos como privados, o conceito de comunicação por meio do Followzup pode ainda agregar novas funcionalidades aos processos de comunicação corporativa interna e externa em instituições financeiras, comércio, serviços, governos, associações, escolas, universidades, hospitais, aeroportos, indústrias, meios de comunicação e entretenimento, sites internet, enfim, onde houver aplicações interagindo com seus usuários.
+A interação com as aplicações e sites Internet pode ser realizada por meio de dispositivos móveis ou fixos, os quais podem ser registrados com usuários anônimos ou identificados. Para o estabelecimento da comunicação, os dispositivos deverão dispôr de aplicativo próprio com acesso à Internet e bibliotecas de criptografia compatíveis com o serviço. Até a publicação desse documento, o serviço já dispõe de aplicativo para dispositivos móveis com sistema operacional Android.
+
+Tanto em canais públicos como privados, o conceito de comunicação por meio do Followzup pode ainda agregar novas funcionalidades aos processos de comunicação corporativa interna e externa em instituições financeiras, comércio, serviços, governos, associações, escolas, universidades, hospitais, aeroportos, indústrias, meios de comunicação e entretenimento, sites internet, enfim, onde houver aplicações interagindo com dispositívos.
 
 <br>
 ##Estrutura do projeto
