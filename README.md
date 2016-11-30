@@ -3,13 +3,13 @@ Comunicação criptografada para a Internet das coisas
 
 <br>
 ## Bem vindo ao projeto Followzup
-Followzup é um sistema que implementa o conceito Business-to-Peer (B2P) para encaminhamento bidirecional de mensagens de texto, onde de um lado encontram-se as aplicações e sites Internet, e do outro lado encontram-se os dispositivos dos usuários.
+O Followzup é um serviço que implementa o conceito Business-to-Peer (B2P) para encaminhamento bidirecional de mensagens de texto, onde de um lado encontram-se as aplicações e sites Internet, e do outro lado encontram-se dispositivos fixos e móveis.
 
-Desde uma pequena aplicação de controle de processos implementada em uma rede doméstica, até um grande portal de informações, o envio de mensagens é realizado "em lote" por intermédio do webservice Followzup, que intermedia o tráfego de mensagens entre sistemas e dispositivos.
+Desde uma pequena aplicação de controle de processos implementada em uma rede doméstica, até um grande portal de informações comporativas, o envio de mensagens é realizado "em lote" por intermédio do webservice Followzup, que intermedia o tráfego de mensagens entre sistemas e dispositivos.
 
-Tanto do lado das aplicações e sites Internet quanto do lado dos dispositivos, a comunicação é criptografada por meio dos protocolos AES e RSA (chaves assimétricas), promovendo confidencialidade em todo trajeto percorrido pela informação. O recurso de criptografia permite ainda a abertura dos protocolos de comunicação com o serviço, o que torna possível estabelecer a interação com quaisquer sistemas ou dispositivos conectados à Internet, sem a necessidade de possuírem chaves SSL próprias ou compartilhadas.
+Tanto do lado das aplicações e sites Internet quanto do lado dos dispositivos, a comunicação é criptografada por meio dos protocolos AES e RSA (chaves assimétricas), promovendo confidencialidade em todo trajeto percorrido pelas informações. A criptografia dos dados permite ainda a publicação dos protocolos de comunicação com o serviço, o que torna possível estabelecer a interação com quaisquer sistemas ou dispositivos conectados à Internet, sem a necessidade de possuírem chaves SSL próprias ou compartilhadas.
 
-A privacidade, outro ponto forte do modelo, também é garantida aos usuários dos sistemas, pois esses podem escolher de quais aplicações e sites Internet desejam receber mensagens em seus dispositivos. Essa garantia é obtida pela adoção de **canais de informações**, criados e mantidos pelos desenvolvedores e que são "assinados" pelos usuários conforme a necessidade.
+A privacidade, outro ponto forte do modelo, também é garantida aos proprietários dos dispositivos, pois esses podem escolher de quais aplicações e sites Internet desejam receber e enviar mensagens. Essa garantia é obtida pela adoção de **canais de informações**, criados e mantidos pelos desenvolvedores e que são "assinados" pelos usuários conforme a necessidade.
 
 A interação com as aplicações e sites Internet pode ser realizada por meio de dispositivos móveis ou fixos, os quais podem ser registrados no sistema por meio de usuários anônimos ou identificados. Para o estabelecimento da comunicação, os dispositivos deverão dispôr de aplicativo próprio com acesso à Internet. Até a publicação desse documento, o serviço já dispõe de aplicativo para dispositivos móveis com sistema operacional Android (celulares).
 
