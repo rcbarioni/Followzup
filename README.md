@@ -11,9 +11,9 @@ Tanto do lado das aplicações e sites Internet quanto do lado dos dispositivos,
 
 A privacidade, outro ponto forte do modelo, também é garantida aos usuários dos sistemas, pois esses podem escolher de quais aplicações e sites Internet desejam receber mensagens em seus dispositivos. Essa garantia é obtida pela adoção de **canais de informações**, criados e mantidos pelos desenvolvedores e que são "assinados" pelos usuários conforme a necessidade.
 
-A interação com as aplicações e sites Internet pode ser realizada por meio de dispositivos móveis ou fixos, os quais podem ser registrados com usuários anônimos ou identificados. Para o estabelecimento da comunicação, os dispositivos deverão dispôr de aplicativo próprio com acesso à Internet e bibliotecas de criptografia compatíveis com o serviço. Até a publicação desse documento, o serviço já dispõe de aplicativo para dispositivos móveis com sistema operacional Android.
+A interação com as aplicações e sites Internet pode ser realizada por meio de dispositivos móveis ou fixos, os quais podem ser registrados no sistema por meio de usuários anônimos ou identificados. Para o estabelecimento da comunicação, os dispositivos deverão dispôr de aplicativo próprio com acesso à Internet. Até a publicação desse documento, o serviço já dispõe de aplicativo para dispositivos móveis com sistema operacional Android (celulares).
 
-Tanto em canais públicos como privados, o conceito de comunicação por meio do Followzup pode ainda agregar novas funcionalidades aos processos de comunicação corporativa interna e externa em instituições financeiras, comércio, serviços, governos, associações, escolas, universidades, hospitais, aeroportos, indústrias, meios de comunicação e entretenimento, sites internet, enfim, onde houver aplicações interagindo com dispositívos.
+Tanto em canais públicos como privados, o conceito de comunicação por meio do Followzup pode ainda agregar novas funcionalidades aos processos de comunicação corporativa interna e externa em instituições financeiras, comércio, serviços, governos, associações, escolas, universidades, hospitais, aeroportos, indústrias, meios de comunicação e entretenimento, sites internet, enfim, onde houver aplicações interagindo com os dispositívos dos usuários.
 
 <br>
 ##Estrutura do projeto
