@@ -13,22 +13,20 @@ Além de enviar, os websites Internet também podem receber mensagens dos usuár
 
 A comunicação entre sistemas e dispositivos móveis por meio do Followzup é criptografada com os padrões AES e RSA, e o protocolo aberto do serviço permite o desenvolvimento de APIs para outras linguagens, assim como o desenvolvimento de APPs para diferentes modelos de dispositivos móveis. 
 
-
-
+<br><br>
 Exemplos de uso:
 
-Monitorar a atividade de usuários em sistemas e websites;
-Monitorar e enviar alertas sobre ocorrências em sistemas e equipamentos;
-Enviar notícias, dicas, avisos e mensagens publicitárias;
-Receber mensagens de solicitações dos usuários;
-Solicitar respostas de confirmação dos usuários;
-Enviar mensagens associadas a “links” externos;
-Informar e confirmar agendamento de compromissos;
-Informar a realização transações comerciais e financeiras;
-E muito mais...
+- Monitorar a atividade de usuários em sistemas e websites;
+- Monitorar e enviar alertas sobre ocorrências em sistemas e equipamentos;
+- Enviar notícias, dicas, avisos e mensagens publicitárias;
+- Receber mensagens de solicitações dos usuários;
+- Solicitar respostas de confirmação dos usuários;
+- Enviar mensagens associadas a “links” externos;
+- Informar e confirmar agendamento de compromissos;
+- Informar a realização transações comerciais e financeiras;
+- E muito mais...
 
-
-
+<br><br>
 Roteiro de uso:
 
 A seguir, as etapas necessárias para enviar mensagens por meio do Followzup a partir de qualquer sistema ou website:
@@ -39,8 +37,7 @@ A seguir, as etapas necessárias para enviar mensagens por meio do Followzup a p
 
 - Após o registro do dispositivo móvel e a assinatura do canal, os sistemas e websites podem enviar mensagens por meio de solicitações ao webservice Followzup, informando o destinatário da mensagem.
 
-
-
+<br><br>
 Para saber mais, acesse o wiki do projeto.
 
 www.followzup.com/wiki
