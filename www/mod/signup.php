@@ -296,8 +296,8 @@
                 $wsmtpinfo["host"]          = "mail.followzup.com";
                 $wsmtpinfo["port"]          = "2525";
                 $wsmtpinfo["auth"]          = true;
-                $wsmtpinfo["username"]      = "contact";
-                $wsmtpinfo["password"]      = "moXa1144";
+                $wsmtpinfo["username"]      = "";
+                $wsmtpinfo["password"]      = "";
 
                 $wmail_object =& Mail::factory("mail", $wsmtpinfo);
 
