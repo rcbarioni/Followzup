@@ -1,8 +1,9 @@
 # Followzup
-Comunicação criptografada para a Internet das coisas
 
+<br>
 Bem-vindo ao Followzup.
 
+<br>
 O Followzup é um serviço gratuito para envio de mensagens de texto criptografadas para celulares e outros dispositivos móveis.
 
 As mensagens são enviadas em modo batch, a partir de sistemas e websites com o auxílio de APIs, disponíveis atualmente em PHP e Java.
