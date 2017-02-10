@@ -1,90 +1,46 @@
 # Followzup
 Comunicação criptografada para a Internet das coisas
 
-<br>
-## Bem vindo ao projeto Followzup
-O Followzup é um serviço que implementa o conceito Business-to-Peer (B2P) para encaminhamento bidirecional de mensagens de texto, onde de um lado encontram-se as aplicações e sites Internet, e do outro lado encontram-se os dispositivos fixos e móveis com os quais interagem.
+Bem-vindo ao Followzup.
 
-Desde uma pequena aplicação de controle de processos implementada em uma rede doméstica, até um grande portal de informações corporativas, o envio de mensagens é realizado "em lote" por intermédio do webservice Followzup, que viabiliza a troca de mensagens entre sistemas e dispositivos.
+O Followzup é um serviço gratuito para envio de mensagens de texto criptografadas para celulares e outros dispositivos móveis.
 
-Tanto do lado das aplicações e sites Internet quanto do lado dos dispositivos, a comunicação é criptografada com os protocolos AES e RSA (chaves assimétricas), promovendo confidencialidade em todo trajeto percorrido pelas informações. A criptografia dos dados permite ainda a publicação dos protocolos de comunicação com o serviço, o que torna possível estabelecer a interação com quaisquer sistemas ou dispositivos conectados à Internet, sem a necessidade de possuírem chaves SSL próprias ou compartilhadas.
+As mensagens são enviadas em modo batch, a partir de sistemas e websites com o auxílio de APIs, disponíveis atualmente em PHP e Java.
 
-A privacidade, outro ponto forte do modelo, também é garantida aos usuários de dispositivos, pois esses podem escolher com quais aplicações e sites Internet desejam trocar mensagens. Essa garantia é obtida pela adoção de **canais de informações**, criados e mantidos pelos desenvolvedores de aplicações e que são "assinados" pelos usuários conforme a necessidade. Esses canais podem ser **públicos** (para aplicações de uso geral), ou **privados** (para aplicações de uso restrito).
+As APIs são simples de usar, e com apenas 1 linha de comando a aplicação pode enviar uma mensagem para o celular de um ou mais usuários.
 
-A interação com as aplicações e sites Internet pode ser realizada por meio de dispositivos móveis ou fixos, os quais podem ser registrados no sistema por meio de usuários anônimos ou identificados. Para o estabelecimento da comunicação, os dispositivos deverão possuir aplicativo com acesso à Internet. Até a publicação desse documento, o serviço dispõe de aplicativo para dispositivos móveis com sistema operacional Android (celulares).
+Além de enviar, os websites Internet também podem receber mensagens dos usuários, originadas a partir de seus dispositivos móveis.
 
-Tanto em canais públicos como privados, o conceito de comunicação por meio do Followzup pode ainda agregar novas funcionalidades aos sistemas de comunicação corporativa interna e externa em instituições financeiras, comércio, serviços, governos, associações, escolas, universidades, hospitais, aeroportos, indústrias, meios de comunicação e entretenimento, sites internet, enfim, onde houver aplicações interagindo com os dispositívos dos usuários.
+A comunicação entre sistemas e dispositivos móveis por meio do Followzup é criptografada com os padrões AES e RSA, e o protocolo aberto do serviço permite o desenvolvimento de APIs para outras linguagens, assim como o desenvolvimento de APPs para diferentes modelos de dispositivos móveis. 
 
-<br>
-##Estrutura do projeto
-O projeto compõe-se de duas partes: Cliente e Servidor.
 
-No lado Servidor, em ambiente PHP/MySql, encontram-se os módulos web para gestão de **canais de informações**, utilizados pelos desenvolvedores de sistemas para criação e manutenção desses canais, assim como, os módulos que compõem o webservice para atendimento às demandas dos canais de informações e dos dispositivos. Além dos módulos web, os desenvolvedores dispõe também, por meio de download, das APIs para apoio ao processo de comunicação entre suas aplicações e o webservice. Essas APIs estão disponíveis inicialmente em PHP e Java. A primeira implementação desse serviço encontra-se disponível no endereço "www.followzup.com".
 
-No lado Cliente, encontra-se o APP para dispositivos Android (Java). Com esse aplicativo, o usuário dispõe das funções de "gestão de assinaturas" de canais e recebimento de mensagens provenientes das aplicações. O lado Cliente também dispõe de API (Classe Fzup) para apoio ao desenvolvimento de novos APPs com diferentes "skins" ou outros dispositivos que disponham dos protocolos de criptografia compatíveis com o serviço (quem sabe um dia estaremos recebendo mensagens na tela de um forno de micro-ondas?).
+Exemplos de uso:
 
-A comunicação entre os canais de informações (aplicações) e o webservice Followzup, bem como entre o webservice Followzup e os dispositivos móveis, são realizadas em modo assíncrono (**POST**).
+Monitorar a atividade de usuários em sistemas e websites;
+Monitorar e enviar alertas sobre ocorrências em sistemas e equipamentos;
+Enviar notícias, dicas, avisos e mensagens publicitárias;
+Receber mensagens de solicitações dos usuários;
+Solicitar respostas de confirmação dos usuários;
+Enviar mensagens associadas a “links” externos;
+Informar e confirmar agendamento de compromissos;
+Informar a realização transações comerciais e financeiras;
+E muito mais...
 
-Os códigos fontes de ambas as partes do projeto (Cliente e Servidor), inclusive das APIs, estão publicadas nesse Git e disponíveis sob licença GPL.
 
-<br>
-##Formas de uso e participação
-Existem 3 maneiras de fazer uso ou participar do projeto Followzup.
 
-1. Usuários finais - São aqueles que instalam o APP em seus dispositivos móveis para receber mensagens dos canais de informações dos quais são assinantes. A instalação deve ser realizada em dispositivos compatíveis com os APPs disponíveis.
+Roteiro de uso:
 
-2. Gestores de Canais de Informações - São os desenvolvedores que adaptam suas aplicações para fazer uso dos serviços disponíveis no endereço "www.followzup.com", viabilizando o envio de mensagens a seus usuários.
+A seguir, as etapas necessárias para enviar mensagens por meio do Followzup a partir de qualquer sistema ou website:
 
-3. Participantes do Projeto - São aqueles que envolvem-se no desenvolvimento do projeto em si, seja nos módulos servidor ou cliente. Essa participação pode ser realizada com melhoria do código, documentação, internacionalização, criação de APIs para outras linguagens, criação de novos APPs para outros tipos de dispositivos, ou até no aprimoramento dos protocolos de comunicação para expansão dos serviços.
+- No site do Followzup, o administrador do sistema cria um canal de informações, faz o download da API contendo chave criptográfica do canal e inclui em seu sistema as chamadas para a API.
 
-<br>
-##Exemplos de uso
-Pela **praticidade** do modelo, relacionamos várias de suas utilidades. No aspecto gerencial, em relação ao monitoramento de recursos, podemos configurar nossos sistemas para enviar mensagens ao administrador de um website quando alguém utiliza a página "Fale Conosco", ou ao gerente de produção quando o processo crítico de determinado sistema sofre algum tipo de interrupção, ou à equipe de suporte quando um circuito de dados sai fora do ar, ou a um funcionário de vendas quando recebe o e-mail urgente de um cliente, ou a um gerente de compras quando o estoque de determinado produto alcança seu ponto crítico, enfim, **tudo que precisamos gerenciar**.
+- No dispositivo móvel, o usuário instala o APP Followzup disponível na loja de aplicativos, registra o dispositivo no sistema, faz a pesquisa do canal de informações criado pelo desenvolvedor e confirma a assinatura do canal.
 
-Pela **segurança** do processo, podemos também relacionar outras utilidades, tais como o envio de códigos de barras para pagamento de contas, confirmação de pedidos, agendamento de audiências e compromissos, alertas de compras realizadas com cartões de crédito, confirmações de trocas de senhas, avisos de ligações não atendidas, resultados de exames clínicos, movimentações financeiras, avisos de vencimento de apólices de seguros, alertas de alterações de cadastros, avisos de interrupção de serviços, rastreamento de encomendas, recalls de veículos, enfim, **tudo que precisamos ser informados**.
+- Após o registro do dispositivo móvel e a assinatura do canal, os sistemas e websites podem enviar mensagens por meio de solicitações ao webservice Followzup, informando o destinatário da mensagem.
 
-Por sua **conveniência**, outras utilidades podem ser exemplificadas, tais como: previsões astrológicas, salmos, tábuas de marés, avisos de estréias em cinemas e teatros, avisos de promoções de passagens aéreas, notícias sobre temas específicos (clipping), avisos de liquidações, avisos de ofertas de produtos em sites de compras, resultados de loterias, confirmações de vôos, notas de provas, calendários de eventos, enfim, **tudo que possa nos auxiliar em nosso dia a dia**. 
 
-<br>
-##Protocolos abertos
-A comunicação entre os canais de informações e o webservice Followzup é estabelecida por meio do módulo denominado "wschannel.php". Essas solicitações são submetidas no formato XML, e são criptografadas com a chave pública (contida na API), criada exclusivamente para cada canal. O string XML contém basicamente o comando a ser executado e os parâmetros necessários para sua execução. A descrição completa do conteúdo do string XML está contida no wiki deste projeto.
 
-O mesmo conceito estabelece a comunicação entre os dispositivos móveis e o webservice Followzup, desta vez por meio do módulo denominado "wsdevice.php". Essas solicitações também são submetidas no formato XML, e são criptografadas com uma chave pública criada exclusivamente para cada dispositivo móvel. O string XML contém basicamente o comando a ser executado e os parâmetros necessários para sua execução. A descrição completa do conteúdo do string XML também está descrito no wiki deste projeto.
+Para saber mais, acesse o wiki do projeto.
 
-<br>
-##Comunicação criptografada
-Embora os processos de comunicação sejam implementados por meio de protocolos abertos, o modelo preserva a integridade e a confidencialidade dos dados por meio dos processos de criptografia AES e RSA.
-
-Cada vez que um canal ou um dispositivo móvel é criado, o sistema cria um par de chaves assimétricas (RSA), composta por uma chave pública e uma chave privada. A chave privada é mantida na base de dados do servidor Followzup e utilizada para ter acesso ao conteúdo das solicitações encaminhadas ao webservice.
-
-Com esse modelo, o desenvolvedor tem a segurança de que ninguém estará enviando solicitações ao webservice em nome de sua aplicação, a menos que ocorra alguma falha de segurança no armazenamento da API. Da mesma forma, o usuário do dispositivo móvel tem certeza de que ninguém estará enviando solicitações em seu nome, a menos que ocorra alguma falha de segurança no armazenamento da chave pública de seu dispositivo móvel.
-
-<br>
-##Documentação
-A documentação do projeto está assim distribuída:
-
-1. No próprio website do serviço (www.followzup.com) - Dirigida aos gestores de canais de informações e usuários de dispositivos móveis. Nessa documentação, não são aprofundados os detalhes do projeto, mas apenas exemplos de uso das APIs e as adaptações necessárias nos sistemas para viabilizar a comunicação com o webservice.
-
-2. Wiki do GitHub (http://github.com/rcbarioni/Followzup/wiki) - Dirigida aos participantes de seu desenvolvimento, gestores interessados na viabilização de novas implementações do serviço ou simplesmente interessados em conhecer as soluções técnicas adotadas.
-
-<br>
-##Conteúdo do Git
-1. Diretório "www" - Contém os scripts PHP do servidor (incluindo os scripts PHP do webservice), arquivos CSS, imagens e outros recursos necessários à implementação do website. O detalhamento dos arquivos encontra-se no wiki do projeto.
-
-2. Diretório "wiki" - Contém demais arquivos referenciados no Wiki do projeto.
-
-<br>
-##To do
-Várias são as frentes que podem receber apoio dos interessados, entre elas:
-
-1. Desenvimento de APIs para outras linguagens (C, Python, Ruby, Unity, Perl, Lua, etc);
-2. Internacionalização (site, wiki, APP);
-3. Desenvolvimento de APPs para outras plataformas e dispositivos.
-
-<br>
-##Contato
-Tem alguma dúvida ou sugestão?
-
-Estamos esperando seu contato no endereço: www.followzup.com/contact
-
-Obrigado pela sua visita e fique tranquilo, Followzup é software livre.
+www.followzup.com/wiki
